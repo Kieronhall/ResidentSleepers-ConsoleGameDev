@@ -13,16 +13,34 @@ Single player or 2-man Coop
 Each level unique Theme/ Unique Feature
 
 ## UI –
+- Main Menu page
+- Setting page
+- Pause menu
+- Mission Success screen
+
+### Game UI
+- Health Info
+- Ammo Info
+- Minimap 
+- Stealth Info
+- Stamina 
 
 ## AI/Physics –
 
 ## Graphics –
 
-## Sound/Audio –
+## Sound/Audio 
+### Character
+Footsteps
+Shooting
+### Enemies
 
 ## Gameplay/Mechanics –
 
-
+# Rythm
+Unique Feature for each level:
+- Timed Skill Check
+- Timed Shooting
 
 
 # Game Levels

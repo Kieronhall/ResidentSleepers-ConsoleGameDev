@@ -25,8 +25,6 @@ Each level unique Theme/ Unique Feature
 - Stealth Info
 - Stamina 
 
-## AI/Physics –
-
 ## Graphics –
 
 ## Sound/Audio 

@@ -3,14 +3,16 @@
 •	Rhythm 
 •	Stealth
 •	Shooter
+
 ## Target Console
 •	PlayStation 4
+
 ## Game Engine
 •	Unity
 
 Shooter Training Game 
 Single player or 2-man Coop
-Each level unique Theme/ Unique Feature
+Each level unique Theme/ Unique Features
 
 ## UI –
 - Main Menu page
@@ -33,7 +35,8 @@ Footsteps
 Shooting
 ### Enemies
 
-## Gameplay/Mechanics –
+## Gameplay/Mechanics
+- 
 
 # Rythm
 Unique Feature for each level:
@@ -57,6 +60,8 @@ Unique Feature for each level:
 ## Character
 
 ## Shooting
+- Limited bullets
+- Bullet collision (makes sound)
 
 ## AI 
 •	Cone Sensor (Visual)

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:ConsoleGame/Assets/Scenes/Joao/Level_1.unity.meta
 guid: 90bdf994cb6cf244e91f86a07a35dd69
+========
+guid: 79ab6fb9fb832e74ab630bc8e27b86e6
+>>>>>>>> d9b6c1684305f7934f04bbc0a416122f6e2761f7:ConsoleGame/Assets/Scenes/Mush/MainMenu/MainMenu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -9,7 +9,8 @@ public class sensors : MonoBehaviour
         Line, 
         RayBundle, 
         SphereCast, 
-        BoxCast
+        BoxCast,
+        BoxCast_2
     }
     public Type sensorType = Type.Line;
     public float raycastLength = 1.0f;
@@ -100,6 +101,13 @@ public class sensors : MonoBehaviour
                     return true;
                 }
                 break;
+            case Type.BoxCast_2:
+                if (Physics.CheckBox(new Vector3(0,0,raycastLength), new Vector3(boxExtents.x, boxExtents.y, 1) / 2.0f, this.transform.rotation, hitMask, QueryTriggerInteraction.Ignore))
+                {
+                    Hit = true;
+                    return true;
+                }
+                break;
         }
         return false;
     }
@@ -167,6 +175,10 @@ public class sensors : MonoBehaviour
                 Vector3 boxHalfExtents = new Vector3(boxExtents.x, boxExtents.y, raycastLength) / 2.0f;
                 Gizmos.DrawWireCube(Vector3.zero, boxHalfExtents * 2f);
                 break;
+            case Type.BoxCast_2:
+                Vector3 boxHalfExtents2 = new Vector3(boxExtents.x, boxExtents.y, 1) / 2.0f;
+                Gizmos.DrawWireCube(new Vector3(0, 0, raycastLength), boxHalfExtents2 * 2f);
+                break;            
         }
     }
 }

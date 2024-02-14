@@ -21,6 +21,7 @@ public class Agent : MonoBehaviour
     public float wanderTimer = 5f;
     private Vector3 target;
     private float timer;
+    private Vector3 startingPoint;
 
     public enum Type
     {
@@ -46,6 +47,7 @@ public class Agent : MonoBehaviour
 
         //Wander
         timer = wanderTimer;
+        startingPoint = transform.position;
         SetNewRandomDestination();
     }
 
@@ -58,17 +60,15 @@ public class Agent : MonoBehaviour
     // WANDER CODE
     void SetNewRandomDestination()
     {
-        // Get a random point within the specified wander radius
+        // Get a random point within the specified wander radius based on the starting point
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
-        randomDirection += transform.position;
 
         // Ensure the point is on the NavMesh
         UnityEngine.AI.NavMeshHit hit;
-        UnityEngine.AI.NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, 1);
+        UnityEngine.AI.NavMesh.SamplePosition(startingPoint + randomDirection, out hit, wanderRadius, 1);
 
         // Set the new destination for the agent
-        target = hit.position;
-        agent.SetDestination(target);
+        agent.SetDestination(hit.position);
     }
     public void agentWander()
     {
@@ -81,7 +81,6 @@ public class Agent : MonoBehaviour
         }
     }
 
- 
     // Update is called once per frame
     void Update()
     {
@@ -122,22 +121,9 @@ public class Agent : MonoBehaviour
     
     void OnDrawGizmos()
     {
-        if (sm != null)
-        {
-            string currentStateName = sm.GetCurrentStateName();
-            if (!string.IsNullOrEmpty(currentStateName) && transform != null)
-            {
-                UnityEditor.Handles.Label(transform.position + Vector3.up * 2, currentStateName);
-            }
-            else
-            {
-                Debug.LogWarning("gizmo current state name is null or transform is null.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("state machine is null.");
-        }
+        // Draw a wireframe sphere in the scene view to visualize the wander radius
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, wanderRadius);
     }
 #endif
 }

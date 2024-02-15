@@ -8,3 +8,6 @@ https://mailbcuac-my.sharepoint.com/:p:/r/personal/dylan_odjidja_mail_bcu_ac_uk/
 
 ## Gantt Chart:
 https://mailbcuac-my.sharepoint.com/:x:/r/personal/dylan_odjidja_mail_bcu_ac_uk/Documents/Year%203/Y3_Semester%202/Console%20Game%20Development/Resident%20Sleepers/Gantt%20Chart.xlsx?d=wfabbdb58da474ae6b8f5ed1041ee3e3f&csf=1&web=1&e=pRKD9F
+
+## Trillo
+https://trello.com/invite/b/JNqvut7w/ATTIb2daa49dbc5571c5c11e84fca7135aabBBB7303B/ps4-game

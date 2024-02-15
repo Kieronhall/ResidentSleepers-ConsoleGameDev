@@ -124,6 +124,23 @@ public class Agent : MonoBehaviour
         // Draw a wireframe sphere in the scene view to visualize the wander radius
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, wanderRadius);
+
+        if (sm != null)
+        {
+            string currentStateName = sm.GetCurrentStateName();
+            if (!string.IsNullOrEmpty(currentStateName) && transform != null)
+            {
+                UnityEditor.Handles.Label(transform.position + Vector3.up * 2, currentStateName);
+            }
+            else
+            {
+                Debug.LogWarning("gizmo current state name is null or transform is null.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("state machine is null.");
+        }
     }
 #endif
 }

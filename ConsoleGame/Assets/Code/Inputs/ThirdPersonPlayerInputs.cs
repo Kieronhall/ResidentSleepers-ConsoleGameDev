@@ -64,8 +64,8 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ADS"",
-                    ""type"": ""PassThrough"",
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
                     ""id"": ""0aa300f8-676b-41de-bc3f-f5b71d759080"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -268,7 +268,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ADS"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -279,7 +279,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ADS"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -294,7 +294,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Spawn = m_Player.FindAction("Spawn", throwIfNotFound: true);
-        m_Player_ADS = m_Player.FindAction("ADS", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -360,7 +360,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Spawn;
-    private readonly InputAction m_Player_ADS;
+    private readonly InputAction m_Player_Aim;
     public struct PlayerActions
     {
         private @ThirdPersonPlayerInputs m_Wrapper;
@@ -369,7 +369,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Spawn => m_Wrapper.m_Player_Spawn;
-        public InputAction @ADS => m_Wrapper.m_Player_ADS;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,9 +391,9 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
             @Spawn.started += instance.OnSpawn;
             @Spawn.performed += instance.OnSpawn;
             @Spawn.canceled += instance.OnSpawn;
-            @ADS.started += instance.OnADS;
-            @ADS.performed += instance.OnADS;
-            @ADS.canceled += instance.OnADS;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -410,9 +410,9 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
             @Spawn.started -= instance.OnSpawn;
             @Spawn.performed -= instance.OnSpawn;
             @Spawn.canceled -= instance.OnSpawn;
-            @ADS.started -= instance.OnADS;
-            @ADS.performed -= instance.OnADS;
-            @ADS.canceled -= instance.OnADS;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -436,6 +436,6 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSpawn(InputAction.CallbackContext context);
-        void OnADS(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
 }

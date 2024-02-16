@@ -18,7 +18,7 @@ public class WanderState : State
 
     public override void Execute()
     {
-        Debug.Log("Executing Wander");
+        //Debug.Log("Executing Wander");
         agent.agentWander();
 
     }

@@ -42,8 +42,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ADS",
-                    "type": "PassThrough",
+                    "name": "Aim",
+                    "type": "Button",
                     "id": "0aa300f8-676b-41de-bc3f-f5b71d759080",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -246,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ADS",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -257,7 +257,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ADS",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

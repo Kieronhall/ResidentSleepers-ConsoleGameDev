@@ -7,6 +7,8 @@ public class AimDownSight_Script : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject aimCamera;
+    public Transform stockMainCamera;
+    public bool Hidden=false;
 
     public bool AimDownSight = false;
     // Start is called before the first frame update
@@ -18,23 +20,42 @@ public class AimDownSight_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (!Hidden)
         {
-            AimDownSight = !AimDownSight;
-        }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                AimDownSight = !AimDownSight;
+            }
 
-        if (AimDownSight && !aimCamera.activeInHierarchy)
-        {
-            mainCamera.SetActive(false);
-            aimCamera.SetActive(true);
-           
-        }
-        else if (!AimDownSight && !mainCamera.activeInHierarchy)
-        {
-            mainCamera.SetActive(true);
-            aimCamera.SetActive(false);
+            if (AimDownSight && !aimCamera.activeInHierarchy)
+            {
+                ZoomIn();
 
+
+            }
+            else if (!AimDownSight && !mainCamera.activeInHierarchy)
+            {
+                ZoomOut();
+
+            }
         }
+    }
+
+    public void ZoomIn()
+    {
+        mainCamera.SetActive(false);
+        aimCamera.SetActive(true);
+    }
+    public void ZoomOut()
+    {
+        mainCamera.SetActive(true);
+        aimCamera.SetActive(false);
+    }
+    public void ToggleHideCamera()
+    {
+        Hidden=!Hidden;
+        Debug.Log("HIDING");
+        mainCamera.SetActive(false);
+        aimCamera.SetActive(false);
     }
 }

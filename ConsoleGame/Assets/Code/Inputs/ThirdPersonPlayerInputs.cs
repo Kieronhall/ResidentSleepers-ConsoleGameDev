@@ -263,17 +263,6 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""71b46aad-4197-41a6-b0f2-3075796df24e"",
-                    ""path"": ""<DualShockGamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Spawn"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d00f753f-1a03-4e89-9c17-b9d4e525ff80"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",

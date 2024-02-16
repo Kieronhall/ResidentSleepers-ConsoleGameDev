@@ -7,7 +7,6 @@ public class AimDownSight_Script : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject aimCamera;
-    public Transform stockMainCamera;
     public bool Hidden=false;
 
     public bool AimDownSight = false;
@@ -53,7 +52,7 @@ public class AimDownSight_Script : MonoBehaviour
     }
     public void ToggleHideCamera()
     {
-        Hidden=!Hidden;
+        Hidden = true;
         Debug.Log("HIDING");
         mainCamera.SetActive(false);
         aimCamera.SetActive(false);

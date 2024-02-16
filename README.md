@@ -11,3 +11,27 @@ https://mailbcuac-my.sharepoint.com/:x:/r/personal/dylan_odjidja_mail_bcu_ac_uk/
 
 ## Trillo
 https://trello.com/invite/b/JNqvut7w/ATTIb2daa49dbc5571c5c11e84fca7135aabBBB7303B/ps4-game
+
+## Controls
+Left Analog - WASD
+Right Analog - Mouse
+DPAD Up - 1
+DPAD Down - 3
+DPAD Left - 4
+DPAD Right - 2
+
+X - Space
+Square - E
+Circle - Left Control
+Triangle - Q
+
+R1 - G
+R2 - Left Mouse Button
+R3 - T
+L1 - F
+L2 - Right Mouse Button
+L3 - Shift
+
+Options - Escape
+Touchpad - H
+

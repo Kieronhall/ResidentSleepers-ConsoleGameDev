@@ -71,6 +71,15 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f370267-d6f7-4444-b970-c116fb556cde"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,6 +291,28 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65bc6d53-d045-453c-ac65-648d17a1c4e2"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""488be145-59d0-4479-bc3d-6d2460053841"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -295,6 +326,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Spawn = m_Player.FindAction("Spawn", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,6 +393,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Spawn;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Sprint;
     public struct PlayerActions
     {
         private @ThirdPersonPlayerInputs m_Wrapper;
@@ -370,6 +403,7 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Spawn => m_Wrapper.m_Player_Spawn;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -394,6 +428,9 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
             @Aim.started += instance.OnAim;
             @Aim.performed += instance.OnAim;
             @Aim.canceled += instance.OnAim;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -413,6 +450,9 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
             @Aim.started -= instance.OnAim;
             @Aim.performed -= instance.OnAim;
             @Aim.canceled -= instance.OnAim;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -437,5 +477,6 @@ public partial class @ThirdPersonPlayerInputs: IInputActionCollection2, IDisposa
         void OnFire(InputAction.CallbackContext context);
         void OnSpawn(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

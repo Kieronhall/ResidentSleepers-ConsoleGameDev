@@ -1,11 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float playerSpeed = 2.0f;
+    public float playerSpeed = 4.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
 
     private InputAction moveAction;
+    private InputAction sprintAction;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
+        sprintAction = playerInput.actions["Sprint"];
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -49,5 +51,28 @@ public class PlayerController : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private void OnEnable()
+    {
+        sprintAction.performed += _ => StartSprint();
+        sprintAction.canceled += _ => CancelSprint();
+    }
+
+    private void OnDisable()
+    {
+        sprintAction.performed -= _ => StartSprint();
+        sprintAction.canceled -= _ => CancelSprint();
+    }
+
+    private void StartSprint()
+    {
+        playerSpeed = 6.0f;
+        Debug.Log("Sprinting");
+    }
+
+    private void CancelSprint()
+    {
+        playerSpeed = 4.0f;
     }
 }

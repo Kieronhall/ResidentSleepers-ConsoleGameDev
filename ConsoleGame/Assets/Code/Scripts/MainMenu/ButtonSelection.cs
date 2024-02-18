@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class ButtonSelection : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Button primaryButton;
+    //public Button primaryButton;
     void Start()
     {
-        primaryButton.Select();
+        //primaryButton.Select();
     }
 
     // Update is called once per frame

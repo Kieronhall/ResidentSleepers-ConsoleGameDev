@@ -7,28 +7,28 @@ using UnityEngine.InputSystem;
 
 public class spawnOnPress : MonoBehaviour
 {
-    private ThirdPersonPlayerInputs playerInputs;
+    //private ThirdPersonPlayerInputs playerInputs;
     private InputAction spawnAI;
     public GameObject prefabToSpawn;
     public float spawnRadius = 5.0f;
     public TMP_Text debugText;
     public int enemiesCount=0;
 
-    private void Awake()
-    {
-        playerInputs = new ThirdPersonPlayerInputs();
-    }
+    //private void Awake()
+    //{
+    //    playerInputs = new ThirdPersonPlayerInputs();
+    //}
 
-    private void OnEnable()
-    {
-        spawnAI = playerInputs.Player.Spawn;
-        playerInputs.Player.Enable();
-    }
+    //private void OnEnable()
+    //{
+    //    spawnAI = playerInputs.Player.Spawn;
+    //    playerInputs.Player.Enable();
+    //}
 
-    private void OnDisable()
-    {
-        playerInputs.Player.Enable();
-    }
+    //private void OnDisable()
+    //{
+    //    playerInputs.Player.Enable();
+    //}
 
     void Update()
     {

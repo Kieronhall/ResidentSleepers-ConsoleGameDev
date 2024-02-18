@@ -14,8 +14,7 @@ public class SeekState : State
     public override void Enter()
     {
         Debug.Log("Entering Seek");
-        
-        
+
     }
 
     public override void Execute()
@@ -27,7 +26,6 @@ public class SeekState : State
     public override void Exit()
     {
         Debug.Log("Exiting Seek");
-
     }
 }
 

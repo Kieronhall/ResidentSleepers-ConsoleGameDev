@@ -20,7 +20,6 @@ public class WanderState : State
     {
         Debug.Log("Executing Wander");
         agent.agentWander();
-
     }
 
     public override void Exit()

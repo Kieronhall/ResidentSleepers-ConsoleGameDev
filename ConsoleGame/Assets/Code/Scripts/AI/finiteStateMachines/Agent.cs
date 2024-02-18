@@ -58,7 +58,7 @@ public class Agent : MonoBehaviour
     }
 
     // WANDER CODE
-    void SetNewRandomDestination()
+    public void SetNewRandomDestination()
     {
         // Get a random point within the specified wander radius based on the starting point
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;

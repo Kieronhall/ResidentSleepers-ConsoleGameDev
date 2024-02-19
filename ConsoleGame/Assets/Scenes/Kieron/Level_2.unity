@@ -5880,14 +5880,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a96a77c56b8284a8f2e64628468f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentType: 0
   player: {fileID: 251389862}
-  wanderRadius: 5.43
   wanderTimer: 5
   patrolFlag1: {fileID: 621408975}
   patrolFlag2: {fileID: 643636597}
   patrolFlag3: {fileID: 1334374292}
   patrolFlag4: {fileID: 1979630899}
-  agentType: 1
 --- !u!136 &711426147
 CapsuleCollider:
   m_ObjectHideFlags: 0

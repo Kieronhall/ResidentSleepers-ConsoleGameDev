@@ -12,33 +12,32 @@ public class Agent : MonoBehaviour
     public PatrolState patrol;
     public LookAroundState lookaround;
 
+    public Type agentType = Type.Wander;
+
     // NavMesh Variables
     public Transform player;
     private UnityEngine.AI.NavMeshAgent agent;
 
     //Wander Variables
-    public float wanderRadius = 20f;
+    [Header("Wander Settings")]
     public float wanderTimer = 5f;
-    private Vector3 target;
-    private float timer;
-    private Vector3 startingPoint;
 
     //Patrol Variables
-
+    [Header("Patrol Settings")]
     public GameObject patrolFlag1;
     public GameObject patrolFlag2;
     public GameObject patrolFlag3;
     public GameObject patrolFlag4;
     private Transform currentGoal;
+    private Transform lastGoal;
 
 
     public enum Type
     {
-        Wandering,
+        Wander,
         Patrol,
     }
-    public Type agentType = Type.Wandering;
-
+    
     sensors s;
     // Start is called before the first frame update
     void Start()
@@ -56,12 +55,11 @@ public class Agent : MonoBehaviour
         
         switch (agentType)
         {
-            case Type.Wandering:
-                timer = wanderTimer;
-                startingPoint = transform.position;
-                SetNewRandomDestination();
+            case Type.Wander:
+                //SetNextGoal();
+                //InvokeRepeating("SetNextGoal", 0f, wanderTimer);
                 break;
-            case Type.Patrol:
+            case Type.Patrol: 
                 break;
         }
     }
@@ -69,30 +67,39 @@ public class Agent : MonoBehaviour
     // SEEK CODE
     public void agentGoToPlayer()
     {
+        // Store the current goal as the last goal before seeking the player
+        lastGoal = currentGoal;
+        
         agent.destination = player.position;
     }
 
     // WANDER CODE
-    public void SetNewRandomDestination()
+    public void WanderFunc()
     {
-        // Get a random point within the specified wander radius based on the starting point
-        Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
-
-        // Ensure the point is on the NavMesh
-        UnityEngine.AI.NavMeshHit hit;
-        UnityEngine.AI.NavMesh.SamplePosition(startingPoint + randomDirection, out hit, wanderRadius, 1);
-
-        // Set the new destination for the agent
-        agent.SetDestination(hit.position);
-    }
-    public void agentWander()
-    {
-        timer -= Time.deltaTime;
-
-        if (timer <= 0f)
+        if (agent == null)
         {
-            SetNewRandomDestination();
-            timer = wanderTimer;
+            Debug.LogError("Agent is null.");
+            return;
+        }
+
+        // Check if the agent has reached the current goal
+        if (!agent.pathPending && agent.remainingDistance < 0.1f)
+        {
+            WanderSetNextGoal();
+        }
+    }
+    public void WanderSetNextGoal()
+    {
+        // choosing a random patrol flag as the next goal
+        GameObject[] patrolFlags = { patrolFlag1, patrolFlag2, patrolFlag3, patrolFlag4 };
+        GameObject randomFlag = patrolFlags[Random.Range(0, patrolFlags.Length)];
+
+        // Ensure the GameObject has a Transform component
+        if (randomFlag != null)
+        {
+            currentGoal = randomFlag.transform;
+
+            agent.SetDestination(currentGoal.position);
         }
     }
     // PATROL CODE
@@ -107,10 +114,10 @@ public class Agent : MonoBehaviour
         // Check if the agent has reached the current goal
         if (!agent.pathPending && agent.remainingDistance < 0.1f)
         {
-            SetNextGoal();
+            PatrolSetNextGoal();
         }
     }
-    void SetNextGoal()
+    void PatrolSetNextGoal()
     {
         // Switch the goal to the next flag
         if (currentGoal == patrolFlag1.transform)
@@ -137,6 +144,15 @@ public class Agent : MonoBehaviour
         // Set the destination for the NavMeshAgent
         agent.SetDestination(currentGoal.position);
     }
+    public void ResumeLastGoal()
+    {
+        // Check if there is a last goal stored
+        if (lastGoal != null)
+        {
+            currentGoal = lastGoal;
+            agent.SetDestination(currentGoal.position);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -145,7 +161,7 @@ public class Agent : MonoBehaviour
 
         switch (agentType)
         {
-            case Type.Wandering:
+            case Type.Wander:
                 if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)))
                 {
                     Debug.Log("Hit");
@@ -187,10 +203,6 @@ public class Agent : MonoBehaviour
     
     void OnDrawGizmos()
     {
-        // wander radius
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, wanderRadius);
-
         if (sm != null)
         {
             string currentStateName = sm.GetCurrentStateName();

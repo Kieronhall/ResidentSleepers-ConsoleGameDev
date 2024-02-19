@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float groundDrag;
     public float airMultiplier;
 
+    [Header("Camera")]
+    public ThirdPersonCam mainCamera;
+
     [Header("Crouching")]
     public float crouchSpeed;
     public float crouchYScale;
@@ -32,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
 
+
     public Transform orientation;
 
     float horizontalInput;
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         walking,
         sprinting,
         crouching,
+        aiming,
         air
     }
     private void Start()
@@ -88,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // Start Crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (Input.GetKeyDown(crouchKey) && !mainCamera.aimDownSights)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -104,16 +109,22 @@ public class PlayerMovement : MonoBehaviour
     private void StateHandler()
     {
         // Mode - Crouching
-        if (Input.GetKey(crouchKey))
+        if (Input.GetKey(crouchKey) && !mainCamera.aimDownSights)
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
         }
         // Mode - Sprinting
-        if (grounded && Input.GetKey(sprintKey))
+        if (grounded && Input.GetKey(sprintKey) && !mainCamera.aimDownSights)
         {
             state = MovementState.sprinting;
             moveSpeed = spirntSpeed;
+        }
+        // Mode - Aim Down Sights
+        if (grounded && mainCamera.aimDownSights)
+        {
+            state = MovementState.aiming;
+            moveSpeed = crouchSpeed;
         }
         // Mode - Walking
         else if (grounded)

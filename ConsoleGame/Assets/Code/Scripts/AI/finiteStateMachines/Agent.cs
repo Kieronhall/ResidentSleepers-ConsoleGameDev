@@ -23,7 +23,7 @@ public class Agent : MonoBehaviour
     public float wanderTimer = 5f;
 
     //Patrol Variables
-    [Header("Patrol Settings")]
+    [Header("Waypoints")]
     public GameObject patrolFlag1;
     public GameObject patrolFlag2;
     public GameObject patrolFlag3;

@@ -5880,7 +5880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a96a77c56b8284a8f2e64628468f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentType: 0
+  agentType: 1
   player: {fileID: 251389862}
   wanderTimer: 5
   patrolFlag1: {fileID: 621408975}

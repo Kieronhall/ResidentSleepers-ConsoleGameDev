@@ -12,6 +12,18 @@ public class LightController : MonoBehaviour
     }
     void Update()
     {
-        
+        // Check if the F key is pressed
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            // Change the color of the light to red
+            if (targetLight != null)
+            {
+                targetLight.color = Color.red;
+            }
+            else
+            {
+                Debug.LogWarning("Target light is not assigned!");
+            }
+        }
     }
 }

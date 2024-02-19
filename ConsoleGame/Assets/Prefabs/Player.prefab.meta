@@ -1,13 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<<< HEAD:ConsoleGame/Assets/Prefabs/Player.prefab.meta
 guid: 030be9eae1cacfb49bafc5b47e0ceb72
-========
-guid: b0a8de7ee41d5ae4896b92812ebb5741
->>>>>>>> Kieron:ConsoleGame/Assets/Prefabs/Main Camera.prefab.meta
-=======
-guid: a52f955a2cc987a47ac85846a65d2204
->>>>>>> Kieron
 PrefabImporter:
   externalObjects: {}
   userData: 

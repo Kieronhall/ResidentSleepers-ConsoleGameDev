@@ -372,11 +372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -503.99994, y: 363}
-=======
-  m_AnchoredPosition: {x: -530, y: 363}
->>>>>>> Kieron
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156744598
@@ -892,11 +888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -511, y: 0}
-=======
-  m_AnchoredPosition: {x: -537, y: 0}
->>>>>>> Kieron
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695588572
@@ -1066,11 +1058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -512.99994, y: 37}
-=======
-  m_AnchoredPosition: {x: -539, y: -141}
->>>>>>> Kieron
   m_SizeDelta: {x: 650, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052514573
@@ -1086,15 +1074,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-<<<<<<< HEAD
     m_SelectOnUp: {fileID: 2096943350}
     m_SelectOnDown: {fileID: 1465597532}
-=======
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
->>>>>>> Kieron
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1207,11 +1190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -510.99994, y: 0}
-=======
-  m_AnchoredPosition: {x: -537, y: 0}
->>>>>>> Kieron
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188711765
@@ -1252,11 +1231,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188711763}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &1465597531
-=======
---- !u!1 &1224180457
->>>>>>> Kieron
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1264,36 +1239,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 1465597535}
   - component: {fileID: 1465597534}
   - component: {fileID: 1465597533}
   - component: {fileID: 1465597532}
   m_Layer: 5
   m_Name: CreditButton
-=======
-  - component: {fileID: 1224180460}
-  - component: {fileID: 1224180459}
-  - component: {fileID: 1224180458}
-  m_Layer: 0
-  m_Name: EventSystem
->>>>>>> Kieron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!114 &1465597532
-=======
---- !u!114 &1224180458
->>>>>>> Kieron
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1465597531}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1345,29 +1307,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1465597533
-=======
-  m_GameObject: {fileID: 1224180457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1224180459
->>>>>>> Kieron
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1465597531}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1394,24 +1338,10 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1465597534
 CanvasRenderer:
-=======
-  m_GameObject: {fileID: 1224180457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1224180460
-Transform:
->>>>>>> Kieron
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1465597531}
   m_CullTransparentMesh: 1
 --- !u!224 &1465597535
@@ -1421,14 +1351,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465597531}
-=======
-  m_GameObject: {fileID: 1224180457}
->>>>>>> Kieron
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-<<<<<<< HEAD
   m_Children:
   - {fileID: 234042743}
   m_Father: {fileID: 1993869125}
@@ -1439,12 +1365,6 @@ RectTransform:
   m_AnchoredPosition: {x: -512.99994, y: -141}
   m_SizeDelta: {x: 650, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Kieron
 --- !u!1 &1993869121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,10 +1378,7 @@ GameObject:
   - component: {fileID: 1993869123}
   - component: {fileID: 1993869122}
   - component: {fileID: 1993869126}
-<<<<<<< HEAD
   - component: {fileID: 1993869129}
-=======
->>>>>>> Kieron
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1571,7 +1488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2acc1c71e53814c9a414842eea7103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!114 &1993869129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,8 +1500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c16571493284104db70728cd9c80484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
->>>>>>> Kieron
 --- !u!1 &2096943348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,11 +1537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -512.99994, y: -320.99997}
-=======
-  m_AnchoredPosition: {x: -539, y: -320.99997}
->>>>>>> Kieron
   m_SizeDelta: {x: 650, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2096943350
@@ -1643,15 +1553,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-<<<<<<< HEAD
     m_SelectOnUp: {fileID: 1465597532}
     m_SelectOnDown: {fileID: 1052514573}
-=======
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
->>>>>>> Kieron
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1

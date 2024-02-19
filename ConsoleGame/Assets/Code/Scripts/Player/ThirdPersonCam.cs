@@ -36,12 +36,12 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (Input.GetAxisRaw("Joystick Fire2") == 1)
         {
             SwitchCameraStyle(CameraStyle.Comabt);
             aimDownSights = true;
         }
-        else if (Input.GetKeyUp(KeyCode.JoystickButton0))
+        else if (Input.GetAxisRaw("Joystick Fire2") == 0)
         {
             SwitchCameraStyle(CameraStyle.Default);
             aimDownSights = false;

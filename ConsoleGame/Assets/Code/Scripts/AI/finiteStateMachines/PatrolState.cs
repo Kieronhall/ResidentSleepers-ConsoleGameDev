@@ -13,20 +13,19 @@ public class PatrolState : State
 
     public override void Enter()
     {
-        //Debug.Log("Entering Patrol");
-
+        Debug.Log("Entering Patrol");
+        agent.ResumeLastGoal();
     }
 
     public override void Execute()
     {
-        //Debug.Log("Executing Patrol");
- 
-
+        Debug.Log("Executing Patrol");
+        agent.PatrolFunc();
     }
 
     public override void Exit()
     {
-        //Debug.Log("Exiting Patrol");
+        Debug.Log("Exiting Patrol");
     }
 }
 

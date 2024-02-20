@@ -14,13 +14,13 @@ public class WanderState : State
     public override void Enter()
     {
         Debug.Log("Entering Wander");
+        agent.ResumeLastGoal();
     }
 
     public override void Execute()
     {
         Debug.Log("Executing Wander");
-        agent.agentWander();
-
+        agent.WanderFunc();
     }
 
     public override void Exit()

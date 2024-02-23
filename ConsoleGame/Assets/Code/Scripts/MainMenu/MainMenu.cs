@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
     public void openLevel ()
     {
         //Load level
-        Application.LoadLevel("TestingScene");
+        //Application.LoadLevel("TestingScene");
+        Debug.Log(" Opening scene");
     }
 
     public void closeLevel ()

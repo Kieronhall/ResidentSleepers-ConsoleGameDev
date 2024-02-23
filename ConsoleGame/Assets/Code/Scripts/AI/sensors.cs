@@ -38,6 +38,16 @@ public class sensors : MonoBehaviour
     void Update()
     {
         Scan();
+        if (Hit == true)
+        {
+            raycastLength = 6;
+            searchArc = 180;
+        }
+        else
+        {
+            raycastLength = 3;
+            searchArc = 90;
+        }
     }
 
     public bool Hit {get; private set;}

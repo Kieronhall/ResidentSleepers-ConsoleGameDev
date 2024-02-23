@@ -59,7 +59,7 @@ public class Stealth_Asset_Script : MonoBehaviour
     {
         player.transform.position = this.transform.position;
         
-        mainCamera.GetComponent<AimDownSight_Script>().ToggleHideCamera();
+        //mainCamera.GetComponent<AimDownSight_Script>().ToggleHideCamera();
 
         StartCoroutine(ScaleOverTime());
 
@@ -91,7 +91,7 @@ public class Stealth_Asset_Script : MonoBehaviour
     {
         player.transform.position = this.transform.GetChild(2).GetComponent<Transform>().position;
 
-        mainCamera.GetComponent<AimDownSight_Script>().ZoomOut();
+        //mainCamera.GetComponent<AimDownSight_Script>().ZoomOut();
 
         StartCoroutine(ScaleAndMoveOverTime());
     }

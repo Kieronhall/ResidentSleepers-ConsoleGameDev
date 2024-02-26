@@ -1,25 +1,23 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-#endif
 
-namespace ThirdPersonController
+namespace ThirdPerson
 {
-	public class PlayerInputs : MonoBehaviour
+	public class PlayerControls : MonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool sprint;
+        public bool aim;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
-#if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
@@ -37,10 +35,13 @@ namespace ThirdPersonController
 		{
 			SprintInput(value.isPressed);
 		}
-#endif
 
+        public void OnAim(InputValue value)
+        {
+            AimInput(value.isPressed);
+        }
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -55,7 +56,12 @@ namespace ThirdPersonController
 			sprint = newSprintState;
 		}
 
-		private void OnApplicationFocus(bool hasFocus)
+        public void AimInput(bool newAimState)
+        {
+            aim = newAimState;
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}

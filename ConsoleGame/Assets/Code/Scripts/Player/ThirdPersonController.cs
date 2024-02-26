@@ -1,7 +1,7 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ThirdPersonController
+namespace ThirdPerson
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(PlayerInput))]
@@ -16,6 +16,8 @@ namespace ThirdPersonController
         public float rotationSmoothTime = 0.12f;
 
         public float speedChangeRate = 10.0f;
+
+        public float sensitivty = 1f;
 
         public float gravity = -15.0f;
 
@@ -57,8 +59,9 @@ namespace ThirdPersonController
 
         private PlayerInput _playerInput;
         private CharacterController _controller;
-        private PlayerInputs _input;
+        private PlayerControls _input;
         private GameObject _mainCamera;
+        private bool _rotateOnMove = true;
 
         private const float _threshold = 0.01f;
 
@@ -89,7 +92,7 @@ namespace ThirdPersonController
             _cinemachineTargetYaw = cinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _controller = GetComponent<CharacterController>();
-            _input = GetComponent<PlayerInputs>();
+            _input = GetComponent<PlayerControls>();
             _playerInput = GetComponent<PlayerInput>();
 
             // reset thr timeout on start
@@ -125,8 +128,8 @@ namespace ThirdPersonController
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivty;
+                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivty;
             }
 
             // clamp  rotations so  values are limited 360 degrees
@@ -180,7 +183,10 @@ namespace ThirdPersonController
                     rotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if (_rotateOnMove)
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
 
@@ -239,6 +245,16 @@ namespace ThirdPersonController
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z),
                 groundedRadius);
+        }
+
+        public void SetSensitivity(float newSensitivity)
+        {
+            sensitivty = newSensitivity;
+        }
+
+        public void SetRotationOnMove(bool newRotateOnMove)
+        {
+            _rotateOnMove = newRotateOnMove;
         }
     }
 }

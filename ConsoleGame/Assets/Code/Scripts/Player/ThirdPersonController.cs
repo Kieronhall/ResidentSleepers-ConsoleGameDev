@@ -1,63 +1,44 @@
 ﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
-#endif
 
 namespace ThirdPersonController
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
-#endif
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
-        [Tooltip("Move speed of the character in m/s")]
         public float moveSpeed = 2.0f;
 
-        [Tooltip("Sprint speed of the character in m/s")]
         public float sprintSpeed = 5.335f;
 
-        [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float rotationSmoothTime = 0.12f;
 
-        [Tooltip("Acceleration and deceleration")]
         public float speedChangeRate = 10.0f;
 
-        [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float gravity = -15.0f;
 
-        [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float fallTimeout = 0.15f;
 
         [Header("Player grounded")]
-        [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool grounded = true;
 
-        [Tooltip("Useful for rough ground")]
         public float groundedOffset = -0.14f;
 
-        [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
         public float groundedRadius = 0.28f;
 
-        [Tooltip("What layers the character uses as ground")]
         public LayerMask groundLayers;
 
         [Header("Cinemachine")]
-        [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject cinemachineCameraTarget;
 
-        [Tooltip("How far in degrees can you move the camera up")]
         public float topClamp = 70.0f;
 
-        [Tooltip("How far in degrees can you move the camera down")]
         public float bottomClamp = -30.0f;
 
-        [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
         public float cameraAngleOverride = 0.0f;
 
-        [Tooltip("For locking the camera position on all axis")]
         public bool lockCameraPosition = false;
 
         // cinemachine
@@ -72,12 +53,9 @@ namespace ThirdPersonController
         private float _terminalVelocity = 53.0f;
 
         // timeout deltatime
-        private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
 
-#if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
-#endif
         private CharacterController _controller;
         private PlayerInputs _input;
         private GameObject _mainCamera;
@@ -97,10 +75,9 @@ namespace ThirdPersonController
             }
         }
 
-
         private void Awake()
         {
-            // get a reference to our main camera
+            // get a reference to the main camera
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -113,12 +90,9 @@ namespace ThirdPersonController
             
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<PlayerInputs>();
-#if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
-#else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-#endif
-            // reset our timeout on start
+
+            // reset thr timeout on start
             _fallTimeoutDelta = fallTimeout;
         }
 
@@ -155,7 +129,7 @@ namespace ThirdPersonController
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
             }
 
-            // clamp our rotations so our values are limited 360 degrees
+            // clamp  rotations so  values are limited 360 degrees
             _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
 
@@ -169,9 +143,6 @@ namespace ThirdPersonController
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
 
-            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
-
-            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
@@ -186,7 +157,6 @@ namespace ThirdPersonController
                 currentHorizontalSpeed > targetSpeed + speedOffset)
             {
                 // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
                 _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                     Time.deltaTime * speedChangeRate);
 
@@ -201,7 +171,6 @@ namespace ThirdPersonController
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
             if (_input.move != Vector2.zero)
             {
@@ -229,7 +198,7 @@ namespace ThirdPersonController
                 // reset the fall timeout timer
                 _fallTimeoutDelta = fallTimeout;
 
-                // stop our velocity dropping infinitely when grounded
+                // stop  velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;

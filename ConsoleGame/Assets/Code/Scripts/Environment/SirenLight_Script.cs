@@ -15,18 +15,28 @@ public class SirenLight_Script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P) && alarm)
         {
-            this.GetComponent<Light>().intensity=0;
-            alarm = !alarm;
+            AlarmOff();
         }
         else if(Input.GetKeyDown(KeyCode.P) && !alarm)
         {
-            this.GetComponent<Light>().intensity = 11;
-            alarm = !alarm;
+            AlarmOn();
         }
-        if (alarm)
+        if (PlayerPrefs.GetInt("Alarm")==1)
         {
             // Rotate the GameObject around its vertical axis
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
         }   
+    }
+    public void AlarmOn()
+    {
+        this.GetComponent<Light>().intensity = 11;
+        PlayerPrefs.SetInt("Alarm", 1);
+        alarm = !alarm;
+    }
+    public void AlarmOff()
+    {
+        this.GetComponent<Light>().intensity = 0;
+        PlayerPrefs.SetInt("Alarm", 0);
+        alarm = !alarm;
     }
 }

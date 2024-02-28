@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.CinemachineOrbitalTransposer;
+using Cinemachine;
 
 public class Stealth_Asset_Script : MonoBehaviour
 {
@@ -57,11 +58,13 @@ public class Stealth_Asset_Script : MonoBehaviour
     }
     public void HideInObject()
     {
-        player.transform.position = this.transform.position;
-        
-        //mainCamera.GetComponent<AimDownSight_Script>().ToggleHideCamera();
+        player.GetComponent<CharacterController>().enabled = false;
 
-        StartCoroutine(ScaleOverTime());
+        player.transform.position = this.transform.position;
+
+        childCamera.GetComponent<CinemachineVirtualCamera>().Priority = 11;
+
+       //StartCoroutine(ScaleOverTime());
 
     }
 
@@ -89,13 +92,15 @@ public class Stealth_Asset_Script : MonoBehaviour
 
     public void ExitHiding()
     {
-        player.transform.position = this.transform.GetChild(2).GetComponent<Transform>().position;
+        player.transform.localPosition = new Vector3(17.9222775f, -1.29528141f, -6.40649414f);
+        
+        childCamera.GetComponent<CinemachineVirtualCamera>().Priority = 8;
 
-        //mainCamera.GetComponent<AimDownSight_Script>().ZoomOut();
+        //StartCoroutine(ScaleAndMoveOverTime());
 
-        StartCoroutine(ScaleAndMoveOverTime());
+        player.GetComponent<CharacterController>().enabled = true;
+
     }
-
 
     IEnumerator ScaleAndMoveOverTime()
     {
@@ -115,3 +120,4 @@ public class Stealth_Asset_Script : MonoBehaviour
         player.transform.localScale = targetScale;
     }
 }
+

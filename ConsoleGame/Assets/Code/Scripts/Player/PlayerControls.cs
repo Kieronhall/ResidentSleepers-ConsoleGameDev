@@ -10,6 +10,7 @@ namespace ThirdPerson
 		public Vector2 look;
 		public bool sprint;
         public bool aim;
+		public bool crouch;
 
         [Header("Movement Settings")]
 		public bool analogMovement;
@@ -41,6 +42,11 @@ namespace ThirdPerson
             AimInput(value.isPressed);
         }
 
+		public void OnCrouch(InputValue value)
+		{
+			CrouchInput(value.isPressed);
+		}
+
         public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
@@ -60,6 +66,11 @@ namespace ThirdPerson
         {
             aim = newAimState;
         }
+
+		public void CrouchInput(bool newCrouchState)
+		{
+			crouch = newCrouchState;
+		}
 
         private void OnApplicationFocus(bool hasFocus)
 		{

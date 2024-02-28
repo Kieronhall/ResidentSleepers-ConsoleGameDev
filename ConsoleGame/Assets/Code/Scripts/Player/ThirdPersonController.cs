@@ -8,39 +8,29 @@ namespace ThirdPerson
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
-        public float moveSpeed = 2.0f;
-
-        public float sprintSpeed = 5.335f;
-
+        public float moveSpeed = 3f;
+        public float sprintSpeed = 6f;
+        public float crouchSpeed = 1.5f;
+        public float crouchYScale;
+        private float startYScale;
         [Range(0.0f, 0.3f)]
         public float rotationSmoothTime = 0.12f;
-
         public float speedChangeRate = 10.0f;
-
         public float sensitivty = 1f;
-
         public float gravity = -15.0f;
-
         public float fallTimeout = 0.15f;
 
         [Header("Player grounded")]
         public bool grounded = true;
-
         public float groundedOffset = -0.14f;
-
         public float groundedRadius = 0.28f;
-
         public LayerMask groundLayers;
 
         [Header("Cinemachine")]
         public GameObject cinemachineCameraTarget;
-
         public float topClamp = 70.0f;
-
         public float bottomClamp = -30.0f;
-
         public float cameraAngleOverride = 0.0f;
-
         public bool lockCameraPosition = false;
 
         // cinemachine
@@ -53,9 +43,6 @@ namespace ThirdPerson
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
-
-        // timeout deltatime
-        private float _fallTimeoutDelta;
 
         private PlayerInput _playerInput;
         private CharacterController _controller;
@@ -95,8 +82,7 @@ namespace ThirdPerson
             _input = GetComponent<PlayerControls>();
             _playerInput = GetComponent<PlayerInput>();
 
-            // reset thr timeout on start
-            _fallTimeoutDelta = fallTimeout;
+            startYScale = transform.localScale.y;
         }
 
         private void Update()
@@ -104,6 +90,7 @@ namespace ThirdPerson
             Gravity();
             groundedCheck();
             Move();
+            Crouch();
         }
 
         private void LateUpdate()
@@ -132,7 +119,7 @@ namespace ThirdPerson
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivty;
             }
 
-            // clamp  rotations so  values are limited 360 degrees
+            // clamp rotations so values are limited 360 degrees
             _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
 
@@ -143,8 +130,8 @@ namespace ThirdPerson
 
         private void Move()
         {
-            // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
+            // set target speed based on move speed, sprint speed and if sprint is pressed, crouch speed if crouch is pressed
+            float targetSpeed = _input.sprint ? sprintSpeed : _input.crouch ? crouchSpeed : moveSpeed;
 
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
@@ -197,25 +184,25 @@ namespace ThirdPerson
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
+        private void Crouch()
+        {
+            if (_input.crouch)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            }
+        }
+
         private void Gravity()
         {
             if (grounded)
             {
-                // reset the fall timeout timer
-                _fallTimeoutDelta = fallTimeout;
-
-                // stop  velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
-                }
-            }
-            else
-            {
-                // fall timeout
-                if (_fallTimeoutDelta >= 0.0f)
-                {
-                    _fallTimeoutDelta -= Time.deltaTime;
                 }
             }
 

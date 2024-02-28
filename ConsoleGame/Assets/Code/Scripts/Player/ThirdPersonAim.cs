@@ -12,14 +12,13 @@ namespace ThirdPerson
         [SerializeField] private float normalSensitivity;
         [SerializeField] private float aimSensitivity;
         [SerializeField] private LayerMask aimColldierMask;
-        [SerializeField] private Transform debugTransform;
 
         private ThirdPersonController controller;
-        private PlayerControls playerControls;
+        private PlayerControls _input;
 
         private void Awake()
         {
-            playerControls = GetComponent<PlayerControls>();
+            _input = GetComponent<PlayerControls>();
             controller = GetComponent<ThirdPersonController>();
         }
 
@@ -31,10 +30,10 @@ namespace ThirdPerson
             Ray ray = Camera.main.ScreenPointToRay(screenCentrePoint);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColldierMask))
             {
-                debugTransform.position = raycastHit.point;
+                
             }
 
-            if (playerControls.aim)
+            if (_input.aim)
             {
                 aimVirtualCamera.gameObject.SetActive(true);
                 controller.SetSensitivity(aimSensitivity);

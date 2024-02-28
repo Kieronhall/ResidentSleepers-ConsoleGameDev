@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputs",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Player",
@@ -36,6 +36,15 @@
                     "name": "Aim",
                     "type": "PassThrough",
                     "id": "dfe4d87f-e293-4723-bb43-d698289d7d84",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "PassThrough",
+                    "id": "eb7a92f9-d2ea-4408-8f77-736e9ba8135b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -216,6 +225,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0101adb0-147d-4292-a273-9efbe3790127",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c0b85b4-c1b0-4266-8fd6-550a72ac7e50",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!114 &116360462
@@ -268,8 +268,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281669652
-  m_fontColor: {r: 0.078431375, g: 0.09411766, b: 0.20784315, a: 1}
+    rgba: 4289619785
+  m_fontColor: {r: 0.28627452, g: 0.4039216, b: 0.68235296, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -363,7 +363,7 @@ RectTransform:
   m_GameObject: {fileID: 156744596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.0029252, y: 1.3006, z: 1.3006}
+  m_LocalScale: {x: 4, y: 2, z: 1.3006}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 322347639}
@@ -372,7 +372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -503.99994, y: 363}
+  m_AnchoredPosition: {x: -454, y: 363}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156744598
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14c27dd50e74f7142a3553e5b6cde78a, type: 3}
+  m_Sprite: {fileID: -705626865, guid: 108ac1ff37813104ebe7f4efcb356f73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -574,8 +574,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281669652
-  m_fontColor: {r: 0.078431375, g: 0.09411766, b: 0.20784315, a: 1}
+    rgba: 4289619785
+  m_fontColor: {r: 0.28627452, g: 0.4039216, b: 0.68235296, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.7176471, b: 0.8352942, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.7176471, b: 0.8352941, a: 1}
     m_PressedColor: {r: 0, g: 0.7176471, b: 0.8352942, a: 1}
     m_SelectedColor: {r: 0, g: 0.7176471, b: 0.8352942, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.28627452, g: 0.40392157, b: 0.68235296, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1690,8 +1690,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281669652
-  m_fontColor: {r: 0.078431375, g: 0.09411766, b: 0.20784315, a: 1}
+    rgba: 4289619785
+  m_fontColor: {r: 0.28627452, g: 0.4039216, b: 0.68235296, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

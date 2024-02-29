@@ -83,7 +83,7 @@ public class Stealth_Asset_Script : MonoBehaviour
 
     public void ExitHiding()
     {
-        player.transform.localPosition = new Vector3(17.9222775f, -1.29528141f, -6.40649414f);
+        player.transform.position = this.transform.GetChild(2).transform.position /*new Vector3(17.9222775f, -1.29528141f, -6.40649414f)*/;
 
         player.GetComponent<CharacterController>().enabled = true;
         childCamera.GetComponent<CinemachineVirtualCamera>().Priority = 8;

@@ -35,7 +35,7 @@ public class Tripwire_Script : MonoBehaviour
 
     void Update()
     {
-        CheckTripwire();
+        CheckTripwire();   
     }
 
     void CheckTripwire()
@@ -44,9 +44,10 @@ public class Tripwire_Script : MonoBehaviour
         {
             Debug.Log("Tripwire triggered by: " + hit.collider.gameObject.name);
             // Do something when the tripwire is triggered, for example:
-            // hit.collider.gameObject.SetActive(false);
+            //hit.collider.gameObject.SetActive(false);
 
             PlayerPrefs.SetInt("Alarm", 1);
+            PlayerPrefs.Save();
 
         }
     }

@@ -1,0 +1,2 @@
+*.self filter=lfs diff=lfs merge=lfs -text
+*.prx filter=lfs diff=lfs merge=lfs -text

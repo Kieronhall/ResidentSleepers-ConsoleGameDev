@@ -13,6 +13,7 @@ namespace ThirdPerson
         public float crouchSpeed = 1.5f;
         public float crouchYScale;
         private float startYScale;
+        public bool crouched = false;
         [Range(0.0f, 0.3f)]
         public float rotationSmoothTime = 0.12f;
         public float speedChangeRate = 10.0f;

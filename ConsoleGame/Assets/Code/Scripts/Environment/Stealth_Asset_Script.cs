@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.CinemachineOrbitalTransposer;
+using Cinemachine;
 
 public class Stealth_Asset_Script : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Stealth_Asset_Script : MonoBehaviour
     public GameObject mainCamera;
     public bool Hiding=false;
     public float duration = 1f;
+
     public enum Type
     {
         bin,
@@ -46,22 +48,18 @@ public class Stealth_Asset_Script : MonoBehaviour
                 ExitHiding();
             }
         }
-        //if (Hiding)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.E))
-        //    {
-        //        Hiding = false;
-        //        ExitHiding();
-        //    }
-        //}
     }
     public void HideInObject()
     {
+        player.GetComponent<CharacterController>().enabled = false;
+
         player.transform.position = this.transform.position;
-        
-        //mainCamera.GetComponent<AimDownSight_Script>().ToggleHideCamera();
+
+        childCamera.GetComponent<CinemachineVirtualCamera>().Priority = 11;
 
         StartCoroutine(ScaleOverTime());
+
+        player.GetComponent<CharacterController>().stepOffset = 0;
 
     }
 
@@ -69,33 +67,29 @@ public class Stealth_Asset_Script : MonoBehaviour
     {
         Vector3 originalScale = player.transform.localScale;
         Vector3 targetScale = originalScale * 0.01f;
-        Vector3 originalPosition = player.transform.position;
-        Vector3 targetPosition = this.transform.position;
         float timer = 0f;
 
         while (timer < duration)
         {
             float scaleFactor = timer / duration;
             player.transform.localScale = Vector3.Lerp(originalScale, targetScale, scaleFactor);
-            player.transform.position = Vector3.Lerp(originalPosition, targetPosition, scaleFactor);
             timer += Time.deltaTime;
             yield return null;
         }
 
         // Ensure we set the scale and position to the target values exactly
         player.transform.localScale = targetScale;
-        player.transform.position = targetPosition;
     }
 
     public void ExitHiding()
     {
-        player.transform.position = this.transform.GetChild(2).GetComponent<Transform>().position;
+        player.transform.position = this.transform.GetChild(2).transform.position /*new Vector3(17.9222775f, -1.29528141f, -6.40649414f)*/;
 
-        //mainCamera.GetComponent<AimDownSight_Script>().ZoomOut();
+        player.GetComponent<CharacterController>().enabled = true;
+        childCamera.GetComponent<CinemachineVirtualCamera>().Priority = 8;
 
         StartCoroutine(ScaleAndMoveOverTime());
     }
-
 
     IEnumerator ScaleAndMoveOverTime()
     {
@@ -115,3 +109,4 @@ public class Stealth_Asset_Script : MonoBehaviour
         player.transform.localScale = targetScale;
     }
 }
+

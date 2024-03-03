@@ -19,7 +19,7 @@ public class IdleState : State
     public override void Execute()
     {
         //Debug.Log("Executing Idle");
-
+        agent.agentAnimIdle();
     }
 
     public override void Exit()

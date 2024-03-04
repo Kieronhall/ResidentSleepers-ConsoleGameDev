@@ -1,0 +1,24 @@
+{
+  "name": "com.unity.inputsystem.ps4",
+  "displayName": "Input System PS4",
+  "version": "0.1.6-pre",
+  "unity": "2019.1",
+  "description": "Playstation 4 Devices for new Input System",
+  "keywords": [
+    "input",
+    "keyboard",
+    "mouse",
+    "gamepad",
+    "touch"
+  ],
+  "dependencies": {
+    "com.unity.inputsystem": "1.6.1"
+  },
+  "samples": [
+    {
+      "displayName": "Multi Contoller PS4 Input Samples",
+      "description": "Sample that shows how to use PS4 specific features of the Input System including User ID, Lightbar, Touchpad, Audio Haptics and Trigger Haptics",
+      "path": "Samples~/4ControllerSample"
+    }
+  ]
+}

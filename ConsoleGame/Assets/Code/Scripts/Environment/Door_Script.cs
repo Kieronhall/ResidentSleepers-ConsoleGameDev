@@ -10,8 +10,6 @@ public class Door_Script : MonoBehaviour
     private PlayerInput _playerInput;
     private PlayerControls _playerControls;
 
-    [SerializeField]
-    private GameObject _prompt;
     public enum Type
     {
         Single_Slide,
@@ -32,7 +30,6 @@ public class Door_Script : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerInput = _player.GetComponent<PlayerInput>();
         _playerControls = _player.GetComponent<PlayerControls>();
-        _prompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,7 +62,6 @@ public class Door_Script : MonoBehaviour
         {
             Debug.Log("OpenDoor!");
             _playerControls.interact = false;
-            _prompt.SetActive(true);
             StartCoroutine(OpenDoors());
         }
         else if (_playerControls.interact && doorOpen == true) // Change KeyCode.Space to the desired key

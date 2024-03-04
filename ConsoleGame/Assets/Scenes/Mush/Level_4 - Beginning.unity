@@ -1873,6 +1873,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4294814583432324, guid: 8e7631b36958d68408ebf64b86f272e9, type: 3}
   m_PrefabInstance: {fileID: 202699182}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &210990634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4985889079348208724, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
+  m_PrefabInstance: {fileID: 3362666889129961367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &223965514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6439,6 +6444,19 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4985889079348208726, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
   m_PrefabInstance: {fileID: 3362666889129961367}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &985742563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210990634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1001 &992110406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16293,7 +16311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2665951593667670609, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< Updated upstream
       value: 9.664266
+=======
+      value: 9.543
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 2665951593667670609, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16301,7 +16323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2665951593667670609, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
       propertyPath: m_LocalPosition.z
+<<<<<<< Updated upstream
       value: -21.743513
+=======
+      value: -21.744001
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 2665951593667670609, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16359,6 +16385,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -4
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 6301214698414598528, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -16387,6 +16414,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 6730783193536229069, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
       propertyPath: target
       value: 
@@ -16394,5 +16423,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4985889079348208724, guid: 2111c21803229724b9948a84e2b4be80, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 985742563}
   m_SourcePrefab: {fileID: 100100000, guid: 2111c21803229724b9948a84e2b4be80, type: 3}

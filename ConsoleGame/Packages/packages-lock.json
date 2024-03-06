@@ -113,9 +113,9 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem.ps4": {
-      "version": "file:C:/Users/Home/Desktop/Console Game/ps4 pk/com.unity.inputsystem.ps4-0.1.6-pre/package",
+      "version": "file:../ps4 pk/com.unity.inputsystem.ps4-0.1.6-pre.tgz",
       "depth": 0,
-      "source": "local",
+      "source": "local-tarball",
       "dependencies": {
         "com.unity.inputsystem": "1.6.1"
       }

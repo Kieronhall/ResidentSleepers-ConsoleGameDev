@@ -12,6 +12,7 @@ namespace ThirdPerson
         [SerializeField] private float normalSensitivity;
         [SerializeField] private float aimSensitivity;
         [SerializeField] private LayerMask aimColldierMask;
+        [SerializeField] private Transform debugTransform;
 
         private ThirdPersonController controller;
         private PlayerControls _input;
@@ -28,9 +29,12 @@ namespace ThirdPerson
 
             Vector2 screenCentrePoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
             Ray ray = Camera.main.ScreenPointToRay(screenCentrePoint);
+            Transform hitTransform = null;
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColldierMask))
             {
-                
+                //debugTransform.position = raycastHit.point;
+                mouseWorldPosition = raycastHit.point;
+                hitTransform = raycastHit.transform;
             }
 
             if (_input.aim)
@@ -50,6 +54,25 @@ namespace ThirdPerson
                 aimVirtualCamera.gameObject.SetActive(false);
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
+            }
+
+            if (_input.shoot)
+            {
+                if (hitTransform != null)
+                // if not null Hit something
+                {
+                    if (hitTransform.GetComponent<BulletTarget>() != null)
+                    {
+                        Debug.Log("TARGET HITTED");
+                        //Instantiate(null);
+                    }
+                    else
+                    {
+                        Debug.Log(" hit object");
+                        //Instantiate(null);
+                    }
+                }
+                _input.shoot = false;
             }
         }
     }

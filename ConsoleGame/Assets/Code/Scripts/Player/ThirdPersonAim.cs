@@ -21,6 +21,9 @@ namespace ThirdPerson
         [SerializeField]
         private Target target;
 
+        //Placeholder Gun
+        public GameObject gun;
+
         private void Awake()
         {
             _input = GetComponent<PlayerControls>();
@@ -43,6 +46,11 @@ namespace ThirdPerson
 
             if (_input.aim)
             {
+                //Animations
+                playerAnimAim();
+                gunShow();
+
+
                 aimVirtualCamera.gameObject.SetActive(true);
                 controller.SetSensitivity(aimSensitivity);
                 controller.SetRotationOnMove(false);
@@ -55,6 +63,10 @@ namespace ThirdPerson
             }
             else
             {
+                //Animations
+                playerAnimAimFalse();
+                gunHide();
+
                 aimVirtualCamera.gameObject.SetActive(false);
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
@@ -83,5 +95,42 @@ namespace ThirdPerson
                 //}
             }
         }
+
+        //Placeholder gun code
+        public void gunShow()
+        {
+            if (gun != null)
+            {
+                gun.SetActive(true);
+            }
+        }
+        public void gunHide()
+        {
+            if (gun != null)
+            {
+                gun.SetActive(false);
+            }
+        }
+
+        //Animations
+        public void playerAnimAim()
+        {
+            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", true);
+        }
+        public void playerAnimAimFalse()
+        {
+            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", false);
+        }
+
+        // This aren't used atm, kind of scuffed
+        public void playerAnimShoot()
+        {
+            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
+        }
+        public void playerAnimShootFalse()
+        {
+            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
+        }
+
     }
 }

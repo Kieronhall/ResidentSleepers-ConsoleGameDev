@@ -14,8 +14,12 @@ namespace ThirdPerson
         [SerializeField] private LayerMask aimColldierMask;
         [SerializeField] private Transform debugTransform;
 
+
+        public float damage = 50f;
         private ThirdPersonController controller;
         private PlayerControls _input;
+        [SerializeField]
+        private Target target;
 
         private void Awake()
         {
@@ -58,21 +62,25 @@ namespace ThirdPerson
 
             if (_input.shoot)
             {
-                if (hitTransform != null)
-                // if not null Hit something
-                {
-                    if (hitTransform.GetComponent<BulletTarget>() != null)
-                    {
-                        Debug.Log("TARGET HITTED");
-                        //Instantiate(null);
-                    }
-                    else
-                    {
-                        Debug.Log(" hit object");
-                        //Instantiate(null);
-                    }
-                }
+                Shoot(hitTransform);
                 _input.shoot = false;
+            }
+        }
+
+        private void Shoot(Transform hitTransform)
+        {
+            if (hitTransform != null)
+            {
+                Target target = hitTransform.GetComponent<Target>();
+                if (target != null)
+                {
+                    target.TakeDamage(damage);
+                    //Debug.Log(" Target Hit");
+                }
+                //else
+                //{
+                //    Debug.Log(" Something else hit ");
+                //}
             }
         }
     }

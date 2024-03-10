@@ -14,11 +14,12 @@ namespace ThirdPerson
         [SerializeField] private LayerMask aimColldierMask;
         [SerializeField] private Transform debugTransform;
 
+
+        public float damage = 50f;
         private ThirdPersonController controller;
         private PlayerControls _input;
-
-        //Placeholder gun code
-        public GameObject gun;
+        [SerializeField]
+        private Target target;
 
         private void Awake()
         {
@@ -42,10 +43,6 @@ namespace ThirdPerson
 
             if (_input.aim)
             {
-                // Aim Animation
-                playerAnimAim();
-                gunShow();
-
                 aimVirtualCamera.gameObject.SetActive(true);
                 controller.SetSensitivity(aimSensitivity);
                 controller.SetRotationOnMove(false);
@@ -58,10 +55,6 @@ namespace ThirdPerson
             }
             else
             {
-                // Aim Animation
-                playerAnimAimFalse();
-                gunHide();
-
                 aimVirtualCamera.gameObject.SetActive(false);
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
@@ -69,61 +62,26 @@ namespace ThirdPerson
 
             if (_input.shoot)
             {
-                if (hitTransform != null)
-                // if not null Hit something
+                Shoot(hitTransform);
+                _input.shoot = false;
+            }
+        }
+
+        private void Shoot(Transform hitTransform)
+        {
+            if (hitTransform != null)
+            {
+                Target target = hitTransform.GetComponent<Target>();
+                if (target != null)
                 {
-                    if (hitTransform.GetComponent<BulletTarget>() != null)
-                    {
-                        Debug.Log("TARGET HITTED");
-                        //Instantiate(null);
-                        
-                    }
-                    else
-                    {
-                        Debug.Log(" hit object");
-                        //Instantiate(null);
-                        
-                    }
+                    target.TakeDamage(damage);
+                    //Debug.Log(" Target Hit");
                 }
-                _input.shoot = false;          
+                //else
+                //{
+                //    Debug.Log(" Something else hit ");
+                //}
             }
-        }
-
-        //Placeholder gun code
-        public void gunShow()
-        {
-            if (gun != null)
-            {
-                gun.SetActive(true);
-            }
-        }
-        public void gunHide()
-        {
-            if (gun != null)
-            {
-                gun.SetActive(false);
-            }
-        }
-
-        //Animations
-
-        public void playerAnimAim()
-        {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", true);
-        }
-        public void playerAnimAimFalse()
-        {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", false);
-        }
-        
-        // This aren't used atm, kind of scuffed
-        public void playerAnimShoot()
-        {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
-        }
-        public void playerAnimShootFalse()
-        {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
         }
     }
 }

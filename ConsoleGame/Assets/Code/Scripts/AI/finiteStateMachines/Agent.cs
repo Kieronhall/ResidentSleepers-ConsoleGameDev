@@ -11,6 +11,7 @@ public class Agent : MonoBehaviour
     public SeekState seek;
     public PatrolState patrol;
     public LookAroundState lookaround;
+    public ShootingState shooting;
 
     public Type agentType = Type.Wander;
 
@@ -48,6 +49,7 @@ public class Agent : MonoBehaviour
         seek = new SeekState(this, sm);
         patrol = new PatrolState(this, sm);
         lookaround = new LookAroundState(this, sm);
+        shooting = new ShootingState(this, sm);
         sm.Init(idle);
         s = this.gameObject.GetComponent<sensors>();
 
@@ -152,6 +154,23 @@ public class Agent : MonoBehaviour
             currentGoal = lastGoal;
             agent.SetDestination(currentGoal.position);
         }
+    }
+    // SHOOTING CODE
+    public float DistanceToPlayer()
+    {
+        if (player == null)
+        {
+            Debug.LogError("Player Transform is not assigned in the Agent.");
+            return float.MaxValue; // Return a large distance if playerTransform is not set.
+        }
+
+        // Calculate the distance between the agent's position and the player's position.
+        float distance = Vector3.Distance(transform.position, player.position);
+        return distance;
+    }
+    public void StandStill()
+    {
+        agent.SetDestination(transform.position);
     }
 
     //ANIMATIONS

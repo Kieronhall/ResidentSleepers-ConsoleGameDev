@@ -154,6 +154,23 @@ public class Agent : MonoBehaviour
         }
     }
 
+    //ANIMATIONS
+    public void agentAnimIdle()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", false);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
+    }
+    public void agentAnimWalk()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", true);
+    }
+    public void agentAnimRun()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", false);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", true);
+    }
+
     // Update is called once per frame
     void Update()
     {

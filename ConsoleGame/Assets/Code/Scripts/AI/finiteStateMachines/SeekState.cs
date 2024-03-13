@@ -20,6 +20,7 @@ public class SeekState : State
     public override void Execute()
     {
         Debug.Log("Executing Seek");
+        agent.agentAnimRun();
         agent.agentGoToPlayer();
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ThirdPerson;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,7 +25,6 @@ public class Door_Script : MonoBehaviour
     public float doorSpeed;
     public bool doorOpen=false;
 
-    // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");

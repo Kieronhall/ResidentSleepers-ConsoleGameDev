@@ -345,6 +345,7 @@ MonoBehaviour:
   rotationSpeed: 3
   lerpDuration: 1
   gunOnAgent: {fileID: 9084197104880503068}
+  muzzleFlash: {fileID: 6449332214333197434}
 --- !u!114 &6082013419446334812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1432,6 +1433,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.038
       objectReference: {fileID: 0}
+    - target: {fileID: 2852804621429126356, guid: 4f59791116191f444a9238c811769c9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1446,6 +1451,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6918263224859456246}
   m_SourcePrefab: {fileID: 100100000, guid: 4f59791116191f444a9238c811769c9a, type: 3}
+--- !u!1 &6449332214333197434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2852804621429126356, guid: 4f59791116191f444a9238c811769c9a, type: 3}
+  m_PrefabInstance: {fileID: 9085893271723473070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9084197104880503068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1722838658101682, guid: 4f59791116191f444a9238c811769c9a, type: 3}

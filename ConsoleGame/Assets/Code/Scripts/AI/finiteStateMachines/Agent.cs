@@ -37,6 +37,7 @@ public class Agent : MonoBehaviour
     public float rotationSpeed = 2f;
     public float lerpDuration = 1f;
     public GameObject gunOnAgent;
+    public GameObject muzzleFlash;
 
 
     public enum Type
@@ -227,6 +228,21 @@ public class Agent : MonoBehaviour
     {
         ShootingActiveBool = false;
     }
+    //public void muzzleFlashVisible()
+    //{
+    //    muzzleFlash.SetActive(true);
+    //}
+    public IEnumerator muzzleFlashVisible()
+    {
+        yield return new WaitForSeconds(1f);
+
+        muzzleFlash.SetActive(true);
+        
+    }
+    public void muzzleFlashInvisible()
+    {
+        muzzleFlash.SetActive(false);
+    }
     public void PopShooting()
     {
         if (!s.Hit)
@@ -234,6 +250,8 @@ public class Agent : MonoBehaviour
             sm.popState();
         }
     }
+
+
 
     //ANIMATIONS
     public void agentAnimIdle()

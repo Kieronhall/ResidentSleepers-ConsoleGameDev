@@ -361,7 +361,7 @@ MonoBehaviour:
   sensorHeight: 0
   boxExtents: {x: 1, y: 1}
   sphereRadius: 1
-  rayCount: 22
+  rayCount: 26
   searchArc: 90
 --- !u!114 &1712675651825096262
 MonoBehaviour:

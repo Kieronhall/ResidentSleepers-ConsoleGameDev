@@ -40,13 +40,15 @@ public class sensors : MonoBehaviour
         Scan();
         if (Hit == true)
         {
-            raycastLength = 6;
+            raycastLength = 10;
             searchArc = 180;
+            rayCount = 45;
         }
         else
         {
-            raycastLength = 3;
+            raycastLength = 5;
             searchArc = 90;
+            rayCount = 45;
         }
     }
 

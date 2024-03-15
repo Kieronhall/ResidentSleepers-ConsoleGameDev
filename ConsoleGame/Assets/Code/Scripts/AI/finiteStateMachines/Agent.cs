@@ -11,6 +11,7 @@ public class Agent : MonoBehaviour
     public SeekState seek;
     public PatrolState patrol;
     public LookAroundState lookaround;
+    public ShootingState shooting;
 
     public Type agentType = Type.Wander;
 
@@ -31,6 +32,9 @@ public class Agent : MonoBehaviour
     private Transform currentGoal;
     private Transform lastGoal;
 
+    //Shooting Variables
+    public bool ShootingActiveBool = false;
+
 
     public enum Type
     {
@@ -48,6 +52,7 @@ public class Agent : MonoBehaviour
         seek = new SeekState(this, sm);
         patrol = new PatrolState(this, sm);
         lookaround = new LookAroundState(this, sm);
+        shooting = new ShootingState(this, sm);
         sm.Init(idle);
         s = this.gameObject.GetComponent<sensors>();
 
@@ -153,6 +158,32 @@ public class Agent : MonoBehaviour
             agent.SetDestination(currentGoal.position);
         }
     }
+    // SHOOTING CODE
+    public float DistanceToPlayer()
+    {
+        if (player == null)
+        {
+            Debug.LogError("Player Transform is not assigned in the Agent.");
+            return float.MaxValue; // Return a large distance if playerTransform is not set.
+        }
+
+        // Calculate the distance between the agent's position and the player's position.
+        float distance = Vector3.Distance(transform.position, player.position);
+        return distance;
+    }
+    public void StandStill()
+    {
+        agent.SetDestination(transform.position);
+    }
+
+    public void ShootingActive()
+    {
+        ShootingActiveBool = true;
+    }
+    public void ShootingNotActive()
+    {
+        ShootingActiveBool = false;
+    }
 
     //ANIMATIONS
     public void agentAnimIdle()
@@ -179,7 +210,7 @@ public class Agent : MonoBehaviour
         switch (agentType)
         {
             case Type.Wander:
-                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)))
+                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)) && !ShootingActiveBool)
                 {
                     Debug.Log("Hit");
                     sm.pushState(seek);
@@ -190,7 +221,7 @@ public class Agent : MonoBehaviour
                 }
                 break;
             case Type.Patrol:
-                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)))
+                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)) && !ShootingActiveBool)
                 {
                     Debug.Log("Hit ");
                     sm.pushState(seek);

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - gun
+  - Floor0
   layers:
   - Default
   - TransparentFX

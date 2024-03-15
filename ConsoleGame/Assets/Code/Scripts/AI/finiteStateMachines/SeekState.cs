@@ -6,6 +6,7 @@ public class SeekState : State
 {
     Agent agent;
     private float stopDistance = 3f; // The distance at which the agent stops and transitions to shooting.
+    public ShootingState shooting;
 
     public SeekState(Agent agent, StateManager sm) : base(agent, sm)
     {
@@ -15,6 +16,7 @@ public class SeekState : State
     public override void Enter()
     {
         //Debug.Log("Entering Seek");
+        shooting = new ShootingState(agent, sm);
     }
 
     public override void Execute()
@@ -30,7 +32,8 @@ public class SeekState : State
         {
             // WHEN AGENT IS CLOSE ENOUGH
             //sm.pushState(shooting);
-            sm.pushState(new ShootingState(agent, sm));
+            agent.ShootingActive();
+            sm.pushState(shooting);
             Debug.Log("CLOSE ENOUGH TO SHOOT");
         }
     }

@@ -32,6 +32,9 @@ public class Agent : MonoBehaviour
     private Transform currentGoal;
     private Transform lastGoal;
 
+    //Shooting Variables
+    public bool ShootingActiveBool = false;
+
 
     public enum Type
     {
@@ -173,6 +176,15 @@ public class Agent : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
+    public void ShootingActive()
+    {
+        ShootingActiveBool = true;
+    }
+    public void ShootingNotActive()
+    {
+        ShootingActiveBool = false;
+    }
+
     //ANIMATIONS
     public void agentAnimIdle()
     {
@@ -198,7 +210,7 @@ public class Agent : MonoBehaviour
         switch (agentType)
         {
             case Type.Wander:
-                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)))
+                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)) && !ShootingActiveBool)
                 {
                     Debug.Log("Hit");
                     sm.pushState(seek);
@@ -209,7 +221,7 @@ public class Agent : MonoBehaviour
                 }
                 break;
             case Type.Patrol:
-                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)))
+                if (s.Hit && (sm.getCurrState().GetType() != typeof(SeekState)) && !ShootingActiveBool)
                 {
                     Debug.Log("Hit ");
                     sm.pushState(seek);

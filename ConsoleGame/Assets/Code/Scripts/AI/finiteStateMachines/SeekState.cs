@@ -17,13 +17,15 @@ public class SeekState : State
     {
         //Debug.Log("Entering Seek");
         shooting = new ShootingState(agent, sm);
+        agent.animRunningOn();
+        agent.animWalkingOff();
     }
 
     public override void Execute()
     {
         //Debug.Log("Executing Seek");
 
-        agent.agentAnimRun();
+        //agent.agentAnimRun();
         agent.agentGoToPlayer();
 
 
@@ -41,6 +43,7 @@ public class SeekState : State
     public override void Exit()
     {
         //Debug.Log("Exiting Seek");
+        agent.animRunningOff();
     }
 }
 

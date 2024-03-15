@@ -15,6 +15,9 @@ public class WanderState : State
     {
         Debug.Log("Entering Wander");
         agent.ResumeLastGoal();
+        agent.animWalkingOn();
+        agent.animShootingOff();
+        agent.animRunningOff();
     }
 
     public override void Execute()
@@ -26,6 +29,7 @@ public class WanderState : State
     public override void Exit()
     {
         Debug.Log("Exiting Wander");
+        agent.animWalkingOff();
     }
 
 }

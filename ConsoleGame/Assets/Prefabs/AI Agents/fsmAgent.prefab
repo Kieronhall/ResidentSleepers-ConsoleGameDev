@@ -341,6 +341,10 @@ MonoBehaviour:
   patrolFlag2: {fileID: 0}
   patrolFlag3: {fileID: 0}
   patrolFlag4: {fileID: 0}
+  ShootingActiveBool: 0
+  rotationSpeed: 3
+  lerpDuration: 1
+  gunOnAgent: {fileID: 9084197104880503068}
 --- !u!114 &6082013419446334812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,11 +361,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   sensorType: 1
-  raycastLength: 3
+  raycastLength: 5
   sensorHeight: 0
   boxExtents: {x: 1, y: 1}
   sphereRadius: 1
-  rayCount: 26
+  rayCount: 30
   searchArc: 90
 --- !u!114 &1712675651825096262
 MonoBehaviour:
@@ -1355,6 +1359,10 @@ PrefabInstance:
     - target: {fileID: 1722838658101682, guid: 4f59791116191f444a9238c811769c9a, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722838658101682, guid: 4f59791116191f444a9238c811769c9a, type: 3}
+      propertyPath: m_TagString
+      value: gun
       objectReference: {fileID: 0}
     - target: {fileID: 1847491599169816, guid: 4f59791116191f444a9238c811769c9a, type: 3}
       propertyPath: m_Layer

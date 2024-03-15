@@ -34,6 +34,9 @@ public class Agent : MonoBehaviour
 
     //Shooting Variables
     public bool ShootingActiveBool = false;
+    public float rotationSpeed = 2f;
+    public float lerpDuration = 1f;
+    public GameObject gunOnAgent;
 
 
     public enum Type
@@ -174,8 +177,48 @@ public class Agent : MonoBehaviour
     public void StandStill()
     {
         agent.SetDestination(transform.position);
-    }
 
+        Vector3 directionToPlayer = player.position - transform.position;
+        directionToPlayer.y = 0f;
+
+        if (directionToPlayer != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * rotationSpeed);
+        }
+
+    }
+    public void GunReposition(Vector3 targetPosition, Quaternion targetRotation, string gun)
+    {
+        StartCoroutine(LerpCoroutine(targetPosition, targetRotation, gun));
+    }
+    private IEnumerator LerpCoroutine(Vector3 targetPosition, Quaternion targetRotation, string gun)
+    {
+        float lerpTimer = 0f; // Timer for tracking lerp progress
+        Transform gunOBJ = gunOnAgent.transform;
+
+        Vector3 startPosition = gunOBJ.localPosition;
+        Quaternion startRotation = gunOBJ.localRotation;
+
+
+        while (lerpTimer < lerpDuration)
+        {
+            // Update position
+            gunOBJ.localPosition = Vector3.Lerp(startPosition, targetPosition, lerpTimer / lerpDuration);
+
+            // Update rotation
+            gunOBJ.localRotation = Quaternion.Lerp(startRotation, targetRotation, lerpTimer / lerpDuration);
+
+            // Increment lerp timer
+            lerpTimer += Time.deltaTime;
+            yield return null;
+        }
+        // Ensure final position and rotation
+        gunOBJ.localPosition = targetPosition;
+        gunOBJ.localRotation = targetRotation;
+
+
+    }
     public void ShootingActive()
     {
         ShootingActiveBool = true;
@@ -184,22 +227,62 @@ public class Agent : MonoBehaviour
     {
         ShootingActiveBool = false;
     }
+    public void PopShooting()
+    {
+        if (!s.Hit)
+        {
+            sm.popState();
+        }
+    }
 
     //ANIMATIONS
     public void agentAnimIdle()
     {
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", false);
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", false);
     }
     public void agentAnimWalk()
     {
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", true);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", false);
     }
     public void agentAnimRun()
     {
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", false);
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", true);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", false);
+    }
+    public void agentAnimShoot()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", true);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
+    }
+
+    public void animRunningOn()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", true);
+    }
+    public void animRunningOff()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
+    }
+    public void animWalkingOn()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", true);
+    }
+    public void animWalkingOff()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", false);
+    }
+    public void animShootingOn()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", true);
+    }
+    public void animShootingOff()
+    {
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", false);
     }
 
     // Update is called once per frame

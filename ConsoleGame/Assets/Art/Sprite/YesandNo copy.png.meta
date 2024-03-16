@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 258a3de068150924cbcb5a7b453f5a50
+guid: 5b6aecf6885a15e46b20bf4721e7e914
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,7 +149,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YesandNo_1
+      name: YesandNo copy_0
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 0
+        width: 80
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7929ebff3cb20544a869d11f8039465
+      internalID: 1512113190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_1
       rect:
         serializedVersion: 2
         x: 292
@@ -157,41 +178,41 @@ TextureImporter:
         width: 21
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a52df977b1d52a64f980594f59122fbc
-      internalID: 1584811895
+      spriteID: c9424fd236fe0bb4db3379d2fe1d27c9
+      internalID: -2099235989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_2
+      name: YesandNo copy_2
       rect:
         serializedVersion: 2
-        x: 291
-        y: 294
-        width: 213
-        height: 206
+        x: 299
+        y: 302
+        width: 205
+        height: 198
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74fa26439f0a34441bae3073e3cde78f
-      internalID: 1788062705
+      spriteID: 3a9d1a579d6706d4cae27bbed7bbf92c
+      internalID: 1379030879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_3
+      name: YesandNo copy_3
       rect:
         serializedVersion: 2
         x: 577
@@ -199,41 +220,41 @@ TextureImporter:
         width: 20
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d65438e8d05636a41a0bbda99840232b
-      internalID: 1068681368
+      spriteID: f9cbf5eb33b091e4ca79daba7fd60489
+      internalID: -1865226517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_4
+      name: YesandNo copy_4
       rect:
         serializedVersion: 2
-        x: 576
-        y: 295
-        width: 215
-        height: 202
+        x: 586
+        y: 302
+        width: 194
+        height: 195
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d64f3e5254bdabb4db52725136e5c737
-      internalID: -1910322674
+      spriteID: 7e205b79fb4ffe64ba73cf308c113540
+      internalID: 319855323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_5
+      name: YesandNo copy_5
       rect:
         serializedVersion: 2
         x: 769
@@ -241,20 +262,41 @@ TextureImporter:
         width: 20
         height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a99d56cd3e794994ebe50cd2f27cd84d
-      internalID: -775507000
+      spriteID: 8960811ed2e91394e94f80c09ff610f1
+      internalID: -632449990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_7
+      name: YesandNo copy_6
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 0
+        width: 23
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b31ef1403ec89449a2ff39f0891847
+      internalID: -1866249263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_7
       rect:
         serializedVersion: 2
         x: 296
@@ -262,62 +304,209 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19c922780c0527f45b9648f9047fc40f
-      internalID: 1266107804
+      spriteID: bbc725fffa97d534a9fbbe7e59101930
+      internalID: -919500649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_13
+      name: YesandNo copy_8
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 298
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b739a5c853758a8439ad342124c725c4
+      internalID: -657023329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_9
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 294
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 629f31cfc1f5f804c8555a7a20de90f9
+      internalID: 1640890380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_10
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 294
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de302e7dbdf78c641a9857da14662437
+      internalID: 339736270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_11
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 298
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e2094125f849c4b9f7a8e3c562e578
+      internalID: 2020398880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_12
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 298
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b15c26de17a48e4188a0bccb73ec8d0
+      internalID: -1851654859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_13
       rect:
         serializedVersion: 2
         x: 295
-        y: 14
+        y: 13
         width: 206
         height: 204
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2df8aac23fd778840a975c2ee0440688
-      internalID: 800644591
+      spriteID: 9c390e50c5db1c549a7142e2b7d523c6
+      internalID: 2028031159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_16
+      name: YesandNo copy_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 214
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec553f783ce8ed4d898ce255d4d1b82
+      internalID: -1779938490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_15
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 214
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c960246083e428845891d66e4f1a3abe
+      internalID: 1353380153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesandNo copy_16
       rect:
         serializedVersion: 2
         x: 580
-        y: 15
+        y: 3
         width: 206
-        height: 202
+        height: 214
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fe937a37a1227d43971033e0e481874
-      internalID: -298364284
+      spriteID: 747fd7e9d6d2fe04ba1afeb9a2e01100
+      internalID: 2111220987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_17
+      name: YesandNo copy_17
       rect:
         serializedVersion: 2
         x: 592
@@ -325,20 +514,20 @@ TextureImporter:
         width: 7
         height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b2931e8e113d9e44a970416a76f3269
-      internalID: -1122267560
+      spriteID: 155ae5dbd222d9a4984d848f03e2fa75
+      internalID: -923497067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YesandNo_18
+      name: YesandNo copy_18
       rect:
         serializedVersion: 2
         x: 602
@@ -346,14 +535,14 @@ TextureImporter:
         width: 7
         height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c5f3d9463700414d92075e3eee4d254
-      internalID: -329873068
+      spriteID: a90ea26c9c601c848b5eb8b2909636ec
+      internalID: 1082469042
       vertices: []
       indices: 
       edges: []
@@ -361,7 +550,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 31a52b3ad22bf154c891441fab9547a6
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -369,25 +558,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      YesandNo_0: 1680522171
-      YesandNo_1: 1584811895
-      YesandNo_10: 1706326883
-      YesandNo_11: 161031252
-      YesandNo_12: -606035474
-      YesandNo_13: 800644591
-      YesandNo_14: 1300835424
-      YesandNo_15: 1914541765
-      YesandNo_16: -298364284
-      YesandNo_17: -1122267560
-      YesandNo_18: -329873068
-      YesandNo_2: 1788062705
-      YesandNo_3: 1068681368
-      YesandNo_4: -1910322674
-      YesandNo_5: -775507000
-      YesandNo_6: -578449609
-      YesandNo_7: 1266107804
-      YesandNo_8: -1084411797
-      YesandNo_9: -157403476
+      YesandNo copy_0: 1512113190
+      YesandNo copy_1: -2099235989
+      YesandNo copy_10: 339736270
+      YesandNo copy_11: 2020398880
+      YesandNo copy_12: -1851654859
+      YesandNo copy_13: 2028031159
+      YesandNo copy_14: -1779938490
+      YesandNo copy_15: 1353380153
+      YesandNo copy_16: 2111220987
+      YesandNo copy_17: -923497067
+      YesandNo copy_18: 1082469042
+      YesandNo copy_2: 1379030879
+      YesandNo copy_3: -1865226517
+      YesandNo copy_4: 319855323
+      YesandNo copy_5: -632449990
+      YesandNo copy_6: -1866249263
+      YesandNo copy_7: -919500649
+      YesandNo copy_8: -657023329
+      YesandNo copy_9: 1640890380
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

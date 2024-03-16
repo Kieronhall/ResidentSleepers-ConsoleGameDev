@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - gun
   - Floor0
+  - Floor4
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemy
   - Walkable
   - 
-  - 
+  - postprocessing
   - 
   - 
   - 

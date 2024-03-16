@@ -6503,7 +6503,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33dae9415ff8a174aa6bd20b556d5a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magazine: {fileID: 632892944}
+  timeBetweenShooting: 0.1
+  timeBetweenShots: 0.1
+  reloadTime: 1
+  magazineSize: 6
+  bulletsPerTap: 1
+  bulletsLeft: 0
+  bulletsShot: 0
+  damage: 50
+  target: {fileID: 1186937704}
+  muzzleFlash: {fileID: 0}
+  Bullets: {fileID: 0}
+  text: {fileID: 3705948669263845762}
 --- !u!1001 &778563031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21218,8 +21229,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 513
   debugTransform: {fileID: 0}
-  damage: 50
-  target: {fileID: 1186937704}
+  playerPistol: {fileID: 773776039}
   gun: {fileID: 0}
 --- !u!114 &7512215172169492760
 MonoBehaviour:

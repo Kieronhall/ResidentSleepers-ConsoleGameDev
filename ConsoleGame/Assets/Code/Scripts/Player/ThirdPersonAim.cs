@@ -13,13 +13,10 @@ namespace ThirdPerson
         [SerializeField] private float aimSensitivity;
         [SerializeField] private LayerMask aimColldierMask;
         [SerializeField] private Transform debugTransform;
+        [SerializeField] private Pistol_Player playerPistol;
 
-
-        public float damage = 50f;
         private ThirdPersonController controller;
         private PlayerControls _input;
-        [SerializeField]
-        private Target target;
 
         //Placeholder Gun
         public GameObject gun;
@@ -74,27 +71,12 @@ namespace ThirdPerson
 
             if (_input.shoot)
             {
-                Shoot(hitTransform);
+                //Shoot(hitTransform);
+                playerPistol.Shoot(hitTransform);
                 _input.shoot = false;
             }
         }
 
-        private void Shoot(Transform hitTransform)
-        {
-            if (hitTransform != null)
-            {
-                Target target = hitTransform.GetComponent<Target>();
-                if (target != null)
-                {
-                    target.TakeDamage(damage);
-                    //Debug.Log(" Target Hit");
-                }
-                //else
-                //{
-                //    Debug.Log(" Something else hit ");
-                //}
-            }
-        }
 
         //Placeholder gun code
         public void gunShow()

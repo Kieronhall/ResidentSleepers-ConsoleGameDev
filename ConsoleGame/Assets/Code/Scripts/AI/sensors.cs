@@ -5,10 +5,12 @@ using UnityEngine;
 public class sensors : MonoBehaviour
 {
     public LayerMask hitMask;
-    public enum Type{
-        Line, 
-        RayBundle, 
-        SphereCast, 
+    public LayerMask obstacleMask; 
+    public enum Type
+    {
+        Line,
+        RayBundle,
+        SphereCast,
         BoxCast,
         BoxCast_2
     }
@@ -18,18 +20,18 @@ public class sensors : MonoBehaviour
 
     [Header("BoxExtent Settings")]
     public Vector2 boxExtents = new Vector2(1.0f, 1.0f);
-    
+
     [Header("Sphere Settings")]
     public float sphereRadius = 1.0f;
-    
+
     [Header("RayBundle Settings")]
     [Range(1, 100)]
     public int rayCount = 5;
-    [Range(0,360)]
+    [Range(0, 360)]
     public int searchArc = 90;
-    
+
     Transform cachedTransform;
-    // Start is called before the first frame update
+
     void Start()
     {
         cachedTransform = GetComponent<Transform>();
@@ -52,14 +54,19 @@ public class sensors : MonoBehaviour
         }
     }
 
-    public bool Hit {get; private set;}
+    public bool Hit { get; private set; }
     public RaycastHit info = new RaycastHit();
     public RaycastHit[] hits;
+
     public bool Scan()
     {
         Hit = false;
         Vector3 dir = cachedTransform.forward;
         Vector3 sensorPosition = cachedTransform.position + Vector3.up * sensorHeight;
+        bool playerHitDetected = false;
+        RaycastHit closestPlayerHit = new RaycastHit();
+        float closestPlayerDistance = float.MaxValue;
+        RaycastHit tempHitInfo;
 
         switch (sensorType)
         {
@@ -71,32 +78,33 @@ public class sensors : MonoBehaviour
                 }
                 break;
             case Type.RayBundle:
-                hits = new RaycastHit[rayCount + 1];
-                int hit_count = 0;
                 float startSweep = -searchArc * 0.5f;
-                float finishSweep = searchArc * 0.5f;
-                float sweepGap = searchArc / rayCount;
-                for (int i = 0; i < rayCount + 1; i++)
+                float sweepGap = searchArc / (float)rayCount;
+                for (int i = 0; i <= rayCount; i++)
                 {
-                    dir = (Quaternion.Euler(0, startSweep + i * sweepGap, 0) * this.transform.forward).normalized * raycastLength;
-                    if (Physics.Linecast(sensorPosition + dir * Mathf.Epsilon, sensorPosition + dir, out hits[i], hitMask, QueryTriggerInteraction.Ignore))
+                    dir = (Quaternion.Euler(0, startSweep + i * sweepGap, 0) * cachedTransform.forward).normalized;
+                    Vector3 targetPosition = sensorPosition + dir * raycastLength;
+
+                    if (Physics.Raycast(sensorPosition, dir, out tempHitInfo, raycastLength, hitMask))
                     {
-                        hit_count++;
+                        float distanceToPlayer = tempHitInfo.distance;
+                        if (distanceToPlayer < closestPlayerDistance)
+                        {
+                            // checking for obstacle between sensor and player
+                            bool obstacleBetween = Physics.Raycast(sensorPosition, dir, distanceToPlayer, obstacleMask);
+                            if (!obstacleBetween)
+                            {
+                                closestPlayerHit = tempHitInfo;
+                                closestPlayerDistance = distanceToPlayer;
+                                playerHitDetected = true;
+                            }
+                        }
                     }
                 }
-                if (hit_count > 0)
+                if (playerHitDetected)
                 {
-                    System.Array.Sort(hits, (s1, s2) => {
-                        if (s1.distance > s2.distance)
-                            return 1;
-                        if (s2.distance > s1.distance)
-                            return -1;
-                        return 0;
-                    });
                     Hit = true;
-                    // Set closest collider here
-                    info = hits[hits.Length - 1];
-                    return true;
+                    info = closestPlayerHit;
                 }
                 break;
             case Type.SphereCast:

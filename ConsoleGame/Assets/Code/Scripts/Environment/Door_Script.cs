@@ -54,8 +54,8 @@ public class Door_Script : MonoBehaviour
         //    Debug.Log("CloseDoors!");
         //    StartCoroutine(CloseDoors());
         //}
-        if (!doorLocked)
-        {
+        //if (!doorLocked)
+        //{
             if (doorOpen == true && Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 5f)
             {
                 Debug.Log("CloseDoors!");
@@ -74,7 +74,7 @@ public class Door_Script : MonoBehaviour
                 _playerControls.interact = false;
                 StartCoroutine(CloseDoors());
             }
-        }
+        //}
     }
     private IEnumerator OpenDoors()
     {   

@@ -36,7 +36,7 @@ namespace ThirdPerson
             Transform hitTransform = null;
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColldierMask))
             {
-                //debugTransform.position = raycastHit.point;
+                debugTransform.position = raycastHit.point;
                 mouseWorldPosition = raycastHit.point;
                 hitTransform = raycastHit.transform;
             }
@@ -69,11 +69,14 @@ namespace ThirdPerson
                 controller.SetRotationOnMove(true);
             }
 
-            if (_input.shoot)
+            if (_input.shoot )
             {
-                //Shoot(hitTransform);
-                playerPistol.Shoot(hitTransform);
-                _input.shoot = false;
+                if ( playerPistol.bulletsLeft > 0)
+                {
+                    playerPistol.bulletsShot = playerPistol.bulletsPerTap;
+                    playerPistol.Shoot(hitTransform);
+                    _input.shoot = false;
+                }
             }
         }
 

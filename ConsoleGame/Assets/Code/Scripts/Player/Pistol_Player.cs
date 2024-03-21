@@ -1,14 +1,12 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 public class Pistol_Player : MonoBehaviour
 {
-    //public int maxAmmo = 6;
     public float timeBetweenShooting, timeBetweenShots, reloadTime;
-    public int magazineSize, bulletsPerTap;
+    public int magazineSize, bulletsPerTap, extraMagazine;
     public int bulletsLeft, bulletsShot;
 
-    bool shooting, readyToShoot, reloading;
+    public bool shooting, readyToShoot, reloading;
 
     //Damage
     public float damage = 50f;
@@ -28,21 +26,7 @@ public class Pistol_Player : MonoBehaviour
     }
     private void Update()
     {
-        GunInput();
-        text.SetText(bulletsLeft + " / " + magazineSize);
-
-        if (bulletsLeft == 0)
-        {
-            Reload();
-        }
-
-    }
-    private void GunInput()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
-        {
-            Reload();
-        }
+        text.SetText("" + bulletsLeft + ""); // + " / " + extraMagazine);
     }
 
     public void Shoot(Transform hitTransform)
@@ -56,7 +40,7 @@ public class Pistol_Player : MonoBehaviour
                 target.TakeDamage(damage);
             }
         }
-        
+
         bulletsLeft--;
         bulletsShot--;
         Invoke("ResetShot", timeBetweenShooting);
@@ -71,17 +55,6 @@ public class Pistol_Player : MonoBehaviour
     private void ResetShot()
     {
         readyToShoot = true;
-    }
-    private void Reload()
-    {
-        reloading = true;
-        Invoke("ReloadFinished", reloadTime);
-    }
-
-    private void ReloadFinished()
-    {
-        bulletsLeft = magazineSize;
-        reloading = false;
     }
 
 }

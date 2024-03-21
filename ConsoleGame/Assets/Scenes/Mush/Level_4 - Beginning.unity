@@ -20030,6 +20030,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1186937704}
+    - target: {fileID: 138757251588270645, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
+      propertyPath: extraMagazine
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2267783666744545822, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -20074,11 +20078,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4522404146541279758, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522404146541279758, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
+      propertyPath: debugTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522404146541279758, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
+      propertyPath: aimColldierMask.m_Bits
+      value: 513
+      objectReference: {fileID: 0}
     - target: {fileID: 5130864661965824240, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
       propertyPath: m_Name
       value: 3rd Person Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7176948692966634336, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
+      propertyPath: m_text
+      value: 0 / 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7006007016247427321, guid: ab47bf27b9ad03344ab7a1a4ac8b8474, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

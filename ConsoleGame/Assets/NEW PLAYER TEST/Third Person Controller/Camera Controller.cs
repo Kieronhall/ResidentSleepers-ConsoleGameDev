@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform followTarget;
 
-    [SerializeField] float rotationSpeed = 2;
+    [SerializeField] float rotationSpeed = 0.5f;
     [SerializeField] float distance = 5;
 
     [SerializeField] float minVerticalAngle = -45;

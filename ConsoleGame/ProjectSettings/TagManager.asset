@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - gun
   - Floor0
+  - Obstacles
+  - Cover
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Obstacles
   - Enemy
   - Walkable
-  - 
+  - Cover
   - 
   - 
   - 

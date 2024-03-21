@@ -60,8 +60,6 @@ public class PlayerController : MonoBehaviour
         var velocity = moveDirection * moveSpeed;
         velocity.y = ySpeed;
 
-        Debug.Log(velocity.magnitude);
-
         characterController.Move(velocity * Time.deltaTime);
 
         if (moveAmount > 0)

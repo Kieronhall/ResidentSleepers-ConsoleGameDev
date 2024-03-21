@@ -36,7 +36,9 @@ using UnityEngine.UI;
                 _playerControls.interact = false;
             }
 
-        }
+        
+
+    }
         public void TakeDamge(float damage)
         {
             healthCurrentAmount -= damage;

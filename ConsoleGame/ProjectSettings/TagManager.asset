@@ -22,7 +22,7 @@ TagManager:
   - Walkable
   - 
   - postprocessing
-  - 
+  - Floor_3_Ground
   - 
   - 
   - Walls,Obstacles

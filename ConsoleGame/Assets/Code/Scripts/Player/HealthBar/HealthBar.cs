@@ -8,6 +8,7 @@ using UnityEngine.UI;
     public class HealthBar : MonoBehaviour
     {
         public GameObject healthBarParent;
+        public GameObject ammoBar;
         public Image healthBar;
         public float healthCurrentAmount;
         public float healthMaxAmount = 100f;
@@ -19,6 +20,7 @@ using UnityEngine.UI;
         {
             healthCurrentAmount = healthMaxAmount;
             healthBarParent.SetActive(false);
+            ammoBar.SetActive(false);
 
             _player = GameObject.FindGameObjectWithTag("Player");
             _playerInput = _player.GetComponent<PlayerInput>();
@@ -32,12 +34,14 @@ using UnityEngine.UI;
             }
             if (_playerControls.interact)
             {
-                TakeDamge(20);
+                TakeDamage(20);
                 _playerControls.interact = false;
             }
 
-        }
-        public void TakeDamge(float damage)
+        
+
+    }
+        public void TakeDamage(float damage)
         {
             healthCurrentAmount -= damage;
             healthBar.fillAmount = Mathf.Min(healthCurrentAmount, 0f);
@@ -53,5 +57,4 @@ using UnityEngine.UI;
         {
             healthBar.fillAmount = healthCurrentAmount / healthMaxAmount;
         }
-
     }

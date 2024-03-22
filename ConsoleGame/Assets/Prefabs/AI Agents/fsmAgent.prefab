@@ -346,6 +346,7 @@ MonoBehaviour:
   lerpDuration: 1
   gunOnAgent: {fileID: 9084197104880503068}
   muzzleFlash: {fileID: 6449332214333197434}
+  healthBar: {fileID: 0}
 --- !u!114 &6082013419446334812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +364,7 @@ MonoBehaviour:
     m_Bits: 128
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 65536
+    m_Bits: 0
   sensorType: 1
   raycastLength: 5
   sensorHeight: 0

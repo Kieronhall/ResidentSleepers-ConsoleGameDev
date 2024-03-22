@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public void openLevel ()
     {
         //Load level
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("Level_4 - Beginning");
         Debug.Log("Opening scene");
     }
 

@@ -6,19 +6,23 @@ TagManager:
   tags:
   - CinemachineTarget
   - Ammo
+  - gun
+  - Floor0
+  - Obstacles
+  - Cover
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Concrete
+  - 
   - Water
   - UI
   - Ground
   - Player
-  - Metal
+  - Obstacles
   - Enemy
   - Walkable
-  - 
+  - Cover
   - 
   - 
   - 

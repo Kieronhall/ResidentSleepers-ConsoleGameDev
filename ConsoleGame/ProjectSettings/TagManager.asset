@@ -5,24 +5,27 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - gun
+  - Floor0
+  - Floor4
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Concrete
   - Water
   - UI
   - Ground
   - Player
+  - Metal
+  - Enemy
+  - Walkable
+  - 
+  - postprocessing
+  - Floor_3_Ground
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Walls,Obstacles
   - 
   - 
   - 

@@ -11,6 +11,9 @@ https://mailbcuac-my.sharepoint.com/:p:/r/personal/dylan_odjidja_mail_bcu_ac_uk/
 ## Prototype Demonstration:
 https://mailbcuac-my.sharepoint.com/:p:/r/personal/kieron_hall2_mail_bcu_ac_uk/Documents/Prototype%20Demonstration.pptx?d=wd91e7320039e4ce4a0e3906a7986c648&csf=1&web=1&e=adHmag
 
+## Progress Demonstration
+https://mailbcuac-my.sharepoint.com/:p:/g/personal/dylan_odjidja_mail_bcu_ac_uk/EUNrk0oBvLlCmKD2LtnB0qEBOXIsK4rZYRr_Vq-iJt7Gyg?e=CzxfYW
+
 ## Gantt Chart:
 https://mailbcuac-my.sharepoint.com/:x:/r/personal/dylan_odjidja_mail_bcu_ac_uk/Documents/Year%203/Y3_Semester%202/Console%20Game%20Development/Resident%20Sleepers/Gantt%20Chart.xlsx?d=wfabbdb58da474ae6b8f5ed1041ee3e3f&csf=1&web=1&e=pRKD9F
 

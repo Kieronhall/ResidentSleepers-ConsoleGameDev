@@ -14,6 +14,7 @@ namespace ThirdPerson
         [SerializeField] private LayerMask aimColldierMask;
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;
+        [SerializeField] private HealthBar healthBar;
 
         private ThirdPersonController controller;
         private PlayerControls _input;
@@ -36,7 +37,7 @@ namespace ThirdPerson
             Transform hitTransform = null;
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColldierMask))
             {
-                debugTransform.position = raycastHit.point;
+                //debugTransform.position = raycastHit.point;
                 mouseWorldPosition = raycastHit.point;
                 hitTransform = raycastHit.transform;
             }
@@ -46,7 +47,7 @@ namespace ThirdPerson
                 //Animations
                 playerAnimAim();
                 gunShow();
-
+                healthBar.ammoBar.SetActive(true);
 
                 aimVirtualCamera.gameObject.SetActive(true);
                 controller.SetSensitivity(aimSensitivity);
@@ -63,6 +64,7 @@ namespace ThirdPerson
                 //Animations
                 playerAnimAimFalse();
                 gunHide();
+                healthBar.ammoBar.SetActive(false);
 
                 aimVirtualCamera.gameObject.SetActive(false);
                 controller.SetSensitivity(normalSensitivity);

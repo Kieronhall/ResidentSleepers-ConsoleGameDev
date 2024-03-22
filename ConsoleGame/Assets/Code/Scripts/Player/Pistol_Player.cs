@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering;
+
 public class Pistol_Player : MonoBehaviour
 {
     public float timeBetweenShooting, timeBetweenShots, reloadTime;
@@ -51,10 +53,15 @@ public class Pistol_Player : MonoBehaviour
             Invoke("Shoot", timeBetweenShots);
         }
     }
-
     private void ResetShot()
     {
         readyToShoot = true;
+    }
+
+    public void AddAmmo(int amount)
+    {
+        bulletsLeft += amount;
+        bulletsLeft = Mathf.Min(bulletsLeft, magazineSize);
     }
 
 }

@@ -26,6 +26,7 @@ public class ShootingState : State
     {
         Debug.Log("Executing Shooting");
         agent.StandStill();
+        agent.agentTakeDamage();
         agent.PopShooting(); //checks to pop or not
     }
 

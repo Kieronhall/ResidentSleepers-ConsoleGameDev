@@ -14,6 +14,7 @@ namespace ThirdPerson
         [SerializeField] private LayerMask aimColldierMask;
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;
+        [SerializeField] private HealthBar healthBar;
 
         private ThirdPersonController controller;
         private PlayerControls _input;
@@ -46,7 +47,7 @@ namespace ThirdPerson
                 //Animations
                 playerAnimAim();
                 gunShow();
-
+                healthBar.ammoBar.SetActive(true);
 
                 aimVirtualCamera.gameObject.SetActive(true);
                 controller.SetSensitivity(aimSensitivity);
@@ -63,17 +64,21 @@ namespace ThirdPerson
                 //Animations
                 playerAnimAimFalse();
                 gunHide();
+                healthBar.ammoBar.SetActive(false);
 
                 aimVirtualCamera.gameObject.SetActive(false);
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
             }
 
-            if (_input.shoot)
+            if (_input.shoot )
             {
-                //Shoot(hitTransform);
-                playerPistol.Shoot(hitTransform);
-                _input.shoot = false;
+                if ( playerPistol.bulletsLeft > 0)
+                {
+                    playerPistol.bulletsShot = playerPistol.bulletsPerTap;
+                    playerPistol.Shoot(hitTransform);
+                    _input.shoot = false;
+                }
             }
         }
 

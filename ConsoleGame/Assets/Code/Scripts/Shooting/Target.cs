@@ -31,5 +31,6 @@ public class Target : MonoBehaviour
     {
         Destroy(gameObject);
         enemyHealthBar.gameObject.SetActive(false);
+
     }
 }

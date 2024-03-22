@@ -5,9 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
-  - gun
-  - Floor0
-  - Floor4
+  - Ammo
   layers:
   - Default
   - TransparentFX
@@ -21,11 +19,11 @@ TagManager:
   - Enemy
   - Walkable
   - 
-  - postprocessing
-  - Floor_3_Ground
   - 
   - 
-  - Walls,Obstacles
+  - 
+  - 
+  - 
   - 
   - 
   - 

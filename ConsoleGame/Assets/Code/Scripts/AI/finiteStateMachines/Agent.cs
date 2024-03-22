@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using ThirdPerson;
 
 public class Agent : MonoBehaviour
 {
@@ -38,6 +41,9 @@ public class Agent : MonoBehaviour
     public float lerpDuration = 1f;
     public GameObject gunOnAgent;
     public GameObject muzzleFlash;
+    public HealthBar healthBar;
+    float damageCooldown = 1.0f; 
+    float lastDamageTime; 
 
 
     public enum Type
@@ -59,6 +65,8 @@ public class Agent : MonoBehaviour
         shooting = new ShootingState(this, sm);
         sm.Init(idle);
         s = this.gameObject.GetComponent<sensors>();
+        healthBar.GetComponent<HealthBar>();
+        lastDamageTime = -damageCooldown; 
 
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         
@@ -248,6 +256,14 @@ public class Agent : MonoBehaviour
         if (!s.Hit)
         {
             sm.popState();
+        }
+    }
+    public void agentTakeDamage()
+    {
+        if (Time.time - lastDamageTime >= damageCooldown)
+        {
+            healthBar.TakeDamage(10);
+            lastDamageTime = Time.time; 
         }
     }
 

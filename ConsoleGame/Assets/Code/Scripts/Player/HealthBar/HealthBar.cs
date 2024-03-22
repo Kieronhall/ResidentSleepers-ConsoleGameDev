@@ -32,14 +32,14 @@ using UnityEngine.UI;
             }
             if (_playerControls.interact)
             {
-                TakeDamge(20);
+                TakeDamage(20);
                 _playerControls.interact = false;
             }
 
         
 
     }
-        public void TakeDamge(float damage)
+        public void TakeDamage(float damage)
         {
             healthCurrentAmount -= damage;
             healthBar.fillAmount = Mathf.Min(healthCurrentAmount, 0f);

@@ -10,27 +10,45 @@ public class CoverController : MonoBehaviour
     [SerializeField] LayerMask coverLayerMask;
     [SerializeField] Transform highCoverDetectionTransform;
 
+    Animator animator;
+
+    bool inCover;
     bool highCover;
+    bool inLowCover;
+    bool inHighCover;
+
+    Vector3 lowCoverPos;
+    Vector3 highCoverPos;
 
     KeyCode coverKey = KeyCode.JoystickButton9;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
         TakeCover();
+        LeaveCover();
         CoverTypeDetecter();
 
         Debug.DrawRay(transform.position + RayOffset, transform.forward * maxDistanceFromCover, 
             (IsNearCover()) ? Color.green : Color.white);
         Debug.DrawRay(highCoverDetectionTransform.position, highCoverDetectionTransform.forward * maxDistanceFromCover, 
             (highCover) ? Color.blue : Color.white);
+
+        animator.SetBool("inHighCover", inHighCover);
+        animator.SetBool("inLowCover", inLowCover);
     }
 
     private bool IsNearCover()
     {
-        RaycastHit hitInfo;
+        RaycastHit lowHitInfo;
 
-        if (Physics.Raycast(transform.position + RayOffset, transform.forward, out hitInfo, maxDistanceFromCover, coverLayerMask))
+        if (Physics.Raycast(transform.position + RayOffset, transform.forward, out lowHitInfo, maxDistanceFromCover, coverLayerMask))
         {
+            lowCoverPos = lowHitInfo.point + lowHitInfo.normal;
             return true;
         } 
         else
@@ -41,22 +59,48 @@ public class CoverController : MonoBehaviour
 
     private void TakeCover()
     {
-        if (Input.GetKeyDown(coverKey))
+        if (Input.GetKeyDown(coverKey) && !inCover || Input.GetKeyDown(KeyCode.C) && !inCover)
         {
             if (IsNearCover() && highCover)
             {
-                
+                inHighCover = true;
+                StartCoroutine(CoverTimeout());
+                Debug.Log("High Cover");
             }
             else if (IsNearCover() && !highCover)
             {
-                
+                inLowCover = true;
+                transform.position = new Vector3(lowCoverPos.x, transform.position.y, lowCoverPos.z);
+                StartCoroutine(CoverTimeout());
+                Debug.Log("Low Cover");
+            }
+        }
+    }
+
+    private void LeaveCover()
+    {
+        if (Input.GetKeyDown(coverKey) && inCover || Input.GetKeyDown(KeyCode.C) && inCover)
+        {
+            if (highCover)
+            {
+                inHighCover = false;
+                inCover = false;
+                Debug.Log("Left High Cover");
+            }
+            else if (!highCover)
+            {
+                inLowCover = false;
+                inCover = false;
+                Debug.Log("Left Low Cover");
             }
         }
     }
 
     private void CoverTypeDetecter()
     {
-        if (Physics.Raycast(highCoverDetectionTransform.position, highCoverDetectionTransform.forward, maxDistanceFromCover, 
+        RaycastHit highHitInfo;
+
+        if (Physics.Raycast(highCoverDetectionTransform.position, highCoverDetectionTransform.forward, out highHitInfo, maxDistanceFromCover, 
             coverLayerMask))
         {
             highCover = true;
@@ -65,5 +109,11 @@ public class CoverController : MonoBehaviour
         {
             highCover = false;
         }
+    }
+
+    IEnumerator CoverTimeout()
+    {
+        yield return new WaitForSeconds(0.5f);
+        inCover = true;
     }
 }

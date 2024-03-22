@@ -16,10 +16,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     bool isGrounded;
+    bool isSprinting;
+    bool isCrouching;
 
     float ySpeed;
 
     Quaternion targetRotation;
+
+    KeyCode sprintKey = KeyCode.JoystickButton4;
+    KeyCode crouchKey = KeyCode.JoystickButton1;
 
     CameraController cameraController;
     Animator animator;
@@ -37,16 +42,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         float horitzontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         float moveAmount = Mathf.Clamp01(Mathf.Abs(horitzontal) + Mathf.Abs(vertical));
 
-        var moveInput = (new Vector3(horitzontal, 0, vertical)).normalized;
+        var moveInput = new Vector3(horitzontal, 0, vertical).normalized;
 
         var moveDirection = cameraController.PlanarRoatation * moveInput;
 
         GroundCheck();
+        Crouch();
+        Sprint();
 
         if (isGrounded)
         {
@@ -71,9 +79,11 @@ public class PlayerController : MonoBehaviour
             rotationSpeed * Time.deltaTime);
 
         animator.SetFloat("moveAmount", moveAmount, 0.2f, Time.deltaTime);
+        animator.SetBool("isSprinting", isSprinting);
+        animator.SetBool("isCrouching", isCrouching);
     }
 
-    void GroundCheck()
+    private void GroundCheck()
     {
         isGrounded = Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius, groundLayer);
     }
@@ -82,5 +92,37 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
         Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
+    }
+
+    private void Crouch()
+    {
+        if (Input.GetKeyDown(crouchKey) && !isCrouching || Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
+        {
+            moveSpeed = 1.5f;
+            isCrouching = true;
+            characterController.height = 1.31f;
+            characterController.center = new Vector3(0f, 0.678f, 0.38f);
+        }
+        else if (Input.GetKeyDown(crouchKey) && isCrouching || Input.GetKeyDown(KeyCode.LeftControl) && isCrouching)
+        {
+            moveSpeed = 3f;
+            isCrouching = false;
+            characterController.height = 1.7f;
+            characterController.center = new Vector3(0f, 0.87f, 0.1f);
+        }
+    }
+
+    private void Sprint()
+    {
+        if (Input.GetKeyDown(sprintKey) && !isCrouching || Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
+        {
+            moveSpeed = 5f;
+            isSprinting = true;
+        }
+        else if (Input.GetKeyUp(sprintKey) || Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = 3f;
+            isSprinting = false;
+        }
     }
 }

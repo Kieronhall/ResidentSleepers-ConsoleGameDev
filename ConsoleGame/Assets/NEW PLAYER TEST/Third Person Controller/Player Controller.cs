@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     CameraController cameraController;
     Animator animator;
-    CharacterController characterController;
+    public CharacterController characterController;
 
     private void Awake()
     {

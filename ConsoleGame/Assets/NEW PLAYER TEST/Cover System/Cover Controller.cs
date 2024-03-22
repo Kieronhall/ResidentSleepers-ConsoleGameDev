@@ -1,8 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
 public class CoverController : MonoBehaviour
 {
     [SerializeField] Vector3 RayOffset = new Vector3(0, 0.8f, 0);
@@ -11,6 +13,8 @@ public class CoverController : MonoBehaviour
     [SerializeField] Transform highCoverDetectionTransform;
 
     Animator animator;
+
+    PlayerController playerController;
 
     bool inCover;
     bool highCover;
@@ -25,6 +29,7 @@ public class CoverController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -48,7 +53,7 @@ public class CoverController : MonoBehaviour
 
         if (Physics.Raycast(transform.position + RayOffset, transform.forward, out lowHitInfo, maxDistanceFromCover, coverLayerMask))
         {
-            lowCoverPos = lowHitInfo.point + lowHitInfo.normal;
+            lowCoverPos = lowHitInfo.point + lowHitInfo.normal * 0.005f;
             return true;
         } 
         else
@@ -64,13 +69,16 @@ public class CoverController : MonoBehaviour
             if (IsNearCover() && highCover)
             {
                 inHighCover = true;
+                transform.DOMove(new Vector3(highCoverPos.x, transform.position.y, highCoverPos.z), 0.2f);
+                playerController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
                 StartCoroutine(CoverTimeout());
                 Debug.Log("High Cover");
             }
             else if (IsNearCover() && !highCover)
             {
                 inLowCover = true;
-                transform.position = new Vector3(lowCoverPos.x, transform.position.y, lowCoverPos.z);
+                transform.DOMove(new Vector3(lowCoverPos.x, transform.position.y, lowCoverPos.z), 0.2f);
+                playerController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
                 StartCoroutine(CoverTimeout());
                 Debug.Log("Low Cover");
             }
@@ -84,12 +92,14 @@ public class CoverController : MonoBehaviour
             if (highCover)
             {
                 inHighCover = false;
+                playerController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                 inCover = false;
                 Debug.Log("Left High Cover");
             }
             else if (!highCover)
             {
                 inLowCover = false;
+                playerController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                 inCover = false;
                 Debug.Log("Left Low Cover");
             }
@@ -103,6 +113,7 @@ public class CoverController : MonoBehaviour
         if (Physics.Raycast(highCoverDetectionTransform.position, highCoverDetectionTransform.forward, out highHitInfo, maxDistanceFromCover, 
             coverLayerMask))
         {
+            highCoverPos = highHitInfo.point + highHitInfo.normal * 0.005f;
             highCover = true;
         } 
         else

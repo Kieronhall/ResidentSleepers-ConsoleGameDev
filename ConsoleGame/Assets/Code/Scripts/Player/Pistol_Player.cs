@@ -18,7 +18,7 @@ public class Pistol_Player : MonoBehaviour
     private Target target;
 
     //VFX
-    public GameObject muzzleFlash, Bullets;
+    public GameObject muzzleFlash;
     public TextMeshProUGUI text;
 
     private void Awake()

@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class AddAmmo : MonoBehaviour
 {
-
     public int addBullets = 6;
-    private void OnTriggerEnter(Collider collision)
+    private void Awake()
     {
-        Pistol_Player pistol_Player = collision.GetComponent<Pistol_Player>();
-        if (pistol_Player != null)
-        {
-            pistol_Player.AddAmmo(addBullets);
-            Destroy(gameObject);
-        }
+        
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Pistol_Player pistol_Player = other.GetComponent<Pistol_Player>();
+        pistol_Player.AddAmmo(addBullets);
+        Destroy(gameObject);
+    }
+
 }

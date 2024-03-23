@@ -364,7 +364,7 @@ MonoBehaviour:
     m_Bits: 128
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 33554432
   sensorType: 1
   raycastLength: 5
   sensorHeight: 0

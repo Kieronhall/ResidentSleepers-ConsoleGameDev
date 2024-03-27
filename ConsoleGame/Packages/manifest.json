@@ -8,6 +8,7 @@
     "com.unity.feature.development": "1.0.1",
     "com.unity.inputsystem": "1.6.3",
     "com.unity.inputsystem.ps4": "file:../ps4 pk/com.unity.inputsystem.ps4-0.1.6-pre.tgz",
+    "com.unity.localization": "1.3.2",
     "com.unity.postprocessing": "3.2.2",
     "com.unity.render-pipelines.universal": "14.0.8",
     "com.unity.textmeshpro": "3.0.6",

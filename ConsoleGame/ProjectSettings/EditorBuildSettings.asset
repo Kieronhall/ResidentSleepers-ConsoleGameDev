@@ -24,4 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Mush/Level_4 - Boss.unity
     guid: dbb8c4c8aeb80ba45b3ea4fd7189ca77
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 2e39c6b9bf11bdc4caf3f9e62f0caa60, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: a66e9536a6fd98a4d8c388197bb573b6, type: 2}

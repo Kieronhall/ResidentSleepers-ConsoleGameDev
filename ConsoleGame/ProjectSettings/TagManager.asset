@@ -10,6 +10,7 @@ TagManager:
   - Floor0
   - Obstacles
   - Cover
+  - Head
   layers:
   - Default
   - TransparentFX

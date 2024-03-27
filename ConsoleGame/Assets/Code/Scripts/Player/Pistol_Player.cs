@@ -16,6 +16,7 @@ public class Pistol_Player : MonoBehaviour
     // Target
     [SerializeField]
     private Target target;
+    public Transform head;
 
     //VFX
     public GameObject muzzleFlash;
@@ -39,7 +40,15 @@ public class Pistol_Player : MonoBehaviour
             Target target = hitTransform.GetComponent<Target>();
             if (target != null)
             {
-                target.TakeDamage(damage);
+                if (hitTransform == head)
+                {
+                    target.TakeDamage(100);
+                }
+                else
+                {
+                    target.TakeDamage(damage);
+                    Debug.Log("body");
+                }
             }
         }
 

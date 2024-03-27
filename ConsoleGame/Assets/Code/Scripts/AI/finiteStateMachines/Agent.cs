@@ -266,6 +266,12 @@ public class Agent : MonoBehaviour
         }
     }
 
+    // DEATH ANIMATION CODE
+    public void deathMovement()
+    {
+        agent.isStopped = true;
+        muzzleFlash.SetActive(false);
+    }
 
 
     //ANIMATIONS

@@ -42,7 +42,8 @@ public class Agent : MonoBehaviour
     public GameObject muzzleFlash;
     public HealthBar healthBar;
     float damageCooldown = 1.0f; 
-    float lastDamageTime; 
+    float lastDamageTime;
+    bool isUpdateEnabled = true;
 
 
     public enum Type
@@ -271,6 +272,7 @@ public class Agent : MonoBehaviour
     {
         agent.isStopped = true;
         muzzleFlash.SetActive(false);
+        TurnOffUpdate();
     }
 
 
@@ -327,6 +329,9 @@ public class Agent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isUpdateEnabled)
+            return;
+
         sm.Update();
 
         switch (agentType)
@@ -366,7 +371,14 @@ public class Agent : MonoBehaviour
         }
 
     }
-
+    public void TurnOffUpdate()
+    {
+        isUpdateEnabled = false;
+    }
+    public void TurnOnUpdate()
+    {
+        isUpdateEnabled = true;
+    }
 
 
 #if UNITY_EDITOR

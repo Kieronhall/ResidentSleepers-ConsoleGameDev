@@ -6,7 +6,7 @@ public class Target : MonoBehaviour
 {
     public float health;
     private float maxHealth = 100f;
-    EnemyHealthBar enemyHealthBar;
+    //EnemyHealthBar enemyHealthBar;
 
     Agent agent;
     
@@ -14,28 +14,17 @@ public class Target : MonoBehaviour
     {
         health = maxHealth;
 
-        enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
+        //enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
 
         agent = this.gameObject.GetComponent<Agent>();
     }
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        enemyHealthBar.HealthBarPercentage(health / maxHealth);
 
-        if (health <= 0)
-        {
-            Die();
-        }
-
-    }
-
-    void Die()
+    public void Die()
     {
         agent.deathMovement();
         deathAnimation();
         Invoke("DestroyObject", 4f);
-        enemyHealthBar.gameObject.SetActive(false);
+        //enemyHealthBar.gameObject.SetActive(false);
     }
 
     void DestroyObject()

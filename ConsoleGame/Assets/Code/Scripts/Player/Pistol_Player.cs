@@ -11,22 +11,23 @@ public class Pistol_Player : MonoBehaviour
     public bool shooting, readyToShoot, reloading;
 
     //Damage
-    public float damage = 50f;
+    public float damage = 100f;
 
     // Target
     [SerializeField]
     private Target target;
-    public Transform head;
 
     //VFX
     public GameObject muzzleFlash;
     public TextMeshProUGUI text;
 
-    private void Awake()
+    private void Start()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
+
+
     private void Update()
     {
         text.SetText("" + bulletsLeft + ""); // + " / " + extraMagazine);
@@ -34,24 +35,8 @@ public class Pistol_Player : MonoBehaviour
 
     public void Shoot(Transform hitTransform)
     {
-        readyToShoot = false;
-        if (hitTransform != null)
-        {
-            Target target = hitTransform.GetComponent<Target>();
-            if (target != null)
-            {
-                if (hitTransform == head)
-                {
-                    target.TakeDamage(100);
-                }
-                else
-                {
-                    target.TakeDamage(damage);
-                    Debug.Log("body");
-                }
-            }
-        }
 
+        readyToShoot = false;
         bulletsLeft--;
         bulletsShot--;
         Invoke("ResetShot", timeBetweenShooting);

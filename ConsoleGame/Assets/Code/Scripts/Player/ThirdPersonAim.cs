@@ -63,9 +63,25 @@ namespace ThirdPerson
                 Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
                 transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+                if (_input.aim && _input.shoot)
+                {
+                    if (hitTransform != null)
+                    {
+                        if (playerPistol.bulletsLeft > 0)
+                        {
+                            playerPistol.bulletsShot = playerPistol.bulletsPerTap;
+                            CheckHit(raycastHit);
+                            playerPistol.Shoot(hitTransform);
+                            _input.shoot = false;
+                        }
+                    }
+                }
             }
+
             else
             {
+                _input.shoot = false;
                 //Animations
                 playerAnimAimFalse();
                 gunHide();
@@ -74,20 +90,6 @@ namespace ThirdPerson
                 aimVirtualCamera.gameObject.SetActive(false);
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
-            }
-
-            if (_input.shoot)
-            {
-                if (hitTransform != null)
-                {
-                    if (playerPistol.bulletsLeft > 0)
-                    {
-                        playerPistol.bulletsShot = playerPistol.bulletsPerTap;
-                        CheckHit(raycastHit);
-                        playerPistol.Shoot(hitTransform);
-                        _input.shoot = false;
-                    }
-                }
             }
         }
 

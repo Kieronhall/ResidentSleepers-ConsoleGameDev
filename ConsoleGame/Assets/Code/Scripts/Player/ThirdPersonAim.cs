@@ -39,7 +39,6 @@ namespace ThirdPerson
 
             Vector2 screenCentrePoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
             Ray ray = Camera.main.ScreenPointToRay(screenCentrePoint);
-            
             Transform hitTransform = null;
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColldierMask))
             {
@@ -64,9 +63,25 @@ namespace ThirdPerson
                 Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
                 transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+                if (_input.aim && _input.shoot)
+                {
+                    if (hitTransform != null)
+                    {
+                        if (playerPistol.bulletsLeft > 0)
+                        {
+                            playerPistol.bulletsShot = playerPistol.bulletsPerTap;
+                            CheckHit(raycastHit);
+                            playerPistol.Shoot(hitTransform);
+                            _input.shoot = false;
+                        }
+                    }
+                }
             }
+
             else
             {
+                _input.shoot = false;
                 //Animations
                 playerAnimAimFalse();
                 gunHide();
@@ -76,33 +91,24 @@ namespace ThirdPerson
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
             }
-
-            if (_input.shoot )
-            {
-                if (hitTransform != null)
-                {
-                    if (playerPistol.bulletsLeft > 0)
-                    {
-                        playerPistol.bulletsShot = playerPistol.bulletsPerTap;
-                        CheckHit(raycastHit);
-                        //playerPistol.Shoot(hitTransform);
-                        _input.shoot = false;
-                    }
-                }
-            }
         }
 
         private void CheckHit(RaycastHit raycastHit)
         {
             tDamage = raycastHit.transform.GetComponent<takeDamage>();
-            switch (tDamage.damageType)
+            if (tDamage != null)
             {
-                case takeDamage.collisionType.head:
-                    tDamage.Hit(damage);
-                    break;
-                case takeDamage.collisionType.body:
-                    tDamage.Hit(damage / 2);
-                    break;
+                switch (tDamage.damageType)
+                {
+                    case takeDamage.collisionType.head:
+                        tDamage.Hit(damage);
+                        break;
+                    case takeDamage.collisionType.body:
+                        tDamage.Hit(damage / 2);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 

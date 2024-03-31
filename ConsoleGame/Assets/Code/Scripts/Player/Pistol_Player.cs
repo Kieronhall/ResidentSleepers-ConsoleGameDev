@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
+using Cinemachine;
 
 public class Pistol_Player : MonoBehaviour
 {
@@ -13,18 +14,17 @@ public class Pistol_Player : MonoBehaviour
     //Damage
     public float damage = 100f;
 
-    // Target
-    [SerializeField]
-    private Target target;
-
     //VFX
     public GameObject muzzleFlash;
     public TextMeshProUGUI text;
+
+    public CinemachineImpulseSource impulseSource;
 
     private void Start()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
 
@@ -35,7 +35,7 @@ public class Pistol_Player : MonoBehaviour
 
     public void Shoot(Transform hitTransform)
     {
-
+        CameraShake.Instance.CamShake(impulseSource);
         readyToShoot = false;
         bulletsLeft--;
         bulletsShot--;

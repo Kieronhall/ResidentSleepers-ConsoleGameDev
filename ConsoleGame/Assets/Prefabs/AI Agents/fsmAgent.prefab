@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216326193036152672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.685, z: -0.025}
-  m_LocalScale: {x: 0.5587839, y: 0.22652759, z: 0.26696473}
+  m_LocalPosition: {x: -0.01, y: 0.68, z: -0.057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5101222207647579032}
@@ -104,7 +104,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.55, y: 1, z: 1.2}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &3449522933709348462
 MonoBehaviour:
@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2705405927864375117
 RectTransform:
   m_ObjectHideFlags: 0
@@ -334,10 +334,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.24267769
+  m_Height: 1.5278119
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.01, y: -0.23609406, z: 0}
 --- !u!195 &5885466036300962866
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.5
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  extraAmmo: {fileID: 6962150411057829020, guid: b6f811296a0457246ac9452677d8c3b3, type: 3}
 --- !u!114 &8430076804913361989
 MonoBehaviour:
   m_ObjectHideFlags: 0

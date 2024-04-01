@@ -6,6 +6,9 @@ public class Target : MonoBehaviour
 {
     public float health;
     private float maxHealth = 100f;
+    public GameObject extraAmmo;
+    private float chanceSpawn = 0.45f;
+    private float randomValue;
     //EnemyHealthBar enemyHealthBar;
 
     Agent agent;
@@ -13,9 +16,7 @@ public class Target : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-
         //enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
-
         agent = this.gameObject.GetComponent<Agent>();
     }
 
@@ -24,11 +25,17 @@ public class Target : MonoBehaviour
         agent.deathMovement();
         deathAnimation();
         Invoke("DestroyObject", 4f);
+        chanceSpawn = 0.45f;
         //enemyHealthBar.gameObject.SetActive(false);
     }
 
     void DestroyObject()
     {
+        randomValue = Random.Range(0f, 1f);
+        if (randomValue <= chanceSpawn)
+        {
+            Instantiate(extraAmmo, transform.position, transform.rotation);
+        }
         Destroy(gameObject);
     }
 

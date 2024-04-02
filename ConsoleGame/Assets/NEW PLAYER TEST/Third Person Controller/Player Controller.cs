@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent (typeof(Animator))]
@@ -28,12 +29,14 @@ public class PlayerController : MonoBehaviour
 
     CameraController cameraController;
     Animator animator;
+    CoverController coverController;
     public CharacterController characterController;
 
     private void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
         animator = GetComponent<Animator>();
+        coverController = GetComponent<CoverController>();
         characterController = GetComponent<CharacterController>();
         characterController.height = 1.7f;
         characterController.radius = 0.2f;
@@ -43,12 +46,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
-        float horitzontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        float moveAmount = Mathf.Clamp01(Mathf.Abs(horitzontal) + Mathf.Abs(vertical));
+        float moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
 
-        var moveInput = new Vector3(horitzontal, 0, vertical).normalized;
+        var moveInput = new Vector3(horizontal, 0, vertical).normalized;
 
         var moveDirection = cameraController.PlanarRoatation * moveInput;
 
@@ -68,12 +71,41 @@ public class PlayerController : MonoBehaviour
         var velocity = moveDirection * moveSpeed;
         velocity.y = ySpeed;
 
-        characterController.Move(velocity * Time.deltaTime);
-
-        if (moveAmount > 0)
+        // Restrict movement and rotation if in cover
+        if (coverController.inCover)
         {
-            targetRotation = Quaternion.LookRotation(moveDirection);
+            // Check if moving left or right
+            if (horizontal < 0)
+            {
+                moveSpeed = 1.5f;
+                velocity.x = moveDirection.x * moveSpeed;
+                velocity.z = 0;
+            }
+            else if (horizontal > 0)
+            {
+                moveSpeed = 1.5f;
+                velocity.x = moveDirection.x * moveSpeed;
+                velocity.z = 0;
+            }
+            else
+            {
+                // If not moving left or right, restrict all movement
+                velocity = Vector3.zero;
+            }
+
+            // Set rotation to current rotation if in cover
+            targetRotation = transform.rotation;
         }
+        else
+        {
+            // Only rotate if not in cover
+            if (moveAmount > 0)
+            {
+                targetRotation = Quaternion.LookRotation(moveDirection);
+            }
+        }
+
+        characterController.Move(velocity * Time.deltaTime);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
             rotationSpeed * Time.deltaTime);
@@ -119,7 +151,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = 5f;
             isSprinting = true;
         }
-        else if (Input.GetKeyUp(sprintKey) || Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(sprintKey) && !isCrouching || Input.GetKeyUp(KeyCode.LeftShift) && !isCrouching)
         {
             moveSpeed = 3f;
             isSprinting = false;

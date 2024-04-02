@@ -16,7 +16,7 @@ public class CoverController : MonoBehaviour
 
     PlayerController playerController;
 
-    bool inCover;
+    public bool inCover;
     bool highCover;
     bool inLowCover;
     bool inHighCover;
@@ -53,7 +53,7 @@ public class CoverController : MonoBehaviour
 
         if (Physics.Raycast(transform.position + RayOffset, transform.forward, out lowHitInfo, maxDistanceFromCover, coverLayerMask))
         {
-            lowCoverPos = lowHitInfo.point + lowHitInfo.normal * 0.005f;
+            lowCoverPos = lowHitInfo.point + lowHitInfo.normal * 0.25f;
             return true;
         } 
         else
@@ -113,7 +113,7 @@ public class CoverController : MonoBehaviour
         if (Physics.Raycast(highCoverDetectionTransform.position, highCoverDetectionTransform.forward, out highHitInfo, maxDistanceFromCover, 
             coverLayerMask))
         {
-            highCoverPos = highHitInfo.point + highHitInfo.normal * 0.005f;
+            highCoverPos = highHitInfo.point + highHitInfo.normal * 0.25f;
             highCover = true;
         } 
         else

@@ -66,6 +66,7 @@ namespace ThirdPerson
 
                 if (_input.aim && _input.shoot)
                 {
+                    playerAnimShoot();
                     if (hitTransform != null)
                     {
                         if (playerPistol.bulletsLeft > 0)
@@ -138,11 +139,14 @@ namespace ThirdPerson
         {
             GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", false);
         }
-
-        // This aren't used atm, kind of scuffed
         public void playerAnimShoot()
         {
             GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
+            Invoke("ResetShootAnimation", 1.03f);
+        }
+        void ResetShootAnimation()
+        {
+            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
         }
         public void playerAnimShootFalse()
         {

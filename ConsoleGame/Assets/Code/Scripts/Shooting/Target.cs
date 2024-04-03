@@ -6,31 +6,44 @@ public class Target : MonoBehaviour
 {
     public float health;
     private float maxHealth = 100f;
-    EnemyHealthBar enemyHealthBar;
+    public GameObject extraAmmo;
+    private float chanceSpawn = 0.45f;
+    private float randomValue;
+    //EnemyHealthBar enemyHealthBar;
 
-
+    Agent agent;
+    
     private void Start()
     {
         health = maxHealth;
-
-        enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
+        //enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
+        agent = this.gameObject.GetComponent<Agent>();
     }
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        enemyHealthBar.HealthBarPercentage(health / maxHealth);
 
-        if (health <= 0)
+    public void Die()
+    {
+        agent.deathMovement();
+        deathAnimation();
+        Invoke("DestroyObject", 4f);
+        chanceSpawn = 0.45f;
+        //enemyHealthBar.gameObject.SetActive(false);
+    }
+
+    void DestroyObject()
+    {
+        randomValue = Random.Range(0f, 1f);
+        if (randomValue <= chanceSpawn)
         {
-            Die();
+            Instantiate(extraAmmo, transform.position, transform.rotation);
         }
-
+        Destroy(gameObject);
     }
 
-    void Die()
+    public void deathAnimation()
     {
-        Destroy(gameObject);
-        enemyHealthBar.gameObject.SetActive(false);
-
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isDead", true);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isRunning", false);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isWalking", false);
+        GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", false);
     }
 }

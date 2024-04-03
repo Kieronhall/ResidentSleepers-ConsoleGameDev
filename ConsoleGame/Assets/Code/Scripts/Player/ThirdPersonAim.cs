@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using System;
 
 namespace ThirdPerson
 {
@@ -15,12 +16,16 @@ namespace ThirdPerson
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;
         [SerializeField] private HealthBar healthBar;
+        private takeDamage tDamage;
 
         private ThirdPersonController controller;
         private PlayerControls _input;
 
         //Placeholder Gun
         public GameObject gun;
+
+        //damage gun
+        public float damage = 100f;
 
         private void Awake()
         {
@@ -58,9 +63,25 @@ namespace ThirdPerson
                 Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
                 transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+                if (_input.aim && _input.shoot)
+                {
+                    if (hitTransform != null)
+                    {
+                        if (playerPistol.bulletsLeft > 0)
+                        {
+                            playerPistol.bulletsShot = playerPistol.bulletsPerTap;
+                            CheckHit(raycastHit);
+                            playerPistol.Shoot(hitTransform);
+                            _input.shoot = false;
+                        }
+                    }
+                }
             }
+
             else
             {
+                _input.shoot = false;
                 //Animations
                 playerAnimAimFalse();
                 gunHide();
@@ -70,14 +91,23 @@ namespace ThirdPerson
                 controller.SetSensitivity(normalSensitivity);
                 controller.SetRotationOnMove(true);
             }
+        }
 
-            if (_input.shoot )
+        private void CheckHit(RaycastHit raycastHit)
+        {
+            tDamage = raycastHit.transform.GetComponent<takeDamage>();
+            if (tDamage != null)
             {
-                if ( playerPistol.bulletsLeft > 0)
+                switch (tDamage.damageType)
                 {
-                    playerPistol.bulletsShot = playerPistol.bulletsPerTap;
-                    playerPistol.Shoot(hitTransform);
-                    _input.shoot = false;
+                    case takeDamage.collisionType.head:
+                        tDamage.Hit(damage);
+                        break;
+                    case takeDamage.collisionType.body:
+                        tDamage.Hit(damage / 2);
+                        break;
+                    default:
+                        break;
                 }
             }
         }

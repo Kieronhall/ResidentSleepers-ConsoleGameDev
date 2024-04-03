@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
+using Cinemachine;
 
 public class Pistol_Player : MonoBehaviour
 {
@@ -11,21 +12,22 @@ public class Pistol_Player : MonoBehaviour
     public bool shooting, readyToShoot, reloading;
 
     //Damage
-    public float damage = 50f;
-
-    // Target
-    [SerializeField]
-    private Target target;
+    public float damage = 100f;
 
     //VFX
-    public GameObject muzzleFlash, Bullets;
+    public GameObject muzzleFlash;
     public TextMeshProUGUI text;
 
-    private void Awake()
+    public CinemachineImpulseSource impulseSource;
+
+    private void Start()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
+
+
     private void Update()
     {
         text.SetText("" + bulletsLeft + ""); // + " / " + extraMagazine);
@@ -33,16 +35,8 @@ public class Pistol_Player : MonoBehaviour
 
     public void Shoot(Transform hitTransform)
     {
+        CameraShake.Instance.CamShake(impulseSource);
         readyToShoot = false;
-        if (hitTransform != null)
-        {
-            Target target = hitTransform.GetComponent<Target>();
-            if (target != null)
-            {
-                target.TakeDamage(damage);
-            }
-        }
-
         bulletsLeft--;
         bulletsShot--;
         Invoke("ResetShot", timeBetweenShooting);

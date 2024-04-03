@@ -8,8 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] Transform followTarget;
 
     [SerializeField] float rotationSpeed = 0.5f;
-    [SerializeField] float distance = 5;
-    [SerializeField] float adsDistance = 3;
+    [SerializeField] float distance = 3;
 
     [SerializeField] float minVerticalAngle = -45;
     [SerializeField] float maxVerticalAngle = 45;
@@ -19,7 +18,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] bool invertX;
     [SerializeField] bool invertY;
 
-    
 
     float rotationX;
     float rotationY;
@@ -41,8 +39,6 @@ public class CameraController : MonoBehaviour
         rotationY += Input.GetAxis("X Axis") * invertXval * rotationSpeed;
         rotationX += Input.GetAxis("Y Axis") * invertYval * rotationSpeed;
         rotationX = Mathf.Clamp(rotationX, minVerticalAngle, maxVerticalAngle);
-        
-        float currentDistance = Input.GetMouseButton(1) ? adsDistance : distance;
 
         var targetRotation = Quaternion.Euler(rotationX, rotationY, 0);
 

@@ -32,14 +32,6 @@ using UnityEngine.UI;
             {
                 healthBarParent.SetActive(true);
             }
-            if (_playerControls.interact)
-            {
-                TakeDamage(20);
-                _playerControls.interact = false;
-            }
-
-        
-
     }
         public void TakeDamage(float damage)
         {

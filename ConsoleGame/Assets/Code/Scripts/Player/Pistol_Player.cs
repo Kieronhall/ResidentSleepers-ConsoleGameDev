@@ -17,6 +17,7 @@ public class Pistol_Player : MonoBehaviour
     //VFX
     public GameObject muzzleFlash;
     public TextMeshProUGUI text;
+    private takeDamage tDamage;
 
     public CinemachineImpulseSource impulseSource;
 
@@ -33,10 +34,13 @@ public class Pistol_Player : MonoBehaviour
         text.SetText("" + bulletsLeft + ""); // + " / " + extraMagazine);
     }
 
-    public void Shoot(Transform hitTransform)
+    public void Shoot(RaycastHit raycastHit)
     {
         CameraShake.Instance.CamShake(impulseSource);
         readyToShoot = false;
+
+
+        CheckHit(raycastHit);
         bulletsLeft--;
         bulletsShot--;
         Invoke("ResetShot", timeBetweenShooting);
@@ -45,6 +49,25 @@ public class Pistol_Player : MonoBehaviour
         if (bulletsShot > 0 && bulletsLeft > 0)
         {
             Invoke("Shoot", timeBetweenShots);
+        }
+    }
+
+    private void CheckHit(RaycastHit raycastHit)
+    {
+        tDamage = raycastHit.transform.GetComponent<takeDamage>();
+        if (tDamage != null)
+        {
+            switch (tDamage.damageType)
+            {
+                case takeDamage.collisionType.head:
+                    tDamage.Hit(damage);
+                    break;
+                case takeDamage.collisionType.body:
+                    tDamage.Hit(damage / 2);
+                    break;
+                default:
+                    break;
+            }
         }
     }
     private void ResetShot()

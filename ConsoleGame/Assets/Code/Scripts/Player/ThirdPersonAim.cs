@@ -66,7 +66,11 @@ namespace ThirdPerson
 
                 if (_input.aim && _input.shoot)
                 {
-                    playerAnimShoot();
+                    if (playerPistol.bulletsLeft > 0)
+                    {
+                        playerAnimShoot();
+                    }
+
                     if (hitTransform != null)
                     {
                         if (playerPistol.bulletsLeft > 0)

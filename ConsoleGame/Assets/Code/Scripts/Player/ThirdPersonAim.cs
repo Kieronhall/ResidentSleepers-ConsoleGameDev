@@ -16,7 +16,7 @@ namespace ThirdPerson
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;
         [SerializeField] private HealthBar healthBar;
-        private takeDamage tDamage;
+        //private takeDamage tDamage;
 
         private ThirdPersonController controller;
         private PlayerControls _input;
@@ -70,9 +70,13 @@ namespace ThirdPerson
                     {
                         if (playerPistol.bulletsLeft > 0)
                         {
+                            playerAnimShoot();
+                        }
+
+                        if (playerPistol.bulletsLeft > 0 && playerPistol.readyToShoot)
+                        {
                             playerPistol.bulletsShot = playerPistol.bulletsPerTap;
-                            CheckHit(raycastHit);
-                            playerPistol.Shoot(hitTransform);
+                            playerPistol.Shoot(raycastHit);
                             _input.shoot = false;
                         }
                     }
@@ -92,27 +96,6 @@ namespace ThirdPerson
                 controller.SetRotationOnMove(true);
             }
         }
-
-        private void CheckHit(RaycastHit raycastHit)
-        {
-            tDamage = raycastHit.transform.GetComponent<takeDamage>();
-            if (tDamage != null)
-            {
-                switch (tDamage.damageType)
-                {
-                    case takeDamage.collisionType.head:
-                        tDamage.Hit(damage);
-                        break;
-                    case takeDamage.collisionType.body:
-                        tDamage.Hit(damage / 2);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-
         //Placeholder gun code
         public void gunShow()
         {
@@ -138,11 +121,14 @@ namespace ThirdPerson
         {
             GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", false);
         }
-
-        // This aren't used atm, kind of scuffed
         public void playerAnimShoot()
         {
             GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
+            Invoke("ResetShootAnimation", 1.00f);
+        }
+        void ResetShootAnimation()
+        {
+            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
         }
         public void playerAnimShootFalse()
         {

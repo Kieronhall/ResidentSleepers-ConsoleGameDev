@@ -23,7 +23,7 @@ TagManager:
   - Enemy
   - Walkable
   - Cover
-  - 
+  - postprocessing
   - 
   - 
   - 

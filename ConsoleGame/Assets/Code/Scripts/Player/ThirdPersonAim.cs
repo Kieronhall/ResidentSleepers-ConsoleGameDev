@@ -124,7 +124,7 @@ namespace ThirdPerson
         public void playerAnimShoot()
         {
             GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
-            Invoke("ResetShootAnimation", 1.00f);
+            Invoke("ResetShootAnimation", 0.1f);
         }
         void ResetShootAnimation()
         {

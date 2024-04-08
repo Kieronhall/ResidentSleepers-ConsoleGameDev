@@ -543,6 +543,7 @@ GameObject:
   - component: {fileID: 860973242}
   - component: {fileID: 860973241}
   - component: {fileID: 860973240}
+  - component: {fileID: 860973243}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -665,6 +666,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860973238}
   m_CullTransparentMesh: 1
+--- !u!114 &860973243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860973238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:29f2b8ccc806ec8439116b6f0c5c422b
+    m_TableEntryReference:
+      m_KeyId: 10667705729024
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &877140784
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +705,7 @@ GameObject:
   - component: {fileID: 877140785}
   - component: {fileID: 877140787}
   - component: {fileID: 877140786}
+  - component: {fileID: 877140788}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -800,6 +830,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877140784}
   m_CullTransparentMesh: 1
+--- !u!114 &877140788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877140784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:29f2b8ccc806ec8439116b6f0c5c422b
+    m_TableEntryReference:
+      m_KeyId: 5790488708743168
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &978369049
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +1003,7 @@ GameObject:
   - component: {fileID: 1064386626}
   - component: {fileID: 1064386628}
   - component: {fileID: 1064386627}
+  - component: {fileID: 1064386629}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -992,7 +1051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RESTART LEVEL
+  m_text: RESTART
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c7332d28d4ff204689c31126eda024b, type: 2}
   m_sharedMaterial: {fileID: -2214357094750556453, guid: 8c7332d28d4ff204689c31126eda024b, type: 2}
@@ -1069,6 +1128,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064386625}
   m_CullTransparentMesh: 1
+--- !u!114 &1064386629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064386625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:29f2b8ccc806ec8439116b6f0c5c422b
+    m_TableEntryReference:
+      m_KeyId: 5787544374444032
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1364301702
 GameObject:
   m_ObjectHideFlags: 0

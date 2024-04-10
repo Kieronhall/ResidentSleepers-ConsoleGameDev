@@ -17,7 +17,7 @@ public class openGate : MonoBehaviour
     private float startTime;
     private Quaternion startRotation;
     private bool isRotating = false;
-    private bool hasTriggered = false;
+    public bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {

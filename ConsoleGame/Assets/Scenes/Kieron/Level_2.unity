@@ -2933,6 +2933,7 @@ GameObject:
   - component: {fileID: 650497535}
   - component: {fileID: 650497534}
   - component: {fileID: 650497533}
+  - component: {fileID: 650497536}
   m_Layer: 0
   m_Name: playerEnterStairsLocation
   m_TagString: Untagged
@@ -2948,7 +2949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650497531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.49, y: 9.39, z: 7.78}
+  m_LocalPosition: {x: 17.49, y: 9.766, z: 8.795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2970,7 +2971,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3026,6 +3027,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650497531}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &650497536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650497531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4cc39e726fdf644a8058ac3f06e590b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rhythmgamemanager: {fileID: 1006220853}
+  sceneName: NAME OF SCENE GOES HERE
 --- !u!1001 &689503011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5078,7 +5093,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5146,7 +5161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedff19233b8d6f4dab7289a314d96ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameComplete: 0
   placeholderText: {fileID: 1160216919}
+  opengate: {fileID: 1316673692}
 --- !u!1001 &1007030229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6444,6 +6461,7 @@ MonoBehaviour:
   objectToRotate: {fileID: 3436345980235525072}
   targetAngle: -52.885
   duration: 1
+  hasTriggered: 0
 --- !u!65 &1316673693
 BoxCollider:
   m_ObjectHideFlags: 0

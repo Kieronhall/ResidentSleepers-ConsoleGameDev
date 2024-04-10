@@ -10,6 +10,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private bool isCamera1Active = true;
 
+
     void Start()
     {
         camera1.enabled = true;
@@ -27,23 +28,13 @@ public class CameraSwitcher : MonoBehaviour
 
     IEnumerator SwitchCamerasRoutine()
     {
-        while (true)
-        {
-            if (isCamera1Active)
-            {
-                camera1.enabled = false;
-                camera2.enabled = true;
-            }
-            else
-            {
-                camera1.enabled = true;
-                camera2.enabled = false;
-            }
+        camera1.enabled = false;
+        camera2.enabled = true;
 
-            yield return new WaitForSeconds(switchDuration);
+        yield return new WaitForSeconds(switchDuration);
 
-            isCamera1Active = !isCamera1Active;
-        }
+        camera1.enabled = true;
+        camera2.enabled = false;
     }
 
     public void switchCamera()

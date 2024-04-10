@@ -15,6 +15,8 @@ public class CoverController : MonoBehaviour
 
     PlayerController playerController;
 
+    Collider coverCollider;
+
     public bool inCover;
     bool highCover;
     bool lowCover;
@@ -50,12 +52,32 @@ public class CoverController : MonoBehaviour
     {
         if (inHighCover)
         {
-            Vector3 newPosition = new Vector3(Mathf.Clamp(transform.position.x, highCoverPos.x - 1f, highCoverPos.x + 1f), transform.position.y, Mathf.Clamp(transform.position.z, highCoverPos.z - 1f, highCoverPos.z + 1f));
+            float minX = highCoverPos.x - coverCollider.bounds.size.x / 2;
+            float maxX = highCoverPos.x + coverCollider.bounds.size.x / 2;
+            float minZ = highCoverPos.z - coverCollider.bounds.size.z / 2;
+            float maxZ = highCoverPos.z + coverCollider.bounds.size.z / 2;
+
+            Vector3 newPosition = new Vector3(
+                        Mathf.Clamp(transform.position.x, minX, maxX),
+                        transform.position.y,
+                        Mathf.Clamp(transform.position.z, minZ, maxZ)
+                    );
+            
             transform.position = newPosition;
         }
         if (inLowCover)
         {
-            Vector3 newPosition = new Vector3(Mathf.Clamp(transform.position.x, lowCoverPos.x - 1f, lowCoverPos.x + 1f), transform.position.y, Mathf.Clamp(transform.position.z, lowCoverPos.z - 1f, lowCoverPos.z + 1f));
+            float minX = lowCoverPos.x - coverCollider.bounds.size.x / 2;
+            float maxX = lowCoverPos.x + coverCollider.bounds.size.x / 2;
+            float minZ = lowCoverPos.z - coverCollider.bounds.size.z / 2;
+            float maxZ = lowCoverPos.z + coverCollider.bounds.size.z / 2;
+
+            Vector3 newPosition = new Vector3(
+                        Mathf.Clamp(transform.position.x, minX, maxX),
+                        transform.position.y,
+                        Mathf.Clamp(transform.position.z, minZ, maxZ)
+                    );
+            
             transform.position = newPosition;
         }
     }
@@ -88,6 +110,12 @@ public class CoverController : MonoBehaviour
         {
             highCover = false;
         }
+    }
+
+    private float GetCoverArea()
+    {
+        Bounds bounds = coverCollider.bounds;
+        return bounds.size.x * bounds.size.z;
     }
 
     private void TakeCover()

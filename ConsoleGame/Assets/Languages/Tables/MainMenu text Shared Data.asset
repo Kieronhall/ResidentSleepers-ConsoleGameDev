@@ -31,6 +31,22 @@ MonoBehaviour:
     m_Key: ExitID
     m_Metadata:
       m_Items: []
+  - m_Id: 5787544374444032
+    m_Key: RestartID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5790488708743168
+    m_Key: ResumeID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5791796962492416
+    m_Key: BackID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5792468470562816
+    m_Key: SensibilityID
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

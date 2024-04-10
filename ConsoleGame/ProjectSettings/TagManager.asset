@@ -12,6 +12,7 @@ TagManager:
   - Cover
   - Head
   - Enemy
+  - rhythmHitPoint
   layers:
   - Default
   - TransparentFX

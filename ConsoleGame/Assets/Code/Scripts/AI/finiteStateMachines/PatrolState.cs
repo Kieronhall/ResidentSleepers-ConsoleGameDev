@@ -13,7 +13,7 @@ public class PatrolState : State
 
     public override void Enter()
     {
-        Debug.Log("Entering Patrol");
+        //Debug.Log("Entering Patrol");
         agent.ResumeLastGoal();
         agent.animWalkingOn();
         agent.animShootingOff();
@@ -22,14 +22,14 @@ public class PatrolState : State
 
     public override void Execute()
     {
-        Debug.Log("Executing Patrol");
+        //Debug.Log("Executing Patrol");
         //agent.agentAnimWalk();
         agent.PatrolFunc();
     }
 
     public override void Exit()
     {
-        Debug.Log("Exiting Patrol");
+        //Debug.Log("Exiting Patrol");
         agent.animWalkingOff();
     }
 }

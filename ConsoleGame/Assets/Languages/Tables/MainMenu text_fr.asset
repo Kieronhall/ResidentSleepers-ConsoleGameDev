@@ -34,6 +34,22 @@ MonoBehaviour:
     m_Localized: FERMER
     m_Metadata:
       m_Items: []
+  - m_Id: 5787544374444032
+    m_Localized: RECOMMENCER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5790488708743168
+    m_Localized: CONTINUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5791796962492416
+    m_Localized: DOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5792468470562816
+    m_Localized: SENSIBILITE
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

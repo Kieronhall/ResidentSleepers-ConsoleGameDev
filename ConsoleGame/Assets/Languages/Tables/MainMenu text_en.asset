@@ -36,6 +36,22 @@ MonoBehaviour:
     m_Localized: EXIT
     m_Metadata:
       m_Items: []
+  - m_Id: 5787544374444032
+    m_Localized: RESTART
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5790488708743168
+    m_Localized: RESUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5791796962492416
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5792468470562816
+    m_Localized: SENSIBILITY
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

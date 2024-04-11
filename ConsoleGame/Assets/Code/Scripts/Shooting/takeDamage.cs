@@ -9,8 +9,11 @@ public class takeDamage : MonoBehaviour
     public collisionType damageType;
 
     public Target target;
-
-    public void Hit(float damage)
+    private void Start()
+    {
+        target.health = target.maxHealth;
+    }
+        public void Hit(float damage)
     {
         target.health -= damage;
         if (target.health <= 0)

@@ -124,7 +124,7 @@ public class CoverController : MonoBehaviour
                 MoveToCover(highCoverPos);
                 StartCoroutine(CoverTimeout());
             }
-            else if (!highCover)
+            if (lowCover && !highCover)
             {
                 inLowCover = true;
                 MoveToCover(lowCoverPos);

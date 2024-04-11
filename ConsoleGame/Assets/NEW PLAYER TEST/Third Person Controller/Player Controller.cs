@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
             rotationSpeed * Time.deltaTime);
+            moveSpeed = isSprinting ? 5f : isCrouching ? 1.5f : 3f;
         }
 
         characterController.Move(velocity * Time.deltaTime);
@@ -133,14 +134,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(crouchKey) && !isCrouching || Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
         {
-            moveSpeed = 1.5f;
             isCrouching = true;
             characterController.height = 1.31f;
             characterController.center = new Vector3(0f, 0.678f, 0.38f);
         }
         else if (Input.GetKeyDown(crouchKey) && isCrouching || Input.GetKeyDown(KeyCode.LeftControl) && isCrouching)
         {
-            moveSpeed = 3f;
             isCrouching = false;
             characterController.height = 1.7f;
             characterController.center = new Vector3(0f, 0.87f, 0.1f);
@@ -151,12 +150,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(sprintKey) && !isCrouching || Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
         {
-            moveSpeed = 5f;
             isSprinting = true;
         }
         else if (Input.GetKeyUp(sprintKey) && !isCrouching || Input.GetKeyUp(KeyCode.LeftShift) && !isCrouching)
         {
-            moveSpeed = 3f;
             isSprinting = false;
         }
     }

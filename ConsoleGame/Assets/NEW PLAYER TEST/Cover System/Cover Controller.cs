@@ -9,12 +9,9 @@ public class CoverController : MonoBehaviour
 {
     [SerializeField] float maxDistanceFromCover;
     [SerializeField] LayerMask coverLayerMask;
-    [SerializeField] Transform highCoverDetectionTransform;
 
     Animator animator;
-
     PlayerController playerController;
-
     Collider coverCollider;
 
     public bool inCover;
@@ -50,35 +47,30 @@ public class CoverController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (inHighCover)
-        {
-            float minX = highCoverPos.x - coverCollider.bounds.size.x / 2;
-            float maxX = highCoverPos.x + coverCollider.bounds.size.x / 2;
-            float minZ = highCoverPos.z - coverCollider.bounds.size.z / 2;
-            float maxZ = highCoverPos.z + coverCollider.bounds.size.z / 2;
+        //if (inHighCover)
+        //{
+        //    RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
+        //}
+        //if (inLowCover)
+        //{
+        //    RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
+        //}
 
-            Vector3 newPosition = new Vector3(
-                        Mathf.Clamp(transform.position.x, minX, maxX),
-                        transform.position.y,
-                        Mathf.Clamp(transform.position.z, minZ, maxZ)
-                    );
-            
-            transform.position = newPosition;
+        if (inHighCover && coverCollider != null)
+        {
+            Debug.Log("High Cover Area: " + GetCoverArea());
+            Debug.Log("High Cover Position: " + highCoverPos);
+            Debug.Log("High Cover Collider Size: " + coverCollider.bounds.size);
+
+            RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
         }
-        if (inLowCover)
+        if (inLowCover && coverCollider != null)
         {
-            float minX = lowCoverPos.x - coverCollider.bounds.size.x / 2;
-            float maxX = lowCoverPos.x + coverCollider.bounds.size.x / 2;
-            float minZ = lowCoverPos.z - coverCollider.bounds.size.z / 2;
-            float maxZ = lowCoverPos.z + coverCollider.bounds.size.z / 2;
+            Debug.Log("Low Cover Area: " + GetCoverArea());
+            Debug.Log("Low Cover Position: " + lowCoverPos);
+            Debug.Log("Low Cover Collider Size: " + coverCollider.bounds.size);
 
-            Vector3 newPosition = new Vector3(
-                        Mathf.Clamp(transform.position.x, minX, maxX),
-                        transform.position.y,
-                        Mathf.Clamp(transform.position.z, minZ, maxZ)
-                    );
-            
-            transform.position = newPosition;
+            RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
         }
     }
 
@@ -89,6 +81,7 @@ public class CoverController : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0, 0.8f, 0), transform.forward, out lowHitInfo, maxDistanceFromCover, coverLayerMask))
         {
             lowCoverPos = lowHitInfo.point + lowHitInfo.normal * 0.25f;
+            coverCollider = lowHitInfo.collider;
             lowCover = true;
         } 
         else
@@ -104,6 +97,7 @@ public class CoverController : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0, 1.5f, 0), transform.forward, out highHitInfo, maxDistanceFromCover, coverLayerMask))
         {
             highCoverPos = highHitInfo.point + highHitInfo.normal * 0.25f;
+            coverCollider = highHitInfo.collider;
             highCover = true;
         }
         else
@@ -115,7 +109,9 @@ public class CoverController : MonoBehaviour
     private float GetCoverArea()
     {
         Bounds bounds = coverCollider.bounds;
-        return bounds.size.x * bounds.size.z;
+        float coverArea = bounds.size.x * bounds.size.z;
+        Debug.Log("Cover Area: " + coverArea);
+        return coverArea;
     }
 
     private void TakeCover()
@@ -125,18 +121,14 @@ public class CoverController : MonoBehaviour
             if (highCover)
             {
                 inHighCover = true;
-                transform.DOMove(new Vector3(highCoverPos.x, transform.position.y, highCoverPos.z), 0.2f);
-                playerController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
+                MoveToCover(highCoverPos);
                 StartCoroutine(CoverTimeout());
-                Debug.Log("In High Cover");
             }
             else if (!highCover)
             {
                 inLowCover = true;
-                transform.DOMove(new Vector3(lowCoverPos.x, transform.position.y, lowCoverPos.z), 0.2f);
-                playerController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
+                MoveToCover(lowCoverPos);
                 StartCoroutine(CoverTimeout());
-                Debug.Log("In Low Cover");
             }
         }
     }
@@ -168,8 +160,25 @@ public class CoverController : MonoBehaviour
         inCover = true;
     }
 
-    private Vector3 GetCoverSurfaceDirection(Vector3 coverPos)
+    private void MoveToCover(Vector3 coverPosition)
     {
-        return Vector3.Cross(coverPos, Vector3.up).normalized;
+        transform.DOMove(new Vector3(coverPosition.x, transform.position.y, coverPosition.z), 0.2f);
+        playerController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
+    }
+
+    private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)
+    {
+        float minX = coverPosition.x - coverSize.x / 2;
+        float maxX = coverPosition.x + coverSize.x / 2;
+        float minZ = coverPosition.z - coverSize.z / 2;
+        float maxZ = coverPosition.z + coverSize.z / 2;
+
+        Vector3 newPosition = new Vector3(
+            Mathf.Clamp(transform.position.x, minX, maxX),
+            transform.position.y,
+            Mathf.Clamp(transform.position.z, minZ, maxZ)
+        );
+
+        transform.position = newPosition;
     }
 }

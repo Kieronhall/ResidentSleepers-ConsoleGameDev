@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using ThirdPerson;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(CoverController))]
+[RequireComponent (typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
@@ -35,35 +32,8 @@ public class PlayerController : MonoBehaviour
     CoverController coverController;
     public CharacterController characterController;
 
-    private PlayerControls _input;
-    private PlayerInput _playerInput;
-
-    [Header("Cinemachine")]
-    public GameObject cinemachineCameraTarget;
-    public float topClamp = 70.0f;
-    public float bottomClamp = -30.0f;
-    public float cameraAngleOverride = 0.0f;
-    public bool lockCameraPosition = false;
-
-    // cinemachine
-    private float _cinemachineTargetYaw;
-    private float _cinemachineTargetPitch;
-
-    [Range(0.0f, 0.3f)]
-    public float rotationSmoothTime = 0.12f;
-    public float speedChangeRate = 10.0f;
-    public float sensitivty = 1f;
-    public float gravity = -15.0f;
-    public float fallTimeout = 0.15f;
-
-    private const float _threshold = 0.01f;
-
-
     private void Awake()
     {
-        _cinemachineTargetYaw = cinemachineCameraTarget.transform.rotation.eulerAngles.y;
-        _input = GetComponent<PlayerControls>();
-
         cameraController = Camera.main.GetComponent<CameraController>();
         animator = GetComponent<Animator>();
         coverController = GetComponent<CoverController>();
@@ -75,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -82,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
         var moveInput = new Vector3(horizontal, 0, vertical).normalized;
 
-        var moveDirection = cinemachineCameraTarget.transform.rotation * moveInput;
+        var moveDirection = cameraController.PlanarRoatation * moveInput;
 
         GroundCheck();
         Crouch();
@@ -185,38 +156,5 @@ public class PlayerController : MonoBehaviour
         {
             isSprinting = false;
         }
-    }
-
-    private void CameraRotation()
-    {
-        // if there is an input and camera position is not fixed
-        if (_input.look.sqrMagnitude >= _threshold && !lockCameraPosition)
-        {
-            //Don't multiply mouse input by Time.deltaTime;
-            float deltaTimeMultiplier =  1.0f;
-
-            _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivty;
-            _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivty;
-        }
-
-        // clamp rotations so values are limited 360 degrees
-        _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-        _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
-
-        // Cinemachine will follow this target
-        cinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + cameraAngleOverride,
-            _cinemachineTargetYaw, 0.0f);
-    }
-
-    private void LateUpdate()
-    {
-        CameraRotation();
-    }
-
-    private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-    {
-        if (lfAngle < -360f) lfAngle += 360f;
-        if (lfAngle > 360f) lfAngle -= 360f;
-        return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 }

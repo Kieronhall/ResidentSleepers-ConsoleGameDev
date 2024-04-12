@@ -65,7 +65,8 @@ public class Agent : MonoBehaviour
         shooting = new ShootingState(this, sm);
         sm.Init(idle);
         s = this.gameObject.GetComponent<sensors>();
-        healthBar.GetComponent<HealthBar>();
+        if(healthBar != null) { healthBar.GetComponent<HealthBar>(); }
+        
         lastDamageTime = -damageCooldown; 
 
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();

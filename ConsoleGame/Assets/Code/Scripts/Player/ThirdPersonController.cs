@@ -49,6 +49,7 @@ namespace ThirdPerson
         private CharacterController _controller;
         private PlayerControls _input;
         private GameObject _mainCamera;
+        private CoverController _coverController;
         private bool _rotateOnMove = true;
 
         private const float _threshold = 0.01f;
@@ -82,6 +83,11 @@ namespace ThirdPerson
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<PlayerControls>();
             _playerInput = GetComponent<PlayerInput>();
+            _coverController = GetComponent<CoverController>();
+
+            _controller.height = 1.7f;
+            _controller.radius = 0.2f;
+            _controller.center = new Vector3(0f, 0.87f, 0.1f);
 
             startYScale = transform.localScale.y;
         }

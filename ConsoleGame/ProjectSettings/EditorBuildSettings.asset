@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Joao/Level_1.unity
     guid: 90bdf994cb6cf244e91f86a07a35dd69
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Kieron/Level_2.unity
     guid: 381e6ce6d6c04c54688706db1dcdad3b
   - enabled: 0

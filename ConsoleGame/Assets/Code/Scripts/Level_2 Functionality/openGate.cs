@@ -7,6 +7,8 @@ public class openGate : MonoBehaviour
     public string playerTag = "Player";
     public CameraSwitcher cameraSwitcher;
     public float delayBeforeCameraSwitch = 5f;
+    private bool hasSwitchedCamera = false;
+    public rhythmGameManager rhythmgamemanager;
 
     //Gate Opening
     public Transform objectToRotate; 
@@ -15,14 +17,18 @@ public class openGate : MonoBehaviour
     private float startTime;
     private Quaternion startRotation;
     private bool isRotating = false;
+    public bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(playerTag))
+        if (!hasTriggered && other.CompareTag(playerTag))
         {
             Debug.Log("Player collided with the gate and cameraSwitch triggered");
             StartCoroutine(DelayedSwitchCamera());
             StartRotation();
+
+            rhythmgamemanager.rhythmGameActive();
+            hasTriggered = true;
         }
     }
 
@@ -50,8 +56,13 @@ public class openGate : MonoBehaviour
 
     private IEnumerator DelayedSwitchCamera()
     {
-        yield return new WaitForSeconds(delayBeforeCameraSwitch);
-        PlayerPrefs.SetInt("Alarm", 1);
-        cameraSwitcher.switchCamera(); 
+        if (!hasSwitchedCamera)
+        {
+            hasSwitchedCamera = true; 
+
+            yield return new WaitForSeconds(delayBeforeCameraSwitch);
+            PlayerPrefs.SetInt("Alarm", 1);
+            cameraSwitcher.switchCamera();
+        }
     }
 }

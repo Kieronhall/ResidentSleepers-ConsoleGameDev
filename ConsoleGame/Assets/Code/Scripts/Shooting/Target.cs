@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health;
-    private float maxHealth = 100f;
+    public float health ;
+    public float maxHealth = 100f;
     public GameObject extraAmmo;
     private float chanceSpawn = 0.45f;
     private float randomValue;
@@ -15,7 +15,6 @@ public class Target : MonoBehaviour
     
     private void Start()
     {
-        health = maxHealth;
         //enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
         agent = this.gameObject.GetComponent<Agent>();
     }

@@ -35,7 +35,7 @@ namespace ThirdPerson
         public bool lockCameraPosition = false;
 
         // cinemachine
-        private float _cinemachineTargetYaw;
+        private float cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
 
         // player
@@ -45,12 +45,12 @@ namespace ThirdPerson
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
-        private PlayerInput _playerInput;
-        private CharacterController _controller;
-        private PlayerControls _input;
-        private GameObject _mainCamera;
-        private bool _rotateOnMove = true;
+        PlayerInput playerInput;
+        public CharacterController characterController;
+        PlayerControls _input;
+        GameObject mainCamera;
 
+        private bool _rotateOnMove = true;
         private const float _threshold = 0.01f;
 
 
@@ -59,7 +59,7 @@ namespace ThirdPerson
             get
             {
 #if ENABLE_INPUT_SYSTEM
-                return _playerInput.currentControlScheme == "KeyboardMouse";
+                return playerInput.currentControlScheme == "KeyboardMouse";
 #else
 				return false;
 #endif
@@ -69,19 +69,19 @@ namespace ThirdPerson
         private void Awake()
         {
             // get a reference to the main camera
-            if (_mainCamera == null)
+            if (mainCamera == null)
             {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
         }
 
         private void Start()
         {
-            _cinemachineTargetYaw = cinemachineCameraTarget.transform.rotation.eulerAngles.y;
+            cinemachineTargetYaw = cinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
-            _controller = GetComponent<CharacterController>();
+            characterController = GetComponent<CharacterController>();
             _input = GetComponent<PlayerControls>();
-            _playerInput = GetComponent<PlayerInput>();
+            playerInput = GetComponent<PlayerInput>();
 
             startYScale = transform.localScale.y;
         }
@@ -116,17 +116,17 @@ namespace ThirdPerson
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivty;
+                cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivty;
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivty;
             }
 
             // clamp rotations so values are limited 360 degrees
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+            cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
 
             // Cinemachine will follow this target
             cinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + cameraAngleOverride,
-                _cinemachineTargetYaw, 0.0f);
+                cinemachineTargetYaw, 0.0f);
         }
 
         private void Move()
@@ -138,7 +138,7 @@ namespace ThirdPerson
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
-            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+            float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
@@ -166,7 +166,7 @@ namespace ThirdPerson
             if (_input.move != Vector2.zero)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
+                                  mainCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                     rotationSmoothTime);
 
@@ -181,7 +181,7 @@ namespace ThirdPerson
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+            characterController.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 

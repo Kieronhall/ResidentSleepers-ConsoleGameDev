@@ -1,184 +1,186 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPerson;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-public class CoverController : MonoBehaviour
+namespace Thirdperson
 {
-    [SerializeField] float maxDistanceFromCover;
-    [SerializeField] LayerMask coverLayerMask;
-
-    Animator animator;
-    PlayerController playerController;
-    Collider coverCollider;
-
-    public bool inCover;
-    bool highCover;
-    bool lowCover;
-    bool inLowCover;
-    bool inHighCover;
-
-    Vector3 lowCoverPos;
-    Vector3 highCoverPos;
-
-    KeyCode coverKey = KeyCode.JoystickButton9;
-
-    private void Awake()
+    public class CoverController : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        playerController = GetComponent<PlayerController>();
-    }
+        [SerializeField] float maxDistanceFromCover;
+        [SerializeField] LayerMask coverLayerMask;
 
-    private void Update()
-    {
-        TakeCover();
-        LeaveCover();
-        IsNearLowCover();
-        IsNearHighCover();
+        Animator animator;
+        Collider coverCollider;
+        ThirdPersonController thirdPersonController;
 
-        Debug.DrawRay(transform.position + new Vector3(0, 0.8f, 0), transform.forward * maxDistanceFromCover, (lowCover) ? Color.green : Color.white);
-        Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), transform.forward * maxDistanceFromCover, (highCover) ? Color.blue : Color.white);
+        public bool inCover;
+        bool highCover;
+        bool lowCover;
+        bool inLowCover;
+        bool inHighCover;
 
-        animator.SetBool("inHighCover", inHighCover);
-        animator.SetBool("inLowCover", inLowCover);
-    }
+        Vector3 lowCoverPos;
+        Vector3 highCoverPos;
 
-    private void FixedUpdate()
-    {
-        //if (inHighCover)
-        //{
-        //    RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
-        //}
-        //if (inLowCover)
-        //{
-        //    RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
-        //}
+        KeyCode coverKey = KeyCode.JoystickButton9;
 
-        if (inHighCover && coverCollider != null)
+        private void Awake()
         {
-            Debug.Log("High Cover Area: " + GetCoverArea());
-            Debug.Log("High Cover Position: " + highCoverPos);
-            Debug.Log("High Cover Collider Size: " + coverCollider.bounds.size);
-
-            RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
+            animator = GetComponent<Animator>();
         }
-        if (inLowCover && coverCollider != null)
-        {
-            Debug.Log("Low Cover Area: " + GetCoverArea());
-            Debug.Log("Low Cover Position: " + lowCoverPos);
-            Debug.Log("Low Cover Collider Size: " + coverCollider.bounds.size);
 
-            RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
+        private void Update()
+        {
+            TakeCover();
+            LeaveCover();
+            IsNearLowCover();
+            IsNearHighCover();
+
+            Debug.DrawRay(transform.position + new Vector3(0, 0.8f, 0), transform.forward * maxDistanceFromCover, (lowCover) ? Color.green : Color.white);
+            Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), transform.forward * maxDistanceFromCover, (highCover) ? Color.blue : Color.white);
+
+            animator.SetBool("inHighCover", inHighCover);
+            animator.SetBool("inLowCover", inLowCover);
         }
-    }
 
-    private void IsNearLowCover()
-    {
-        RaycastHit lowHitInfo;
-
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.8f, 0), transform.forward, out lowHitInfo, maxDistanceFromCover, coverLayerMask))
+        private void FixedUpdate()
         {
-            lowCoverPos = lowHitInfo.point + lowHitInfo.normal * 0.25f;
-            coverCollider = lowHitInfo.collider;
-            lowCover = true;
-        } 
-        else
-        {
-            lowCover = false;
-        }
-    }
+            //if (inHighCover)
+            //{
+            //    RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
+            //}
+            //if (inLowCover)
+            //{
+            //    RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
+            //}
 
-    private void IsNearHighCover()
-    {
-        RaycastHit highHitInfo;
-
-        if (Physics.Raycast(transform.position + new Vector3(0, 1.5f, 0), transform.forward, out highHitInfo, maxDistanceFromCover, coverLayerMask))
-        {
-            highCoverPos = highHitInfo.point + highHitInfo.normal * 0.25f;
-            coverCollider = highHitInfo.collider;
-            highCover = true;
-        }
-        else
-        {
-            highCover = false;
-        }
-    }
-
-    private float GetCoverArea()
-    {
-        Bounds bounds = coverCollider.bounds;
-        float coverArea = bounds.size.x * bounds.size.z;
-        Debug.Log("Cover Area: " + coverArea);
-        return coverArea;
-    }
-
-    private void TakeCover()
-    {
-        if (Input.GetKeyDown(coverKey) && !inCover || Input.GetKeyDown(KeyCode.C) && !inCover)
-        {
-            if (highCover)
+            if (inHighCover && coverCollider != null)
             {
-                inHighCover = true;
-                MoveToCover(highCoverPos);
-                StartCoroutine(CoverTimeout());
+                Debug.Log("High Cover Area: " + GetCoverArea());
+                Debug.Log("High Cover Position: " + highCoverPos);
+                Debug.Log("High Cover Collider Size: " + coverCollider.bounds.size);
+
+                RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
             }
-            if (lowCover && !highCover)
+            if (inLowCover && coverCollider != null)
             {
-                inLowCover = true;
-                MoveToCover(lowCoverPos);
-                StartCoroutine(CoverTimeout());
+                Debug.Log("Low Cover Area: " + GetCoverArea());
+                Debug.Log("Low Cover Position: " + lowCoverPos);
+                Debug.Log("Low Cover Collider Size: " + coverCollider.bounds.size);
+
+                RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
             }
         }
-    }
 
-    private void LeaveCover()
-    {
-        if (Input.GetKeyDown(coverKey) && inCover || Input.GetKeyDown(KeyCode.C) && inCover)
+        private void IsNearLowCover()
         {
-            if (highCover)
+            RaycastHit lowHitInfo;
+
+            if (Physics.Raycast(transform.position + new Vector3(0, 0.8f, 0), transform.forward, out lowHitInfo, maxDistanceFromCover, coverLayerMask))
             {
-                inHighCover = false;
-                playerController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
-                inCover = false;
-                Debug.Log("Left High Cover");
-            }
-            else if (!highCover)
+                lowCoverPos = lowHitInfo.point + lowHitInfo.normal * 0.25f;
+                coverCollider = lowHitInfo.collider;
+                lowCover = true;
+            } 
+            else
             {
-                inLowCover = false;
-                playerController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
-                inCover = false;
-                Debug.Log("Left Low Cover");
+                lowCover = false;
             }
         }
-    }
 
-    IEnumerator CoverTimeout()
-    {
-        yield return new WaitForSeconds(0.5f);
-        inCover = true;
-    }
+        private void IsNearHighCover()
+        {
+            RaycastHit highHitInfo;
 
-    private void MoveToCover(Vector3 coverPosition)
-    {
-        transform.DOMove(new Vector3(coverPosition.x, transform.position.y, coverPosition.z), 0.2f);
-        playerController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
-    }
+            if (Physics.Raycast(transform.position + new Vector3(0, 1.5f, 0), transform.forward, out highHitInfo, maxDistanceFromCover, coverLayerMask))
+            {
+                highCoverPos = highHitInfo.point + highHitInfo.normal * 0.25f;
+                coverCollider = highHitInfo.collider;
+                highCover = true;
+            }
+            else
+            {
+                highCover = false;
+            }
+        }
 
-    private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)
-    {
-        float minX = coverPosition.x - coverSize.x / 2;
-        float maxX = coverPosition.x + coverSize.x / 2;
-        float minZ = coverPosition.z - coverSize.z / 2;
-        float maxZ = coverPosition.z + coverSize.z / 2;
+        private float GetCoverArea()
+        {
+            Bounds bounds = coverCollider.bounds;
+            float coverArea = bounds.size.x * bounds.size.z;
+            Debug.Log("Cover Area: " + coverArea);
+            return coverArea;
+        }
 
-        Vector3 newPosition = new Vector3(
-            Mathf.Clamp(transform.position.x, minX, maxX),
-            transform.position.y,
-            Mathf.Clamp(transform.position.z, minZ, maxZ)
-        );
+        private void TakeCover()
+        {
+            if (Input.GetKeyDown(coverKey) && !inCover || Input.GetKeyDown(KeyCode.C) && !inCover)
+            {
+                if (highCover)
+                {
+                    inHighCover = true;
+                    MoveToCover(highCoverPos);
+                    StartCoroutine(CoverTimeout());
+                }
+                if (lowCover && !highCover)
+                {
+                    inLowCover = true;
+                    MoveToCover(lowCoverPos);
+                    StartCoroutine(CoverTimeout());
+                }
+            }
+        }
 
-        transform.position = newPosition;
+        private void LeaveCover()
+        {
+            if (Input.GetKeyDown(coverKey) && inCover || Input.GetKeyDown(KeyCode.C) && inCover)
+            {
+                if (highCover)
+                {
+                    inHighCover = false;
+                    thirdPersonController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
+                    inCover = false;
+                    Debug.Log("Left High Cover");
+                }
+                else if (!highCover)
+                {
+                    inLowCover = false;
+                    thirdPersonController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
+                    inCover = false;
+                    Debug.Log("Left Low Cover");
+                }
+            }
+        }
+
+        IEnumerator CoverTimeout()
+        {
+            yield return new WaitForSeconds(0.5f);
+            inCover = true;
+        }
+
+        private void MoveToCover(Vector3 coverPosition)
+        {
+            transform.DOMove(new Vector3(coverPosition.x, transform.position.y, coverPosition.z), 0.2f);
+            thirdPersonController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
+        }
+
+        private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)
+        {
+            float minX = coverPosition.x - coverSize.x / 2;
+            float maxX = coverPosition.x + coverSize.x / 2;
+            float minZ = coverPosition.z - coverSize.z / 2;
+            float maxZ = coverPosition.z + coverSize.z / 2;
+
+            Vector3 newPosition = new Vector3(
+                Mathf.Clamp(transform.position.x, minX, maxX),
+                transform.position.y,
+                Mathf.Clamp(transform.position.z, minZ, maxZ)
+            );
+
+            transform.position = newPosition;
+        }
     }
 }

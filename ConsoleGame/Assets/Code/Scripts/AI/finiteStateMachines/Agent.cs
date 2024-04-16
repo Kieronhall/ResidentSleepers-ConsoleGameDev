@@ -26,11 +26,7 @@ public class Agent : MonoBehaviour
     public float wanderTimer = 5f;
 
     //Patrol Variables
-    [Header("Waypoints")]
-    public GameObject patrolFlag1;
-    public GameObject patrolFlag2;
-    public GameObject patrolFlag3;
-    public GameObject patrolFlag4;
+    public GameObject[] waypoints;
     private Transform currentGoal;
     private Transform lastGoal;
 
@@ -70,7 +66,12 @@ public class Agent : MonoBehaviour
         lastDamageTime = -damageCooldown; 
 
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        
+        if (waypoints.Length > 0)
+        {
+            currentGoal = waypoints[0].transform;
+            agent.SetDestination(currentGoal.position);
+        }
+
         switch (agentType)
         {
             case Type.Wander:
@@ -85,7 +86,6 @@ public class Agent : MonoBehaviour
     // SEEK CODE
     public void agentGoToPlayer()
     {
-        // Store the current goal as the last goal before seeking the player
         lastGoal = currentGoal;
         
         agent.destination = player.position;
@@ -100,7 +100,6 @@ public class Agent : MonoBehaviour
             return;
         }
 
-        // Check if the agent has reached the current goal
         if (!agent.pathPending && agent.remainingDistance < 0.1f)
         {
             WanderSetNextGoal();
@@ -108,16 +107,14 @@ public class Agent : MonoBehaviour
     }
     public void WanderSetNextGoal()
     {
-        // choosing a random patrol flag as the next goal
-        GameObject[] patrolFlags = { patrolFlag1, patrolFlag2, patrolFlag3, patrolFlag4 };
-        GameObject randomFlag = patrolFlags[Random.Range(0, patrolFlags.Length)];
-
-        // Ensure the GameObject has a Transform component
-        if (randomFlag != null)
+        if (waypoints.Length > 0)
         {
-            currentGoal = randomFlag.transform;
-
-            agent.SetDestination(currentGoal.position);
+            GameObject randomFlag = waypoints[Random.Range(0, waypoints.Length)];
+            if (randomFlag != null)
+            {
+                currentGoal = randomFlag.transform;
+                agent.SetDestination(currentGoal.position);
+            }
         }
     }
     // PATROL CODE
@@ -128,8 +125,6 @@ public class Agent : MonoBehaviour
             Debug.LogError("Agent is null.");
             return;
         }
-
-        // Check if the agent has reached the current goal
         if (!agent.pathPending && agent.remainingDistance < 0.1f)
         {
             PatrolSetNextGoal();
@@ -137,34 +132,17 @@ public class Agent : MonoBehaviour
     }
     void PatrolSetNextGoal()
     {
-        // Switch the goal to the next flag
-        if (currentGoal == patrolFlag1.transform)
+        if (currentGoal != null && waypoints.Length > 0)
         {
-            currentGoal = patrolFlag2.transform;
-        }
-        else if (currentGoal == patrolFlag2.transform)
-        {
-            currentGoal = patrolFlag3.transform;
-        }
-        else if (currentGoal == patrolFlag3.transform)
-        {
-            currentGoal = patrolFlag4.transform;
-        }
-        else if (currentGoal == patrolFlag4.transform)
-        {
-            currentGoal = patrolFlag1.transform;
-        }
-        else
-        {
-            currentGoal = patrolFlag1.transform; // Default to patrolFlag1 if currentGoal is null or unexpected
-        }
+            int index = System.Array.IndexOf(waypoints, currentGoal.gameObject);
+            index = (index + 1) % waypoints.Length;
+            currentGoal = waypoints[index].transform;
 
-        // Set the destination for the NavMeshAgent
-        agent.SetDestination(currentGoal.position);
+            agent.SetDestination(currentGoal.position);
+        }
     }
     public void ResumeLastGoal()
     {
-        // Check if there is a last goal stored
         if (lastGoal != null)
         {
             currentGoal = lastGoal;

@@ -79,12 +79,15 @@ namespace ThirdPerson
             aim = newAimState;
         }
 
-		public void CrouchInput(bool newCrouchState)
-		{
-			crouch = newCrouchState;
-		}
+        public void CrouchInput(bool newCrouchState)
+        {
+            if (newCrouchState)
+            {
+                crouch = !crouch;
+            }
+        }
 
-		public void InteractInput(bool newInteractState)
+        public void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
 		}

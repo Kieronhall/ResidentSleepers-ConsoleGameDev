@@ -115,24 +115,24 @@ namespace ThirdPerson
         //Animations
         public void playerAnimAim()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", true);
+            controller.animator.SetBool("isAiming", true);
         }
         public void playerAnimAimFalse()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", false);
+            controller.animator.SetBool("isAiming", false);
         }
         public void playerAnimShoot()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
+            controller.animator.SetBool("isShooting", true);
             Invoke("ResetShootAnimation", 0.1f);
         }
         void ResetShootAnimation()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
+            controller.animator.SetBool("isShooting", false);
         }
         public void playerAnimShootFalse()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
+            controller.animator.SetBool("isShooting", false);
         }
 
     }

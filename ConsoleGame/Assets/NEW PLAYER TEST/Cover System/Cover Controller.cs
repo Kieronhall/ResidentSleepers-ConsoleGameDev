@@ -12,9 +12,10 @@ namespace Thirdperson
         [SerializeField] float maxDistanceFromCover;
         [SerializeField] LayerMask coverLayerMask;
 
-        Animator animator;
         Collider coverCollider;
-        ThirdPersonController thirdPersonController;
+        ThirdPersonController controller;
+        PlayerControls controls;
+        Animator animator;
 
         public bool inCover;
         bool highCover;
@@ -27,9 +28,9 @@ namespace Thirdperson
 
         KeyCode coverKey = KeyCode.JoystickButton9;
 
-        private void Awake()
+        private void Start()
         {
-            animator = GetComponent<Animator>();
+           animator= GetComponent<Animator>();
         }
 
         private void Update()
@@ -117,7 +118,7 @@ namespace Thirdperson
 
         private void TakeCover()
         {
-            if (Input.GetKeyDown(coverKey) && !inCover || Input.GetKeyDown(KeyCode.C) && !inCover)
+            if (Input.GetKeyDown(coverKey) && !inCover && !controls.aim || Input.GetKeyDown(KeyCode.C) && !inCover && !controls.aim)
             {
                 if (highCover)
                 {
@@ -136,21 +137,19 @@ namespace Thirdperson
 
         private void LeaveCover()
         {
-            if (Input.GetKeyDown(coverKey) && inCover || Input.GetKeyDown(KeyCode.C) && inCover)
+            if (Input.GetKeyDown(coverKey) && inCover && !controls.aim || Input.GetKeyDown(KeyCode.C) && inCover && !controls.aim)
             {
                 if (highCover)
                 {
                     inHighCover = false;
-                    thirdPersonController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
+                    controller.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                     inCover = false;
-                    Debug.Log("Left High Cover");
                 }
                 else if (!highCover)
                 {
                     inLowCover = false;
-                    thirdPersonController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
+                    controller.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                     inCover = false;
-                    Debug.Log("Left Low Cover");
                 }
             }
         }
@@ -164,7 +163,7 @@ namespace Thirdperson
         private void MoveToCover(Vector3 coverPosition)
         {
             transform.DOMove(new Vector3(coverPosition.x, transform.position.y, coverPosition.z), 0.2f);
-            thirdPersonController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
+            controller.characterController.center = new Vector3(0f, 0.87f, -0.24f);
         }
 
         private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)

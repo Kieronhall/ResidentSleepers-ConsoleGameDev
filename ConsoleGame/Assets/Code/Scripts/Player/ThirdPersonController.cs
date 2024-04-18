@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using Thirdperson;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ThirdPerson
@@ -11,9 +13,6 @@ namespace ThirdPerson
         public float moveSpeed = 3f;
         public float sprintSpeed = 6f;
         public float crouchSpeed = 1.5f;
-        public float crouchYScale;
-        private float startYScale;
-        public bool crouched = false;
         [Range(0.0f, 0.3f)]
         public float rotationSmoothTime = 0.12f;
         public float speedChangeRate = 10.0f;
@@ -36,23 +35,26 @@ namespace ThirdPerson
 
         // cinemachine
         private float cinemachineTargetYaw;
-        private float _cinemachineTargetPitch;
+        private float cinemachineTargetPitch;
 
         // player
-        private float _speed;
-        private float _targetRotation = 0.0f;
-        private float _rotationVelocity;
-        private float _verticalVelocity;
-        private float _terminalVelocity = 53.0f;
+        private float speed;
+        private float targetRotation = 0.0f;
+        private float rotationVelocity;
+        private float verticalVelocity;
+        private float terminalVelocity = 53.0f;
 
-        PlayerInput playerInput;
         public CharacterController characterController;
-        PlayerControls _input;
+        public Animator animator;
+        PlayerInput playerInput;
+        PlayerControls input;
         GameObject mainCamera;
+        CoverController coverController;
 
+        bool isCrouching;
+        bool crouchTImeout;
         private bool _rotateOnMove = true;
         private const float _threshold = 0.01f;
-
 
         private bool IsCurrentDeviceMouse
         {
@@ -80,10 +82,13 @@ namespace ThirdPerson
             cinemachineTargetYaw = cinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             characterController = GetComponent<CharacterController>();
-            _input = GetComponent<PlayerControls>();
+            input = GetComponent<PlayerControls>();
+            animator = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
 
-            startYScale = transform.localScale.y;
+            characterController.height = 1.7f;
+            characterController.radius = 0.2f;
+            characterController.center = new Vector3(0f, 0.87f, 0.1f);
         }
 
         private void Update()
@@ -111,63 +116,63 @@ namespace ThirdPerson
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
-            if (_input.look.sqrMagnitude >= _threshold && !lockCameraPosition)
+            if (input.look.sqrMagnitude >= _threshold && !lockCameraPosition)
             {
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivty;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivty;
+                cinemachineTargetYaw += input.look.x * deltaTimeMultiplier * sensitivty;
+                cinemachineTargetPitch += input.look.y * deltaTimeMultiplier * sensitivty;
             }
 
             // clamp rotations so values are limited 360 degrees
             cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
+            cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, bottomClamp, topClamp);
 
             // Cinemachine will follow this target
-            cinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + cameraAngleOverride,
+            cinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + cameraAngleOverride,
                 cinemachineTargetYaw, 0.0f);
         }
 
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed, crouch speed if crouch is pressed
-            float targetSpeed = _input.sprint ? sprintSpeed : _input.crouch ? crouchSpeed : moveSpeed;
+            float targetSpeed = input.sprint ? sprintSpeed : input.crouch ? crouchSpeed : moveSpeed;
 
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
-            float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+            float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
                 currentHorizontalSpeed > targetSpeed + speedOffset)
             {
                 // creates curved result rather than a linear one giving a more organic speed change
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+                speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                     Time.deltaTime * speedChangeRate);
 
                 // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
+                speed = Mathf.Round(speed * 1000f) / 1000f;
             }
             else
             {
-                _speed = targetSpeed;
+                speed = targetSpeed;
             }
 
             // normalise input direction
-            Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            Vector3 inputDirection = new Vector3(input.move.x, 0.0f, input.move.y).normalized;
 
             // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
+            if (input.move != Vector2.zero)
             {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                   mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
+                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity,
                     rotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
@@ -177,40 +182,54 @@ namespace ThirdPerson
                 }
             }
 
-
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            characterController.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            characterController.Move(targetDirection.normalized * (speed * Time.deltaTime) +
+                             new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
+
+            animator.SetFloat("moveAmount", targetSpeed, 0.2f, Time.deltaTime);
         }
 
         private void Crouch()
         {
-            if (_input.crouch)
+            if (input.crouch)
             {
-                transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+                isCrouching = true;
+                animator.SetBool("isCrouching", true);
+                characterController.height = 1.31f;
+                characterController.center = new Vector3(0f, 0.678f, 0.38f);
             }
-            else
+            else if (!input.crouch)
             {
-                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+                isCrouching = false;
+                animator.SetBool("isCrouching", false);
+                characterController.height = 1.7f;
+                characterController.center = new Vector3(0f, 0.87f, 0.1f);
             }
+        }
+
+        IEnumerator CrouchTimeout()
+        {
+            crouchTImeout = true;
+            yield return new WaitForSeconds(1);
+            crouchTImeout = false;
         }
 
         private void Gravity()
         {
             if (grounded)
             {
-                if (_verticalVelocity < 0.0f)
+                if (verticalVelocity < 0.0f)
                 {
-                    _verticalVelocity = -2f;
+                    verticalVelocity = -2f;
                 }
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-            if (_verticalVelocity < _terminalVelocity)
+            if (verticalVelocity < terminalVelocity)
             {
-                _verticalVelocity += gravity * Time.deltaTime;
+                verticalVelocity += gravity * Time.deltaTime;
             }
         }
 

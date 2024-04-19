@@ -8,6 +8,9 @@ public class rhythmGameManager : MonoBehaviour
     public bool gameComplete = false;
     public GameObject placeholderText;
     public openGate opengate;
+    public Door_Script doorfloor;
+    public Door_Script door1stfloor;
+    public lootKeyToHelicopter lootkeytohelicopter;
 
     void Start()
     {
@@ -40,6 +43,9 @@ public class rhythmGameManager : MonoBehaviour
     public void rhythmGameComplete()
     {
         gameComplete = true;
+        doorfloor.doorLocked = false;
+        door1stfloor.doorLocked = false;
+        lootkeytohelicopter.keyLootActive();
         Debug.Log("rhythmGameComplete");
     }
 }

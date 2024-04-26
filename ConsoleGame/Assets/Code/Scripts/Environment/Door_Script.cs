@@ -66,13 +66,13 @@ public class Door_Script : MonoBehaviour
                 StartCoroutine(CloseDoors());
             }
 
-            if (/*_playerControls.interact &&*/ Input.GetKeyDown(KeyCode.Space) && doorOpen == false && Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) <= 2f) // Change KeyCode.Space to the desired key
+            if (_playerControls.interact /*&& Input.GetKeyDown(KeyCode.Space)*/ && doorOpen == false && Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) <= 2f) // Change KeyCode.Space to the desired key
             {
                 Debug.Log("OpenDoor!");
                 _playerControls.interact = false;
                 StartCoroutine(OpenDoors());
             }
-            else if (/*_playerControls.interact &&*/ Input.GetKeyDown(KeyCode.Space) && doorOpen == true) // Change KeyCode.Space to the desired key
+            else if (_playerControls.interact /*&& Input.GetKeyDown(KeyCode.Space)*/ && doorOpen == true) // Change KeyCode.Space to the desired key
             {
                 Debug.Log("CloseDoors!");
                 _playerControls.interact = false;

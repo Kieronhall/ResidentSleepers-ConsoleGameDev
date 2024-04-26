@@ -35,11 +35,9 @@ namespace ThirdPerson
         public float cameraAngleOverride = 0.0f;
         public bool lockCameraPosition = false;
 
-        // cinemachine
         private float cinemachineTargetYaw;
         private float cinemachineTargetPitch;
 
-        // player
         private float speed;
         private float targetRotation = 0.0f;
         private float rotationVelocity;
@@ -54,7 +52,6 @@ namespace ThirdPerson
         CoverController coverController;
 
         bool isCrouching;
-        bool crouchTImeout;
         private bool _rotateOnMove = true;
         private const float _threshold = 0.01f;
 
@@ -210,23 +207,12 @@ namespace ThirdPerson
             {
                 isCrouching = true;
                 animator.SetBool("isCrouching", true);
-                characterController.height = 1.31f;
-                characterController.center = new Vector3(0f, 0.678f, 0.38f);
             }
-            else if (!input.crouch && !coverController.inCover)
+            else if (!input.crouch)
             {
                 isCrouching = false;
                 animator.SetBool("isCrouching", false);
-                characterController.height = 1.7f;
-                characterController.center = new Vector3(0f, 0.87f, 0.1f);
             }
-        }
-
-        IEnumerator CrouchTimeout()
-        {
-            crouchTImeout = true;
-            yield return new WaitForSeconds(1);
-            crouchTImeout = false;
         }
 
         private void Gravity()

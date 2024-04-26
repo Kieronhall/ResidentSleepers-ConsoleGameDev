@@ -10,6 +10,7 @@ namespace ThirdPerson
 {
     public class ThirdPersonAim : MonoBehaviour
     {
+        [Header("Camera")]
         [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
         [SerializeField] private float normalSensitivity;
         [SerializeField] private float aimSensitivity;
@@ -17,16 +18,13 @@ namespace ThirdPerson
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;
         [SerializeField] private HealthBar healthBar;
-        //private takeDamage tDamage;
 
         private ThirdPersonController controller;
         private PlayerControls input;
         private CoverController coverController;
 
-        //Placeholder Gun
+        [Header("Gun")]
         public GameObject gun;
-
-        //damage gun
         public float damage = 100f;
 
         private void Awake()

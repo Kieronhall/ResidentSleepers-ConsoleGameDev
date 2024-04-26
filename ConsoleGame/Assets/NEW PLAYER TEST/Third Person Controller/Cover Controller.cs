@@ -150,26 +150,20 @@ namespace Thirdperson
 
         IEnumerator CoverTimeout()
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             inCover = true;
         }
 
         IEnumerator HighCoverTimeout()
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             inHighCover = true;
         }
 
         IEnumerator LowCoverTimeout()
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             inLowCover = true;
-        }
-
-        private void MoveToCover(Vector3 coverPosition)
-        {
-            transform.DOMove(new Vector3(coverPosition.x, transform.position.y, coverPosition.z), 0.2f);
-            thirdPersonController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
         }
 
         //private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)

@@ -4978,6 +4978,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   inCover: 0
+  inLowCover: 0
+  inHighCover: 0
 --- !u!1 &7183866021440041201
 GameObject:
   m_ObjectHideFlags: 0

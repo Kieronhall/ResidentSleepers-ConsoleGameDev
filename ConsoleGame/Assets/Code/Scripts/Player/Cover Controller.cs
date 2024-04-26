@@ -50,26 +50,6 @@ namespace Thirdperson
             animator.SetBool("inLowCover", inLowCover);
         }
 
-        //private void FixedUpdate()
-        //{
-        // if (inHighCover && coverCollider != null)
-        //    {
-        //        Debug.Log("High Cover Area: " + GetCoverArea());
-        //        Debug.Log("High Cover Position: " + highCoverPos);
-        //        Debug.Log("High Cover Collider Size: " + coverCollider.bounds.size);
-
-        //        RestrictPlayerMovement(highCoverPos, coverCollider.bounds.size);
-        //    }
-        //    if (inLowCover && coverCollider != null)
-        //    {
-        //        Debug.Log("Low Cover Area: " + GetCoverArea());
-        //        Debug.Log("Low Cover Position: " + lowCoverPos);
-        //        Debug.Log("Low Cover Collider Size: " + coverCollider.bounds.size);
-
-        //        RestrictPlayerMovement(lowCoverPos, coverCollider.bounds.size);
-        //    }
-        //}
-
         private void IsNearLowCover()
         {
             RaycastHit lowHitInfo;
@@ -106,7 +86,7 @@ namespace Thirdperson
         {
             Bounds bounds = coverCollider.bounds;
             float coverArea = bounds.size.x * bounds.size.z;
-            Debug.Log("Cover Area: " + coverArea);
+            Debug.Log(coverCollider.bounds);
             return coverArea;
         }
 
@@ -117,12 +97,14 @@ namespace Thirdperson
                 if (highCover)
                 {
                     transform.DOMove(new Vector3(highCoverPos.x, transform.position.y, highCoverPos.z), 0.2f);
+                    GetCoverArea();
                     StartCoroutine(CoverTimeout());
                     StartCoroutine(HighCoverTimeout());
                 }
                 if (lowCover && !highCover)
                 {
                     transform.DOMove(new Vector3(lowCoverPos.x, transform.position.y, lowCoverPos.z), 0.2f);
+                    GetCoverArea();
                     StartCoroutine(CoverTimeout());
                     StartCoroutine(LowCoverTimeout());
                 }
@@ -166,20 +148,20 @@ namespace Thirdperson
             inLowCover = true;
         }
 
-        //private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)
-        //{
-        //    float minX = coverPosition.x - coverSize.x / 2;
-        //    float maxX = coverPosition.x + coverSize.x / 2;
-        //    float minZ = coverPosition.z - coverSize.z / 2;
-        //    float maxZ = coverPosition.z + coverSize.z / 2;
+        private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)
+        {
+            float minX = coverPosition.x - coverSize.x / 2;
+            float maxX = coverPosition.x + coverSize.x / 2;
+            float minZ = coverPosition.z - coverSize.z / 2;
+            float maxZ = coverPosition.z + coverSize.z / 2;
 
-        //    Vector3 newPosition = new Vector3(
-        //        Mathf.Clamp(transform.position.x, minX, maxX),
-        //        transform.position.y,
-        //        Mathf.Clamp(transform.position.z, minZ, maxZ)
-        //    );
+            Vector3 newPosition = new Vector3(
+                Mathf.Clamp(transform.position.x, minX, maxX),
+                transform.position.y,
+                Mathf.Clamp(transform.position.z, minZ, maxZ)
+            );
 
-        //    transform.position = newPosition;
-        //}
+            transform.position = newPosition;
+        }
     }
 }

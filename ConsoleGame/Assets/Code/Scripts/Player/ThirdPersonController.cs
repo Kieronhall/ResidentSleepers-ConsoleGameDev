@@ -167,10 +167,12 @@ namespace ThirdPerson
                 if (input.move.x < 0)
                 {
                     input.move.x = inputDirection.x;
+                    targetRotation = 90f;
                 }
                 else if (input.move.x > 0)
                 {
                     input.move.x = inputDirection.x;
+                    targetRotation = -90f;
                 }
                 else
                 {
@@ -179,6 +181,8 @@ namespace ThirdPerson
             }
             else
             {
+                
+
                 if (input.move != Vector2.zero)
                 {
                     targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
@@ -199,6 +203,7 @@ namespace ThirdPerson
                              new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
             animator.SetFloat("moveAmount", targetSpeed, 0.2f, Time.deltaTime);
+            animator.SetFloat("moveDirection", input.move.x);
         }
 
         private void Crouch()

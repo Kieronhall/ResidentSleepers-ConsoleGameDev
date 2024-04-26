@@ -4,11 +4,13 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using System;
+using Thirdperson;
 
 namespace ThirdPerson
 {
     public class ThirdPersonAim : MonoBehaviour
     {
+        [Header("Camera")]
         [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
         [SerializeField] private float normalSensitivity;
         [SerializeField] private float aimSensitivity;
@@ -16,21 +18,20 @@ namespace ThirdPerson
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;
         [SerializeField] private HealthBar healthBar;
-        //private takeDamage tDamage;
 
         private ThirdPersonController controller;
-        private PlayerControls _input;
+        private PlayerControls input;
+        private CoverController coverController;
 
-        //Placeholder Gun
+        [Header("Gun")]
         public GameObject gun;
-
-        //damage gun
         public float damage = 100f;
 
         private void Awake()
         {
-            _input = GetComponent<PlayerControls>();
+            input = GetComponent<PlayerControls>();
             controller = GetComponent<ThirdPersonController>();
+            coverController = GetComponent<CoverController>();
         }
 
         private void Update()
@@ -47,7 +48,7 @@ namespace ThirdPerson
                 hitTransform = raycastHit.transform;
             }
 
-            if (_input.aim)
+            if (input.aim && !coverController.inCover)
             {
                 //Animations
                 playerAnimAim();
@@ -64,7 +65,7 @@ namespace ThirdPerson
 
                 transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 
-                if (_input.aim && _input.shoot)
+                if (input.aim && input.shoot)
                 {
                     if (hitTransform != null)
                     {
@@ -77,15 +78,14 @@ namespace ThirdPerson
                         {
                             playerPistol.bulletsShot = playerPistol.bulletsPerTap;
                             playerPistol.Shoot(raycastHit);
-                            _input.shoot = false;
+                            input.shoot = false;
                         }
                     }
                 }
             }
-
             else
             {
-                _input.shoot = false;
+                input.shoot = false;
                 //Animations
                 playerAnimAimFalse();
                 gunHide();
@@ -115,24 +115,24 @@ namespace ThirdPerson
         //Animations
         public void playerAnimAim()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", true);
+            controller.animator.SetBool("isAiming", true);
         }
         public void playerAnimAimFalse()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isAiming", false);
+            controller.animator.SetBool("isAiming", false);
         }
         public void playerAnimShoot()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", true);
+            controller.animator.SetBool("isShooting", true);
             Invoke("ResetShootAnimation", 0.1f);
         }
         void ResetShootAnimation()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
+            controller.animator.SetBool("isShooting", false);
         }
         public void playerAnimShootFalse()
         {
-            GetComponentInChildren<playerAnimationState>().animator.SetBool("isShooting", false);
+            controller.animator.SetBool("isShooting", false);
         }
 
     }

@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Kieron/Level_2.unity
     guid: 381e6ce6d6c04c54688706db1dcdad3b
   - enabled: 0
-    path: Assets/Scenes/Dylan/Level_3.unity
+    path: Assets/Scenes/Dylan/Level 3 - Exterior Building.unity
     guid: a15d16ce3586c4f4e99b54659b4bc48a
   - enabled: 0
     path: Assets/Scenes/Mush/Level_4 - Beginning.unity

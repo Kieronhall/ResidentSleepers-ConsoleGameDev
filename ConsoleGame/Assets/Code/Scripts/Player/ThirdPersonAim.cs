@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using System;
+using Thirdperson;
 
 namespace ThirdPerson
 {
@@ -19,7 +20,8 @@ namespace ThirdPerson
         //private takeDamage tDamage;
 
         private ThirdPersonController controller;
-        private PlayerControls _input;
+        private PlayerControls input;
+        private CoverController coverController;
 
         //Placeholder Gun
         public GameObject gun;
@@ -29,8 +31,9 @@ namespace ThirdPerson
 
         private void Awake()
         {
-            _input = GetComponent<PlayerControls>();
+            input = GetComponent<PlayerControls>();
             controller = GetComponent<ThirdPersonController>();
+            coverController = GetComponent<CoverController>();
         }
 
         private void Update()
@@ -47,7 +50,7 @@ namespace ThirdPerson
                 hitTransform = raycastHit.transform;
             }
 
-            if (_input.aim)
+            if (input.aim && !coverController.inCover)
             {
                 //Animations
                 playerAnimAim();
@@ -64,7 +67,7 @@ namespace ThirdPerson
 
                 transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 
-                if (_input.aim && _input.shoot)
+                if (input.aim && input.shoot)
                 {
                     if (hitTransform != null)
                     {
@@ -77,15 +80,14 @@ namespace ThirdPerson
                         {
                             playerPistol.bulletsShot = playerPistol.bulletsPerTap;
                             playerPistol.Shoot(raycastHit);
-                            _input.shoot = false;
+                            input.shoot = false;
                         }
                     }
                 }
             }
-
             else
             {
-                _input.shoot = false;
+                input.shoot = false;
                 //Animations
                 playerAnimAimFalse();
                 gunHide();

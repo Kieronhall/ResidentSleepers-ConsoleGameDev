@@ -47,7 +47,6 @@ namespace Thirdperson
 
         private void Update()
         {
-
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
@@ -73,10 +72,8 @@ namespace Thirdperson
             var velocity = moveDirection * moveSpeed;
             velocity.y = ySpeed;
 
-            // Restrict movement and rotation if in cover
             if (coverController.inCover)
             {
-                // Check if moving left or right
                 if (horizontal < 0)
                 {
                     moveSpeed = 1.5f;
@@ -91,16 +88,13 @@ namespace Thirdperson
                 }
                 else
                 {
-                    // If not moving left or right, restrict all movement
                     velocity = Vector3.zero;
                 }
 
-                // Set rotation to current rotation if in cover
                 targetRotation = transform.rotation;
             }
             else
             {
-                // Only rotate if not in cover
                 if (moveAmount > 0)
                 {
                     targetRotation = Quaternion.LookRotation(moveDirection);

@@ -13,15 +13,14 @@ namespace Thirdperson
         [SerializeField] LayerMask coverLayerMask;
 
         Collider coverCollider;
-        ThirdPersonController controller;
-        PlayerControls controls;
         Animator animator;
+        ThirdPersonController thirdPersonController;
 
         public bool inCover;
         bool highCover;
         bool lowCover;
-        bool inLowCover;
-        bool inHighCover;
+        public bool inLowCover;
+        public bool inHighCover;
 
         Vector3 lowCoverPos;
         Vector3 highCoverPos;
@@ -30,7 +29,11 @@ namespace Thirdperson
 
         private void Start()
         {
-           animator= GetComponent<Animator>();
+            animator = GetComponent<Animator>();
+            thirdPersonController = GetComponent<ThirdPersonController>();
+            inCover = false;
+            inLowCover = false;
+            inHighCover = false;
         }
 
         private void Update()
@@ -41,7 +44,7 @@ namespace Thirdperson
             IsNearHighCover();
 
             Debug.DrawRay(transform.position + new Vector3(0, 0.8f, 0), transform.forward * maxDistanceFromCover, (lowCover) ? Color.green : Color.white);
-            Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), transform.forward * maxDistanceFromCover, (highCover) ? Color.blue : Color.white);
+            Debug.DrawRay(transform.position + new Vector3(0, 2f, 0), transform.forward * maxDistanceFromCover, (highCover) ? Color.blue : Color.white);
 
             animator.SetBool("inHighCover", inHighCover);
             animator.SetBool("inLowCover", inLowCover);
@@ -87,7 +90,7 @@ namespace Thirdperson
         {
             RaycastHit highHitInfo;
 
-            if (Physics.Raycast(transform.position + new Vector3(0, 1.5f, 0), transform.forward, out highHitInfo, maxDistanceFromCover, coverLayerMask))
+            if (Physics.Raycast(transform.position + new Vector3(0, 2f, 0), transform.forward, out highHitInfo, maxDistanceFromCover, coverLayerMask))
             {
                 highCoverPos = highHitInfo.point + highHitInfo.normal * 0.25f;
                 coverCollider = highHitInfo.collider;
@@ -109,52 +112,64 @@ namespace Thirdperson
 
         private void TakeCover()
         {
-            if (Input.GetKeyDown(coverKey) && !inCover|| Input.GetKeyDown(KeyCode.C) && !inCover)
+            if (Input.GetKeyDown(coverKey) && !inCover || Input.GetKeyDown(KeyCode.C) && !inCover)
             {
                 if (highCover)
                 {
-                    inHighCover = true;
-                    MoveToCover(highCoverPos);
+                    transform.DOMove(new Vector3(highCoverPos.x, transform.position.y, highCoverPos.z), 0.2f);
                     StartCoroutine(CoverTimeout());
+                    StartCoroutine(HighCoverTimeout());
                 }
                 if (lowCover && !highCover)
                 {
-                    inLowCover = true;
-                    MoveToCover(lowCoverPos);
+                    transform.DOMove(new Vector3(lowCoverPos.x, transform.position.y, lowCoverPos.z), 0.2f);
                     StartCoroutine(CoverTimeout());
+                    StartCoroutine(LowCoverTimeout());
                 }
             }
         }
 
         private void LeaveCover()
         {
-            if (Input.GetKeyDown(coverKey) && inCover && !controls.aim || Input.GetKeyDown(KeyCode.C) && inCover && !controls.aim)
+            if (Input.GetKeyDown(coverKey) && inCover || Input.GetKeyDown(KeyCode.C) && inCover)
             {
                 if (highCover)
                 {
                     inHighCover = false;
-                    controller.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                     inCover = false;
+                    thirdPersonController.characterController.center = new Vector3(0f, 0.87f, 0.1f);   
                 }
                 else if (!highCover)
                 {
                     inLowCover = false;
-                    controller.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                     inCover = false;
+                    thirdPersonController.characterController.center = new Vector3(0f, 0.87f, 0.1f);
                 }
             }
         }
 
         IEnumerator CoverTimeout()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             inCover = true;
+        }
+
+        IEnumerator HighCoverTimeout()
+        {
+            yield return new WaitForSeconds(0.2f);
+            inHighCover = true;
+        }
+
+        IEnumerator LowCoverTimeout()
+        {
+            yield return new WaitForSeconds(0.2f);
+            inLowCover = true;
         }
 
         private void MoveToCover(Vector3 coverPosition)
         {
             transform.DOMove(new Vector3(coverPosition.x, transform.position.y, coverPosition.z), 0.2f);
-            controller.characterController.center = new Vector3(0f, 0.87f, -0.24f);
+            thirdPersonController.characterController.center = new Vector3(0f, 0.87f, -0.24f);
         }
 
         //private void RestrictPlayerMovement(Vector3 coverPosition, Vector3 coverSize)

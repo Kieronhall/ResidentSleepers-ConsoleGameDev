@@ -21,7 +21,7 @@ public class pointerDetection : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("rhythmHitPoint") && /*_playerControls.interact*/ Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("rhythmHitPoint") && _playerControls.interact /*Input.GetKeyDown(KeyCode.E*/)
         {
             Destroy(gameObject);
             Debug.Log("Keypress + Hit Successful!");

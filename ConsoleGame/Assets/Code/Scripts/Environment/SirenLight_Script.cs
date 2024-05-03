@@ -7,8 +7,6 @@ public class SirenLight_Script : MonoBehaviour
     public float rotationSpeed = 120f; // Rotation speed in degrees per second
     public bool alarm = false;
 
-    public GameObject AIController;
-
     private void Start()
     {
         this.GetComponent<Light>().intensity = 0;
@@ -29,9 +27,6 @@ public class SirenLight_Script : MonoBehaviour
         {
             // Rotate the GameObject around its vertical axis
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-            
-            AIController.GetComponent<Ai_Controller>().ChasePlayer();
-
         }   
 
     }

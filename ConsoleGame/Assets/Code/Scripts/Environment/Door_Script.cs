@@ -60,7 +60,7 @@ public class Door_Script : MonoBehaviour
         //}
         if (!doorLocked)
         {
-            if (doorOpen == true && Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 5f)
+            if (doorOpen == true && Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2f)
             {
                 Debug.Log("CloseDoors!");
                 StartCoroutine(CloseDoors());
@@ -125,7 +125,7 @@ public class Door_Script : MonoBehaviour
         
         doorOpen = true;
     }
-    private IEnumerator CloseDoors()
+    public IEnumerator CloseDoors()
     {
         //Right Door
         float initialX_1 = Door_Right.localPosition.x;
@@ -169,6 +169,8 @@ public class Door_Script : MonoBehaviour
         }
 
         doorOpen = false;
+
+        LockDoor(doorNumber);
     }
 
     public void LockDoor(int _doorNumber)

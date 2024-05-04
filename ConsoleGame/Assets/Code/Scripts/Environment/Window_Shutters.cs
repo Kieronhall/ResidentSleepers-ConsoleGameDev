@@ -45,4 +45,12 @@ public class Window_Shutters : MonoBehaviour
         // Ensure the object reaches exactly the target position
         transform.position = targetPos;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            OpenShutter = true;
+        }
+    }
 }

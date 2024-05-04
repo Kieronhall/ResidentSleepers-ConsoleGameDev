@@ -15,6 +15,7 @@ using UnityEngine.UI;
         private GameObject _player;
         private PlayerInput _playerInput;
         private PlayerControls _playerControls;
+        public MenuManager menuManager;
 
         public void Start()
         {
@@ -32,18 +33,27 @@ using UnityEngine.UI;
             {
                 healthBarParent.SetActive(true);
             }
-    }
+        }
         public void TakeDamage(float damage)
         {
             healthCurrentAmount -= damage;
             healthBar.fillAmount = Mathf.Min(healthCurrentAmount, 0f);
             UpdateHealthBar();
 
-            if (healthCurrentAmount <= 0)
+            if (healthCurrentAmount == 0)
             {
-                // Hide the health bar if health drops to or below 0
                 healthBarParent.SetActive(false);
+                Death_Screen();
             }
+            else if (healthCurrentAmount < healthMaxAmount)
+            {
+                healthBarParent.SetActive(true);
+            }
+    }
+
+        private void Death_Screen()
+        {
+            menuManager.DeathScreen();
         }
         void UpdateHealthBar()
         {

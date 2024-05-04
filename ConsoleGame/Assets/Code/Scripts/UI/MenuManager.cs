@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using ThirdPerson;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,6 +10,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _deathMenuCanvas;
 
     public PlayerControls _input;
+    public ThirdPersonAim _controlinput;
+
+    [SerializeField] private GameObject _pauseMenuFB;
+    [SerializeField] private GameObject _deathMenuFB;
 
     private bool isPaused;
     private void Start()
@@ -35,39 +38,77 @@ public class MenuManager : MonoBehaviour
                 _input.pause = false;
             }
         }
-        //if (InputManager.instance._pauseMenuInput)
-        //{
-        //    if (!isPaused)
-        //    {
-        //        Pause();
-        //    }
-        //    else
-        //    {
-        //        UnPause();
-        //    }
-        //}
     }
     private void Pause()
     {
-            isPaused = true;
-            Time.timeScale = 0f;
-            OpenPauseMenu();
+        isPaused = true;
+        _controlinput.enabled = false;
+        Time.timeScale = 0f;
+        OpenPauseMenu();
     }
     private void UnPause()
     {
         isPaused = false;
+        _controlinput.enabled =true;
         Time.timeScale = 1f;
         CloseAllMenus();
+    }
+
+    public void DeathScreen()
+    {
+        _controlinput.enabled = false;
+        OpenDeathMenu();
+        Time.timeScale = 0f;
     }
 
     private void CloseAllMenus()
     {
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+
     }
     private void OpenPauseMenu()
     {
         _pauseMenuCanvas.SetActive(true);
         _deathMenuCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_pauseMenuFB);
     }
+
+    private void OpenDeathMenu()
+    {
+        _pauseMenuCanvas.SetActive(false);
+        _deathMenuCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_deathMenuFB);
+    }
+
+    public void OnOptionPress()
+    {
+        OpenOptionMenuHandle();
+    }
+
+    private void OpenOptionMenuHandle()
+    {
+        _pauseMenuCanvas.SetActive(true);
+        _deathMenuCanvas.SetActive(false);
+    }
+
+    #region Button logic
+    public void ResumeButton()
+    {
+        UnPause();
+    }
+
+    public void RestartButton()
+    {
+        _controlinput.enabled = true;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level_4 - Beginning");
+    }
+
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
+    #endregion
 }

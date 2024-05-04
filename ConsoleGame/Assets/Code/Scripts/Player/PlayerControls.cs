@@ -13,6 +13,7 @@ namespace ThirdPerson
 		public bool crouch;
 		public bool interact;
 		public bool shoot;
+		public bool pause;
 
         [Header("Movement Settings")]
 		public bool analogMovement;
@@ -59,6 +60,15 @@ namespace ThirdPerson
             ShootInput(value.isPressed);
         }
 
+		public void OnPause(InputValue value)
+		{
+            PauseInput(value.isPressed);
+		}
+
+		public void PauseInput(bool newPauseState)
+		{
+			pause = newPauseState;
+		}
         public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;

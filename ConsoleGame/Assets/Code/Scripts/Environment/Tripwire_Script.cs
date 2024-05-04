@@ -146,6 +146,7 @@ public class Tripwire_Script : MonoBehaviour
 
             PlayerPrefs.SetInt("Alarm", 1);
             PlayerPrefs.Save();
+
         }
     }
 

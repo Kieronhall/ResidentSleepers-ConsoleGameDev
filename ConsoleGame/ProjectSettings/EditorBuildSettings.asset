@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Mush/MenuLevels/SelectionLanguageMenu.unity
     guid: 4ef73d902eb9eaa468885df961d8da9a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Mush/MenuLevels/MainMenu.unity
     guid: 010a77705d1d1c442b1f637063f487af
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Joao/Level_1.unity
     guid: 90bdf994cb6cf244e91f86a07a35dd69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Kieron/Level_2.unity
     guid: 381e6ce6d6c04c54688706db1dcdad3b
   - enabled: 0
     path: Assets/Scenes/Dylan/Level_3.unity
     guid: a15d16ce3586c4f4e99b54659b4bc48a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mush/Level_4 - Beginning.unity
     guid: fea63005b1027634c8561794a3017b59
   - enabled: 0

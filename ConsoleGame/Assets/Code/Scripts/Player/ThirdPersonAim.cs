@@ -10,8 +10,8 @@ namespace ThirdPerson
     public class ThirdPersonAim : MonoBehaviour
     {
         [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
-        [SerializeField] private float normalSensitivity;
-        [SerializeField] private float aimSensitivity;
+        public float normalSensitivity;
+        public float aimSensitivity;
         [SerializeField] private LayerMask aimColldierMask;
         [SerializeField] private Transform debugTransform;
         [SerializeField] private Pistol_Player playerPistol;

@@ -17,7 +17,7 @@ namespace ThirdPerson
         [Range(0.0f, 0.3f)]
         public float rotationSmoothTime = 0.12f;
         public float speedChangeRate = 10.0f;
-        public float sensitivty = 1f;
+        public float sensitivity = 1f;
         public float gravity = -15.0f;
         public float fallTimeout = 0.15f;
 
@@ -116,8 +116,8 @@ namespace ThirdPerson
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivty;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivty;
+                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * sensitivity;
+                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * sensitivity;
             }
 
             // clamp rotations so values are limited 360 degrees
@@ -237,7 +237,7 @@ namespace ThirdPerson
 
         public void SetSensitivity(float newSensitivity)
         {
-            sensitivty = newSensitivity;
+            sensitivity = newSensitivity;
         }
 
         public void SetRotationOnMove(bool newRotateOnMove)

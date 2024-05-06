@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +21,8 @@ public class VolumeSlider : MonoBehaviour
     private void Awake()
     {
         volumeSlider = this.GetComponentInChildren<Slider>();
+        LoadVolumeSetting();
     }
-
     private void Update()
     {
         switch (volumeType)
@@ -53,7 +53,22 @@ public class VolumeSlider : MonoBehaviour
                 Debug.LogWarning("Volume type not supported: " + volumeType);
                 break;
         }
+        // Save volume setting
+        SaveVolumeSetting();
     }
 
+    private void LoadVolumeSetting()
+    {
+        // Load saved volume setting based on volume type
+        float savedVolume = PlayerPrefs.GetFloat(volumeType.ToString(), 1f); // Default value is 1
+        volumeSlider.value = savedVolume;
+    }
+
+    private void SaveVolumeSetting()
+    {
+        // Save volume setting
+        PlayerPrefs.SetFloat(volumeType.ToString(), volumeSlider.value);
+        PlayerPrefs.Save();
+    }
 
 }

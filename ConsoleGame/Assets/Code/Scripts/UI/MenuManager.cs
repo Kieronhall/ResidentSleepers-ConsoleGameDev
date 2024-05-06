@@ -121,11 +121,11 @@ public class MenuManager : MonoBehaviour
         UnPause();
     }
 
-    public void RestartButton()
+    public void RestartButton(string leveltoLoad)
     {
         _controlinput.enabled = true;
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level_4 - Beginning");
+        SceneManager.LoadScene(leveltoLoad);
     }
 
     public void ExitButton()

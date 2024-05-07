@@ -1275,15 +1275,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09371662, g: 0.111884624, b: 0.24528301, a: 1}
+  m_Color: {r: 0.2743414, g: 0.29579666, b: 0.4509804, a: 0.98039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 616dc642dd1b09442bd7e4c204d3fcf3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4911,9 +4911,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2261074044467883855, guid: 03aed899f34ef744d84584e06208d0dc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5999203872923751826, guid: 03aed899f34ef744d84584e06208d0dc, type: 3}
       propertyPath: m_Name
       value: Loading Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999203872923751826, guid: 03aed899f34ef744d84584e06208d0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519109336808804387, guid: 03aed899f34ef744d84584e06208d0dc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

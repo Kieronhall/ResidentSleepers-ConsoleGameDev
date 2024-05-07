@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class SirenLight_Script : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class SirenLight_Script : MonoBehaviour
         PlayerPrefs.SetInt("Alarm", 1);
         PlayerPrefs.Save();
         alarm = !alarm;
+        //var sirenAudio = FMODUnity.RuntimeManager.CreateInstance("event:/Joao/Siren");
+        //sirenAudio.start();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Joao/Siren");
+        GameObject.FindGameObjectWithTag("AIController").GetComponent<Ai_Controller>().EnableSecurityAI();
     }
     public void AlarmOff()
     {

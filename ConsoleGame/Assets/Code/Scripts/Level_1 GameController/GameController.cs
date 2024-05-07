@@ -26,7 +26,10 @@ public class GameController : MonoBehaviour
         Player_1.transform.position = spawnPoint.position;
 
         //MiniGame
-        Canvas.gameObject.SetActive(false);
+        if (Canvas != null)
+        {
+            Canvas.gameObject.SetActive(false);
+        }  
     }
 
     // Update is called once per frame
@@ -40,15 +43,15 @@ public class GameController : MonoBehaviour
                 Canvas.gameObject.SetActive(true);
             }
         }
-        startBtn.onClick.AddListener(StartMinigame);
-        startBtn.Select();
+        //startBtn.onClick.AddListener(StartMinigame);
+        //startBtn.Select();
     }
 
     void UnlockBackDoor()
     {
         BackDoor.GetComponent<Door_Script>().LockDoor(2);
     }
-    
+
     void StartMinigame()
     {
         map.gameObject.SetActive(true);

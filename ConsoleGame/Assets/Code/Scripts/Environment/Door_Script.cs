@@ -27,18 +27,50 @@ public class Door_Script : MonoBehaviour
     public float doorSpeed;
     public bool doorOpen=false;
 
+
+    //Light
+    //public Material lightMat;
+    public Light lightColour;
+    public Light lightColour2;
+
+
     void Start()
     {
 
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerInput = _player.GetComponent<PlayerInput>();
         _playerControls = _player.GetComponent<PlayerControls>();
-    }
 
+        if (doorLocked)
+        {
+            //lightMat.color = new Color(256f, 0f, 0f);
+            lightColour.color = new Color(256f, 0f, 0f);
+            lightColour2.color = new Color(256f, 0f, 0f);
+        }
+        else
+        {
+            //lightMat.color = new Color(0f, 256f, 0f);
+            lightColour.color = new Color(0f, 256f, 0f);
+            lightColour2.color = new Color(0f, 256f, 0f);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) <= 5f)
+        if (doorLocked)
+        {
+            //lightMat.color = new Color(256f, 0f, 0f);
+            lightColour.color = new Color(256f, 0f, 0f);
+            lightColour2.color = new Color(256f, 0f, 0f);
+        }
+        else
+        {
+            //lightMat.color = new Color(0f, 256f, 0f);
+            lightColour.color = new Color(0f, 256f, 0f);
+            lightColour2.color = new Color(0f, 256f, 0f);
+        }
+
+        if (Vector3.Distance(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) <= 5f)
         {
             Debug.Log("PLAYER IN CLOSE PROXIMITY OF Door:" + doorNumber);
         }
@@ -124,6 +156,7 @@ public class Door_Script : MonoBehaviour
         }
         
         doorOpen = true;
+
     }
     private IEnumerator CloseDoors()
     {
@@ -169,13 +202,18 @@ public class Door_Script : MonoBehaviour
         }
 
         doorOpen = false;
-    }
 
+    }
     public void LockDoor(int _doorNumber)
     {
-        if(_doorNumber == doorNumber)
+        //if(_doorNumber == doorNumber)
+        //{
+        //    doorLocked = !doorLocked;
+        //}
+        if (doorLocked)
         {
-            doorLocked = !doorLocked;
+            doorLocked = false;
+            Debug.Log("Door Unlocked!");
         }
     }
 }

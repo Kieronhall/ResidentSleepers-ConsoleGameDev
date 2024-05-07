@@ -1,11 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:ConsoleGame/Assets/Scenes/Dylan/Level 3/NavMesh-NavMesh Surface.asset.meta
 guid: f1e516201da11974d8c213e454c53330
 NativeFormatImporter:
-========
-guid: fdf09afde87e8e440a6e331d1850add6
-DefaultImporter:
->>>>>>>> main:ConsoleGame/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist.meta
   externalObjects: {}
   mainObjectFileID: 23800000
   userData: 

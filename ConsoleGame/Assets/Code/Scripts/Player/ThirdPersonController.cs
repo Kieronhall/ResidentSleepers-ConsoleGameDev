@@ -164,15 +164,15 @@ namespace ThirdPerson
 
             if (coverController.inCover)
             {
-                if (input.move.x < 0)
-                {
-                    input.move.x = inputDirection.x;
-                    targetRotation = 90f;
-                }
-                else if (input.move.x > 0)
+                if (input.move.x < 0 && coverController.coverRight)
                 {
                     input.move.x = inputDirection.x;
                     targetRotation = -90f;
+                }
+                else if (input.move.x > 0 && coverController.coverLeft)
+                {
+                    input.move.x = inputDirection.x;
+                    targetRotation = 90f;
                 }
                 else
                 {

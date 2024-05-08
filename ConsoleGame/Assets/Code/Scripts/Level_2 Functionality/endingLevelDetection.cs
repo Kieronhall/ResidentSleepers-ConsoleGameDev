@@ -11,6 +11,8 @@ public class endingLevelDetection : MonoBehaviour
     public float speed = 5.0f;
     bool helicopterMoving = false;
 
+    private FMOD.Studio.EventInstance helicoptersound;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -18,6 +20,7 @@ public class endingLevelDetection : MonoBehaviour
             endinglevelcamera.switchCamera();
             //helicopter.transform.Translate(Vector3.up * speed * Time.deltaTime);
             helicopterMoving = true;
+            PlayHelicopterSound();
             StartCoroutine(DelayedSceneLoad(8));
         }
     }
@@ -38,6 +41,14 @@ public class endingLevelDetection : MonoBehaviour
         // NEW SCENE LOAD HERE MUSH
         Debug.Log("SCENE LOADED HERE");
 
+    }  
+
+    public void PlayHelicopterSound()
+    {
+        helicoptersound = FMODUnity.RuntimeManager.CreateInstance("event:/Kieron/helicopterSound");
+        helicoptersound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        helicoptersound.start();
+        helicoptersound.release();
     }
 
 }

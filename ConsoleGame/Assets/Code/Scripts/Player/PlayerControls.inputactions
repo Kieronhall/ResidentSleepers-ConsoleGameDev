@@ -36,7 +36,7 @@
                     "name": "Aim",
                     "type": "PassThrough",
                     "id": "dfe4d87f-e293-4723-bb43-d698289d7d84",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -45,7 +45,7 @@
                     "name": "Crouch",
                     "type": "PassThrough",
                     "id": "eb7a92f9-d2ea-4408-8f77-736e9ba8135b",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -61,7 +61,7 @@
                 },
                 {
                     "name": "Shoot",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "5b8aade0-3acb-4ea6-b668-43a9198bf2b4",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -70,8 +70,8 @@
                 },
                 {
                     "name": "Pause",
-                    "type": "Button",
-                    "id": "6089447b-0476-4cd7-b196-a32af03b2bb9",
+                    "type": "PassThrough",
+                    "id": "a3d0c88d-cb00-46dd-9908-56984545d1bf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -323,7 +323,7 @@
                 },
                 {
                     "name": "",
-                    "id": "20895c8c-28a9-4954-9d3f-dfc51c3286da",
+                    "id": "0733e87c-0bbd-4304-9bfd-17bbed895afe",
                     "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
@@ -334,44 +334,33 @@
                 },
                 {
                     "name": "",
-                    "id": "0a907d11-7804-4fb4-9de1-9f82fd387002",
-                    "path": "<DualShock4GamepadAndroid>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;PS4 Controller",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3f4c87ae-a2a8-4385-9261-47131b0be724",
+                    "id": "d2423612-854b-4283-b22f-020340e880f6",
                     "path": "<DualShockGamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad;PS4 Controller",
+                    "groups": "PS4 Controller",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "08f53b96-5cd6-44a7-9600-3144fd729451",
+                    "id": "507a41ca-3413-4226-a699-6d15ab6c60bf",
                     "path": "<PS4DualShockGamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad;PS4 Controller",
+                    "groups": "PS4 Controller",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "fc721a44-775a-4c06-9283-600f6e3edfd0",
-                    "path": "<DualShock4GampadiOS>/start",
+                    "id": "e3186c83-fc91-4cf9-a47a-d7d9e6b3c07e",
+                    "path": "<DualShock4GamepadAndroid>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad;PS4 Controller",
+                    "groups": "PS4 Controller",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

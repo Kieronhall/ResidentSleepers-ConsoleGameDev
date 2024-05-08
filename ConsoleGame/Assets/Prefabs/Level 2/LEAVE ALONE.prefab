@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5740388681978517058}
+  - component: {fileID: 3874864545904239169}
   m_Layer: 0
   m_Name: LEAVE ALONE
   m_TagString: Untagged
@@ -157,7 +158,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163403791989239600}
-  m_LocalRotation: {x: -0, y: -0.6901387, z: -0, w: 0.7236771}
+  m_LocalRotation: {x: 0, y: -0.6901376, z: 0, w: 0.7236782}
   m_LocalPosition: {x: 20.441, y: 9.924, z: -10.072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -168,8 +169,21 @@ Transform:
   - {fileID: 5114982059001560393}
   - {fileID: 524381466018876378}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -87.282, z: 0}
+--- !u!114 &3874864545904239169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163403791989239600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 3937349579163025109}
 --- !u!1 &347630012054152991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1141,7 @@ MonoBehaviour:
   healthBar: {fileID: 949279032939012630}
   healthCurrentAmount: 0
   healthMaxAmount: 100
+  menuManager: {fileID: 0}
 --- !u!1 &1787735672723809325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,7 +2675,7 @@ MonoBehaviour:
   crouched: 0
   rotationSmoothTime: 0.12
   speedChangeRate: 10
-  sensitivty: 1
+  sensitivity: 1
   gravity: -15
   fallTimeout: 0.15
   grounded: 1
@@ -2791,6 +2806,7 @@ MonoBehaviour:
   crouch: 0
   interact: 0
   shoot: 0
+  pause: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1

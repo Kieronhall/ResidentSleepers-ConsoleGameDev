@@ -256,6 +256,7 @@ public class Agent : MonoBehaviour
     {
         agent.isStopped = true;
         muzzleFlash.SetActive(false);
+        agentShootingAudioStop();
         TurnOffUpdate();
     }
 

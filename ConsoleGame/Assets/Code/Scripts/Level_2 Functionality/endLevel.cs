@@ -10,6 +10,9 @@ public class endLevel : MonoBehaviour
     public rhythmGameManager rhythmgamemanager;
     public string sceneName;
 
+    public ASyncLoader loader;
+    [Header("Next Level Name")]
+    public string NameLevel;
 
     public void Start()
     {
@@ -26,7 +29,7 @@ public class endLevel : MonoBehaviour
         
         if (other.CompareTag("Player") && sceneName == "Level_2")
         {
-            SceneManager.LoadScene(sceneName);
+            loader.LoadLevelButton(NameLevel);
         }
     }
 

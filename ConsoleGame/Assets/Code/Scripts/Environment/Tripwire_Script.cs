@@ -146,9 +146,12 @@ public class Tripwire_Script : MonoBehaviour
             Debug.Log("Tripwire triggered by: " + hit.collider.gameObject.name);
             // Do something when the tripwire is triggered, for example:
             //hit.collider.gameObject.SetActive(false);
-            healthBar.GetComponent<HealthBar>().TakeDamage(5f);
-            PlayerPrefs.SetInt("Alarm", 1);
-            PlayerPrefs.Save();
+            if (healthBar.GetComponent<HealthBar>().healthCurrentAmount > 0)
+            {
+                healthBar.GetComponent<HealthBar>().TakeDamage(25f);
+                PlayerPrefs.SetInt("Alarm", 1);
+                PlayerPrefs.Save();
+            }
 
         }
     }

@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _pauseMenuCanvas;
     [SerializeField] private GameObject _deathMenuCanvas;
     [SerializeField] private GameObject _optionMenuCanvas;
+    [SerializeField] private GameObject _endMenuCanvas;
 
     public PlayerControls _input;
     public ThirdPersonAim _controlinput;
@@ -17,6 +18,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _pauseMenuFB;
     [SerializeField] private GameObject _deathMenuFB;
     [SerializeField] private GameObject _optionMenuFB;
+    [SerializeField] private GameObject _endMenuFB;
 
     private bool isPaused;
     private void Start()
@@ -24,6 +26,7 @@ public class MenuManager : MonoBehaviour
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(false);
+        _endMenuCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
-    private void Pause()
+    public void Pause()
     {
         isPaused = true;
         _controlinput.enabled = false;
@@ -60,8 +63,13 @@ public class MenuManager : MonoBehaviour
 
     public void DeathScreen()
     {
-        _controlinput.enabled = false;
         OpenDeathMenu();
+        Time.timeScale = 0f;
+    }
+
+    public void EndGameScreen()
+    {
+        OpenEndGameMenu();
         Time.timeScale = 0f;
     }
 
@@ -97,6 +105,15 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_optionMenuFB);
     }
 
+    public void OpenEndGameMenu()
+    {
+        _pauseMenuCanvas.SetActive(false);
+        _deathMenuCanvas.SetActive(false);
+        _optionMenuCanvas.SetActive(false);
+        _endMenuCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_endMenuFB);
+    }
+
     public void OnOptionPress()
     {
         OpenOptionMenuHandle();
@@ -123,9 +140,9 @@ public class MenuManager : MonoBehaviour
 
     public void RestartButton(string leveltoLoad)
     {
-        _controlinput.enabled = true;
-        Time.timeScale = 1f;
+        //UnPause();
         SceneManager.LoadScene(leveltoLoad);
+        Time.timeScale = 1f;
     }
 
     public void ExitButton()

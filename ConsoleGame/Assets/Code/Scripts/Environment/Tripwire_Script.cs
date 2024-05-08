@@ -139,7 +139,7 @@ public class Tripwire_Script : MonoBehaviour
     }
 
     //HIT DETECTION
-    public void CheckTripwire()
+    void CheckTripwire()
     {
         if (Physics.Linecast(startPoint.position, endPoint.position, out RaycastHit hit, detectionLayer))
         {

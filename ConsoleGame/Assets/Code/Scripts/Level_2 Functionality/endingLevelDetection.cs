@@ -6,13 +6,10 @@ public class endingLevelDetection : MonoBehaviour
 {
     
     public endingLevelCamera endinglevelcamera;
-    public ASyncLoader loaderScene;
+
     public GameObject helicopter;
     public float speed = 5.0f;
     bool helicopterMoving = false;
-
-    [Header("Next Level Name")]
-    public string NameLevel;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,8 +35,8 @@ public class endingLevelDetection : MonoBehaviour
     IEnumerator DelayedSceneLoad(float delayInSeconds)
     {
         yield return new WaitForSeconds(delayInSeconds);
-        loaderScene.LoadLevelButton(NameLevel);
-        Debug.Log("NEXT SCENE LOADING");
+        // NEW SCENE LOAD HERE MUSH
+        Debug.Log("SCENE LOADED HERE");
 
     }
 

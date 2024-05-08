@@ -263,7 +263,7 @@ Transform:
   - {fileID: 922121940148591357}
   - {fileID: 2705405927864375117}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6158614764541460679
 MeshFilter:
@@ -375,13 +375,10 @@ MonoBehaviour:
   agentType: 1
   player: {fileID: 0}
   wanderTimer: 5
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolFlag1: {fileID: 0}
+  patrolFlag2: {fileID: 0}
+  patrolFlag3: {fileID: 0}
+  patrolFlag4: {fileID: 0}
   ShootingActiveBool: 0
   rotationSpeed: 3
   lerpDuration: 1
@@ -426,7 +423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
   extraAmmo: {fileID: 6962150411057829020, guid: b6f811296a0457246ac9452677d8c3b3, type: 3}
 --- !u!114 &8430076804913361989
 MonoBehaviour:

@@ -14,15 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Joao/Level_1.unity
     guid: 90bdf994cb6cf244e91f86a07a35dd69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Kieron/Level_2.unity
     guid: 381e6ce6d6c04c54688706db1dcdad3b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dylan/Level_3.unity
     guid: a15d16ce3586c4f4e99b54659b4bc48a
-  - enabled: 1
-    path: Assets/Scenes/Mush/Level_4.unity
+  - enabled: 0
+    path: Assets/Scenes/Mush/Level_4 - Beginning.unity
     guid: fea63005b1027634c8561794a3017b59
+  - enabled: 0
+    path: Assets/Scenes/Mush/Level_4 - Boss.unity
+    guid: dbb8c4c8aeb80ba45b3ea4fd7189ca77
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 2e39c6b9bf11bdc4caf3f9e62f0caa60, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

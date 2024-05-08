@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 73702617637722097}
   - component: {fileID: 6624405101550557527}
   m_Layer: 5
-  m_Name: 'Aim down Sensibility '
+  m_Name: 'Aim down Sensitivity '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AIM SENSIBILITY
+  m_text: AIM SENSITIVITY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c7332d28d4ff204689c31126eda024b, type: 2}
   m_sharedMaterial: {fileID: -2214357094750556453, guid: 8c7332d28d4ff204689c31126eda024b, type: 2}
@@ -865,7 +865,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:29f2b8ccc806ec8439116b6f0c5c422b
     m_TableEntryReference:
-      m_KeyId: 5792468470562816
+      m_KeyId: 16606343113703424
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1116,6 +1116,7 @@ GameObject:
   - component: {fileID: 8219334038500328266}
   - component: {fileID: 4910473462285939977}
   - component: {fileID: 7642181025825039553}
+  - component: {fileID: 3989525382590865196}
   m_Layer: 5
   m_Name: Volum
   m_TagString: Untagged
@@ -1242,6 +1243,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3989525382590865196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719185794276175999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:29f2b8ccc806ec8439116b6f0c5c422b
+    m_TableEntryReference:
+      m_KeyId: 16608973621788672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7642181025825039553}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &906384708967812733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1409,7 @@ GameObject:
   - component: {fileID: 2825555634487977204}
   - component: {fileID: 5935423838470068628}
   m_Layer: 5
-  m_Name: Sensibility text
+  m_Name: Sensitivity text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1542,7 +1583,7 @@ GameObject:
   - component: {fileID: 2341425048436063449}
   - component: {fileID: 7165811980586915793}
   m_Layer: 5
-  m_Name: Slider Sensibility
+  m_Name: Slider Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1786,7 +1827,7 @@ GameObject:
   - component: {fileID: 5583470909833288232}
   - component: {fileID: 8012173575321228737}
   m_Layer: 5
-  m_Name: Sensibility
+  m_Name: Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4661,7 +4702,7 @@ GameObject:
   - component: {fileID: 1659231692245998909}
   - component: {fileID: 513976164774787889}
   m_Layer: 5
-  m_Name: Slider Aim Sensibility
+  m_Name: Slider Aim Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5540,7 +5581,7 @@ Transform:
   - {fileID: 6051418831821379624}
   - {fileID: 140009554053945523}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3495049377525934234
 MonoBehaviour:
@@ -5574,7 +5615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93ff8c2a9f80bf448f2da4abe5757ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
   resolutionDropdown: {fileID: 8284370932471656359}
 --- !u!1 &7253724889721885544
 GameObject:

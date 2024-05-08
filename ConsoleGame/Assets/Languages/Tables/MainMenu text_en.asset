@@ -49,15 +49,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5792468470562816
-    m_Localized: SENSITIVITY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16606343113703424
-    m_Localized: AIM SENSITIVITY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16608973621788672
-    m_Localized: VOLUME
+    m_Localized: SENSIBILITY
     m_Metadata:
       m_Items: []
   references:

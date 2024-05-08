@@ -18,6 +18,7 @@ public class endingLevelDetection : MonoBehaviour
             endinglevelcamera.switchCamera();
             //helicopter.transform.Translate(Vector3.up * speed * Time.deltaTime);
             helicopterMoving = true;
+            StartCoroutine(DelayedSceneLoad(8));
         }
     }
 
@@ -29,6 +30,14 @@ public class endingLevelDetection : MonoBehaviour
             helicopter.transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
        
+    }
+
+    IEnumerator DelayedSceneLoad(float delayInSeconds)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        // NEW SCENE LOAD HERE MUSH
+        Debug.Log("SCENE LOADED HERE");
+
     }
 
 }

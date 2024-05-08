@@ -13,6 +13,8 @@ public class pointerDetection : MonoBehaviour
     public rhythmGameManager rythmgamemanager;
     public pointerRotation pointerrotation;
 
+    private FMOD.Studio.EventInstance rhythmgamesound;
+
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +27,7 @@ public class pointerDetection : MonoBehaviour
         if (other.CompareTag("rhythmHitPoint") && _playerControls.interact /*Input.GetKeyDown(KeyCode.E*/)
         {
             Destroy(gameObject);
+            PlayMinigameSound();
             Debug.Log("Keypress + Hit Successful!");
             rythmgamemanager.IncrementCounter();
             pointerrotation.SwitchRotation();
@@ -38,6 +41,14 @@ public class pointerDetection : MonoBehaviour
         {
            // Debug.Log("Collision with rhythm hit point detected!");
         }
+    }
+
+    public void PlayMinigameSound()
+    {
+        rhythmgamesound = FMODUnity.RuntimeManager.CreateInstance("event:/Kieron/rhythmMinigameSound");
+        rhythmgamesound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        rhythmgamesound.start();
+        rhythmgamesound.release();
     }
 
 }

@@ -6,8 +6,6 @@ public class Ai_Controller : MonoBehaviour
 
     public GameObject Interior_Agents;
 
-    public GameObject Security_Agents;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +22,5 @@ public class Ai_Controller : MonoBehaviour
     {
         Interior_Agents.SetActive(true);
         Exterior_Agents.SetActive(false);
-    }
-
-    public void EnableSecurityAI()
-    {
-        Security_Agents.SetActive(true);
     }
 }

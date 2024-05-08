@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 2847632008256500979}
   m_Layer: 7
   m_Name: CanvasWorld
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

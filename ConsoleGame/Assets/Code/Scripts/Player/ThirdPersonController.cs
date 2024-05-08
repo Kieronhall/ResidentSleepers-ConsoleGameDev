@@ -51,6 +51,9 @@ namespace ThirdPerson
         GameObject mainCamera;
         CoverController coverController;
 
+        private FMOD.Studio.EventInstance foosteps;
+        private int walkType;
+
         bool isCrouching;
         private bool _rotateOnMove = true;
         private const float _threshold = 0.01f;
@@ -137,6 +140,8 @@ namespace ThirdPerson
         {
             float targetSpeed = input.sprint ? sprintSpeed : input.crouch ? crouchSpeed : moveSpeed;
 
+            walkType = targetSpeed == sprintSpeed ? 1 : targetSpeed == crouchSpeed ? 2 : 0;
+
             if (input.move == Vector2.zero) 
             {
                 targetSpeed = 0.0f;
@@ -202,7 +207,7 @@ namespace ThirdPerson
             characterController.Move(targetDirection.normalized * (speed * Time.deltaTime) +
                              new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
-            animator.SetFloat("moveAmount", targetSpeed, 0.2f, Time.deltaTime);
+            animator.SetFloat("moveAmount", targetSpeed);
             animator.SetFloat("moveDirection", input.move.x);
         }
 
@@ -264,6 +269,20 @@ namespace ThirdPerson
         public void SetRotationOnMove(bool newRotateOnMove)
         {
             _rotateOnMove = newRotateOnMove;
+        }
+
+        private void PlayFootstep(int walkType)
+        {
+            foosteps = FMODUnity.RuntimeManager.CreateInstance("event:/Dylan/Player/Footsteps");
+            foosteps.setParameterByName("Walk Type", walkType);
+            foosteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            foosteps.start();
+            foosteps.release();
+        }
+
+        public void SelectAndPlayFootstep()
+        {
+            PlayFootstep(walkType);
         }
     }
 }

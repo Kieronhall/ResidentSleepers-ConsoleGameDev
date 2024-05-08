@@ -6,6 +6,6 @@ public class Terminal : Interactable
 {
     protected override void Interact()
     {
-        
+        Debug.Log("Level Complete");
     }
 }

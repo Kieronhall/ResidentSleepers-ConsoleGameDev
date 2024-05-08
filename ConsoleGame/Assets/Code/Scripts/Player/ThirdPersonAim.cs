@@ -78,6 +78,7 @@ namespace ThirdPerson
                         {
                             playerPistol.bulletsShot = playerPistol.bulletsPerTap;
                             playerPistol.Shoot(raycastHit);
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Dylan/Player/Shooting", gun.transform.position);
                             input.shoot = false;
                         }
                     }
@@ -134,6 +135,5 @@ namespace ThirdPerson
         {
             controller.animator.SetBool("isShooting", false);
         }
-
     }
 }

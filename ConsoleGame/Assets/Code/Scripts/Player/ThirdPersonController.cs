@@ -207,7 +207,7 @@ namespace ThirdPerson
             characterController.Move(targetDirection.normalized * (speed * Time.deltaTime) +
                              new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
-            animator.SetFloat("moveAmount", targetSpeed, 0.2f, Time.deltaTime);
+            animator.SetFloat("moveAmount", targetSpeed);
             animator.SetFloat("moveDirection", input.move.x);
         }
 

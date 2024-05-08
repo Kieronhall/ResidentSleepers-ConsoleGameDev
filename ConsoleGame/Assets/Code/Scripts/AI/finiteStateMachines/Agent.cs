@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.InputSystem;
 using ThirdPerson;
+using FMODUnity;
 
 public class Agent : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class Agent : MonoBehaviour
     float lastDamageTime;
     bool isUpdateEnabled = true;
 
+    //Audio
+    private FMOD.Studio.EventInstance fsmAgentShoot;
 
     public enum Type
     {
@@ -224,11 +227,13 @@ public class Agent : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         muzzleFlash.SetActive(true);
-        
+        agentShootingAudio();
+
     }
     public void muzzleFlashInvisible()
     {
         muzzleFlash.SetActive(false);
+        agentShootingAudioStop();
     }
     public void PopShooting()
     {
@@ -251,6 +256,7 @@ public class Agent : MonoBehaviour
     {
         agent.isStopped = true;
         muzzleFlash.SetActive(false);
+        agentShootingAudioStop();
         TurnOffUpdate();
     }
 
@@ -303,6 +309,20 @@ public class Agent : MonoBehaviour
     public void animShootingOff()
     {
         GetComponentInChildren<fsmAgentAnimationState>().animator.SetBool("isShooting", false);
+    }
+
+    //AUDIO 
+    public void agentShootingAudio()
+    {
+        fsmAgentShoot = RuntimeManager.CreateInstance("event:/Kieron/fsmAgentShooting");
+        fsmAgentShoot.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        fsmAgentShoot.start();
+        fsmAgentShoot.release();
+    }
+    public void agentShootingAudioStop()
+    {
+        fsmAgentShoot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        fsmAgentShoot.release();
     }
 
     // Update is called once per frame

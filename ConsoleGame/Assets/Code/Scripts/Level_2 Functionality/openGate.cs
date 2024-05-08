@@ -9,6 +9,7 @@ public class openGate : MonoBehaviour
     public float delayBeforeCameraSwitch = 5f;
     private bool hasSwitchedCamera = false;
     public rhythmGameManager rhythmgamemanager;
+    private FMOD.Studio.EventInstance gateopening;
 
     //Gate Opening
     public Transform objectToRotate; 
@@ -30,6 +31,7 @@ public class openGate : MonoBehaviour
             Debug.Log("Player collided with the gate and cameraSwitch triggered");
             StartCoroutine(DelayedSwitchCamera());
             StartRotation();
+            GateOpeningSound();
 
             rhythmgamemanager.rhythmGameActive();
             hasTriggered = true;
@@ -78,5 +80,13 @@ public class openGate : MonoBehaviour
             PlayerPrefs.SetInt("Alarm", 1);
             cameraSwitcher.switchCamera();
         }
+    }
+
+    public void GateOpeningSound()
+    {
+        gateopening = FMODUnity.RuntimeManager.CreateInstance("event:/Kieron/gateOpening");
+        gateopening.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        gateopening.start();
+        gateopening.release();
     }
 }

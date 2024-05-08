@@ -4,8 +4,9 @@ using UnityEngine;
 using ThirdPerson;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
-    public class HealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
     {
         public GameObject healthBarParent;
         public GameObject ammoBar;
@@ -15,6 +16,7 @@ using UnityEngine.UI;
         private GameObject _player;
         private PlayerInput _playerInput;
         private PlayerControls _playerControls;
+    public MenuManager menus; 
 
         public void Start()
         {
@@ -41,7 +43,9 @@ using UnityEngine.UI;
 
             if (healthCurrentAmount <= 0)
             {
-                // Hide the health bar if health drops to or below 0
+            // Hide the health bar if health drops to or below 0
+                Time.timeScale = 0f;
+                menus.DeathScreen();
                 healthBarParent.SetActive(false);
             }
         }

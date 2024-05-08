@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerLvl1 : MonoBehaviour
 {
     // Start is called before the first frame update
+    public TMP_Text uiText;
+
     void Start()
     {
-        
+        uiText.text = "Infiltrate the Facility! Watchout for the Guards!";
     }
 
     // Update is called once per frame

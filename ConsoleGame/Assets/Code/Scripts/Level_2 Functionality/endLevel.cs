@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class endLevel : MonoBehaviour
 {
+    public ASyncLoader loader;
     public rhythmGameManager rhythmgamemanager;
     public string sceneName;
 
@@ -26,7 +27,7 @@ public class endLevel : MonoBehaviour
         
         if (other.CompareTag("Player") && sceneName == "Level_2")
         {
-            SceneManager.LoadScene(sceneName);
+            loader.LoadLevelButton(sceneName);
         }
     }
 

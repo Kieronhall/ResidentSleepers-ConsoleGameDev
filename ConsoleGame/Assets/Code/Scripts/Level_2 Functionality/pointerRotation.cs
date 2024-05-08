@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class pointerRotation : MonoBehaviour
 {
-    public float pointerRotationSpeed = 30f; 
+    public float pointerRotationSpeed = 30f;
+    private bool rotateLeft = true;
 
     private void Update()
     {
-       transform.Rotate(Vector3.left, pointerRotationSpeed * Time.deltaTime);
+        if (rotateLeft)
+        {
+            transform.Rotate(Vector3.left, pointerRotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Rotate(Vector3.right, pointerRotationSpeed * Time.deltaTime);
+        }
+    }
+
+    public void SwitchRotation()
+    {
+        rotateLeft = !rotateLeft;
     }
 }

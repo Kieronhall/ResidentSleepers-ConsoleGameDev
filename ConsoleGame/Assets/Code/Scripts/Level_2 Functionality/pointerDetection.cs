@@ -11,6 +11,7 @@ public class pointerDetection : MonoBehaviour
     private PlayerInput _playerInput;
     private PlayerControls _playerControls;
     public rhythmGameManager rythmgamemanager;
+    public pointerRotation pointerrotation;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class pointerDetection : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Keypress + Hit Successful!");
             rythmgamemanager.IncrementCounter();
+            pointerrotation.SwitchRotation();
         }
     }
 
@@ -37,4 +39,5 @@ public class pointerDetection : MonoBehaviour
            // Debug.Log("Collision with rhythm hit point detected!");
         }
     }
+
 }

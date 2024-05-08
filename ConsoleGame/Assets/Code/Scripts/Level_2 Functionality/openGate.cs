@@ -19,6 +19,10 @@ public class openGate : MonoBehaviour
     private bool isRotating = false;
     public bool hasTriggered = false;
 
+    // prisonerTextShowing
+    public bool textBoxVisible = false;
+    public GameObject textbox;
+
     private void OnTriggerEnter(Collider other)
     {
         if (!hasTriggered && other.CompareTag(playerTag))
@@ -29,6 +33,7 @@ public class openGate : MonoBehaviour
 
             rhythmgamemanager.rhythmGameActive();
             hasTriggered = true;
+            textBoxVisible = true;
         }
     }
 
@@ -44,6 +49,15 @@ public class openGate : MonoBehaviour
             {
                 isRotating = false;
             }
+        }
+
+        if (textBoxVisible)
+        {
+            textbox.SetActive(true);
+        }
+        else
+        {
+            textbox.SetActive(false);
         }
     }
 

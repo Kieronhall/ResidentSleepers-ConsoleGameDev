@@ -1859,6 +1859,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2067095235218233299, guid: 18816b9d41c04ff48ba176f286517dcb, type: 3}
   m_PrefabInstance: {fileID: 253726054}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &273937334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2847632008256500979, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
+  m_PrefabInstance: {fileID: 423507634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09322f22880182b4b8407156185a59a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &291444311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2181,7 @@ PrefabInstance:
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 273937334}
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: patrolFlag1
       value: 
@@ -2376,7 +2387,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 891123460374305487, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1689480928}
   m_SourcePrefab: {fileID: 100100000, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
 --- !u!4 &428233986 stripped
 Transform:
@@ -3913,7 +3927,7 @@ PrefabInstance:
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 273937334}
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: patrolFlag1
       value: 
@@ -7435,7 +7449,7 @@ PrefabInstance:
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 273937334}
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: patrolFlag1
       value: 
@@ -9263,7 +9277,7 @@ PrefabInstance:
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 273937334}
     - target: {fileID: 428345946514285436, guid: 11fc6d2a16bb9c049bdf556d329fcc3c, type: 3}
       propertyPath: patrolFlag1
       value: 
@@ -11411,6 +11425,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489996898}
   m_Mesh: {fileID: 4300000, guid: 365adfac290cc9a46b66b40f7944415c, type: 3}
+--- !u!1 &1499865442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 567734482205066906, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
+  m_PrefabInstance: {fileID: 423507634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1499865443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229158194985431765, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
@@ -12629,6 +12648,24 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 552555524}
   m_SourcePrefab: {fileID: 100100000, guid: 7212648f69551c847a203228e2c30f7f, type: 3}
+--- !u!1 &1689480926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 891123460374305487, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
+  m_PrefabInstance: {fileID: 423507634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1689480928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689480926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 1499865442}
 --- !u!1 &1703128773
 GameObject:
   m_ObjectHideFlags: 0

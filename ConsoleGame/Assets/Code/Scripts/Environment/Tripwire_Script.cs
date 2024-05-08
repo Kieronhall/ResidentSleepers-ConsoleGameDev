@@ -11,6 +11,8 @@ public class Tripwire_Script : MonoBehaviour
     public Color lineColor = Color.red; // Color of the line
     public LayerMask detectionLayer; // Layer mask to detect objects
 
+    private GameObject healthBar;
+
     public enum Type
     {      
         Static_Laser, 
@@ -89,6 +91,7 @@ public class Tripwire_Script : MonoBehaviour
                 break;
 
         }
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
     }
 
     void Update()
@@ -143,7 +146,7 @@ public class Tripwire_Script : MonoBehaviour
             Debug.Log("Tripwire triggered by: " + hit.collider.gameObject.name);
             // Do something when the tripwire is triggered, for example:
             //hit.collider.gameObject.SetActive(false);
-
+            healthBar.GetComponent<HealthBar>().TakeDamage(5f);
             PlayerPrefs.SetInt("Alarm", 1);
             PlayerPrefs.Save();
 

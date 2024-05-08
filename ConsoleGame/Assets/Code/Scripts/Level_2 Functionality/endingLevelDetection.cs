@@ -6,10 +6,11 @@ public class endingLevelDetection : MonoBehaviour
 {
     
     public endingLevelCamera endinglevelcamera;
-
+    public ASyncLoader loader;
     public GameObject helicopter;
     public float speed = 5.0f;
     bool helicopterMoving = false;
+    public string sceneName;
 
     private FMOD.Studio.EventInstance helicoptersound;
 
@@ -38,8 +39,8 @@ public class endingLevelDetection : MonoBehaviour
     IEnumerator DelayedSceneLoad(float delayInSeconds)
     {
         yield return new WaitForSeconds(delayInSeconds);
-        // NEW SCENE LOAD HERE MUSH
-        Debug.Log("SCENE LOADED HERE");
+        loader.LoadLevelButton(sceneName);
+        Debug.Log("SCENE LOADED");
 
     }  
 

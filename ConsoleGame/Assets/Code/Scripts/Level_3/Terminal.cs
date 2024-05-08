@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Terminal : Interactable
 {
+    public ASyncLoader loader;
+    public string sceneName;
     protected override void Interact()
     {
-        Debug.Log("Level Complete");
+        //Loading and transitioning to next level
+        loader.LoadLevelButton(sceneName);
     }
 }

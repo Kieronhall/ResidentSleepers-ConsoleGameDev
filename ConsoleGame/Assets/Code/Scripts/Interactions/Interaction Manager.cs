@@ -26,10 +26,10 @@ public class InteractionManager : MonoBehaviour
 
     private void Update()
     {
-        Ray ray = new Ray(player.transform.position + new Vector3(0, 2f, 0), player.transform.forward);
+        Ray ray = new Ray(player.transform.position + new Vector3(0, 1.5f, 0), player.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 2))
+        if (Physics.Raycast(ray, out hit, 1))
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
 

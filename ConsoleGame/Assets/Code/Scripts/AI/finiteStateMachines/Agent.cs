@@ -226,9 +226,11 @@ public class Agent : MonoBehaviour
     public IEnumerator muzzleFlashVisible()
     {
         yield return new WaitForSeconds(1f);
-
-        muzzleFlash.SetActive(true);
-        agentShootingAudio();
+        if (!deathAnimation)
+        {
+            muzzleFlash.SetActive(true);
+            agentShootingAudio();
+        }
 
     }
     public void muzzleFlashInvisible()

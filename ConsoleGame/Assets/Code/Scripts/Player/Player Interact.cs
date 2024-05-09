@@ -7,7 +7,6 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    [SerializeField] private float distance = 2f;
     [SerializeField] private LayerMask mask;
     private PlayerUI playerUI;
     private PlayerControls playerControls;
@@ -41,21 +40,27 @@ public class PlayerInteract : MonoBehaviour
 
         playerUI.UpdateText(string.Empty);
 
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(transform.position + new Vector3(0, 1.5f, 0), transform.forward);
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(ray, out hitInfo, distance, mask))
+        if (Physics.Raycast(ray, out hitInfo, 1, mask))
         {
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 playerUI.UpdateText(interactable.promptMessage);
+
                 if (interactable.gameObject.name == "Terminal")
                 {
                     if (playerControls.interact)
                     {
                         timer = Mathf.Lerp(timer, 10, 0.001f);
                         text.text = ("Extracting Drive:");
+                        playerSlider.SetActive(true);
+                        if (PlayerPrefs.GetInt("Alarm") == 0)
+                        {
+                            PlayerPrefs.SetInt("Alarm", 1);
+                        }
                         if (playerSlider.GetComponent<Slider>().value == 10)
                         {
                             interactable.BaseInteract();
@@ -66,8 +71,17 @@ public class PlayerInteract : MonoBehaviour
                         if (timer > 0)
                         {
                             text.text = ("Repairing Drive:");
-                            timer = Mathf.Lerp(timer, 0, 0.001f);
+                            timer = 0;
+                            playerSlider.SetActive(false);
                         }
+                    }
+                }
+
+                if (interactable.gameObject.name == "Power Circuit")
+                {
+                    if (playerControls.interact)
+                    {
+                        interactable.BaseInteract();
                     }
                 }
             }

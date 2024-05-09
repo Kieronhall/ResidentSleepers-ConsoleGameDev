@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ThirdPerson;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;    
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerInteract : MonoBehaviour
     private PlayerControls playerControls;
     private float timer;
     public GameObject playerSlider;
+    public TextMeshProUGUI text;
+    public TextMeshProUGUI progressText;
 
     void Start()
     {
@@ -25,12 +28,13 @@ public class PlayerInteract : MonoBehaviour
     {
         timer = Mathf.Clamp(timer, 0, 10);
         playerSlider.GetComponent<Slider>().value = timer;
+        progressText.text = playerSlider.GetComponent<Slider>().value.ToString() + ("0%");
 
-        if (timer > 0)
+        if (timer > 1)
         {
             playerSlider.SetActive(true);
         }
-        else
+        else if (timer < 1)
         {
             playerSlider.SetActive(false);
         }
@@ -51,6 +55,7 @@ public class PlayerInteract : MonoBehaviour
                     if (playerControls.interact)
                     {
                         timer = Mathf.Lerp(timer, 10, 0.001f);
+                        text.text = ("Extracting Drive:");
                         if (playerSlider.GetComponent<Slider>().value == 10)
                         {
                             interactable.BaseInteract();
@@ -60,7 +65,8 @@ public class PlayerInteract : MonoBehaviour
                     {
                         if (timer > 0)
                         {
-                            timer = Mathf.Lerp(timer, 0, 0.01f);
+                            text.text = ("Repairing Drive:");
+                            timer = Mathf.Lerp(timer, 0, 0.001f);
                         }
                     }
                 }

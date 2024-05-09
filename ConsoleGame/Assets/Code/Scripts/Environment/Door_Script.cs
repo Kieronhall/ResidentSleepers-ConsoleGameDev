@@ -13,6 +13,7 @@ public class Door_Script : MonoBehaviour
     public int doorNumber;
     public bool doorLocked=false;
 
+    private FMOD.Studio.EventInstance doorOpening;
     public enum Type
     {
         Single_Slide,
@@ -113,7 +114,11 @@ public class Door_Script : MonoBehaviour
     }
 }
     private IEnumerator OpenDoors()
-    {   
+    {
+        doorOpening = FMODUnity.RuntimeManager.CreateInstance("event:/Joao/DoorSound");
+        doorOpening.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        doorOpening.start();
+        doorOpening.release();
         //Right Door
         float initialX_1 = Door_Right.localPosition.x;
         //Left Door

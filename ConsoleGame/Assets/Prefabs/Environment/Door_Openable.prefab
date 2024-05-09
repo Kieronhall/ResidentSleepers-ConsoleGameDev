@@ -205,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6891102503127304018}
   - component: {fileID: 4094583816970783724}
+  - component: {fileID: 2091013996852207408}
   m_Layer: 25
   m_Name: Door_Openable
   m_TagString: Untagged
@@ -232,7 +233,7 @@ Transform:
   - {fileID: 966108513028229222}
   - {fileID: 2811689207949418396}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4094583816970783724
 MonoBehaviour:
@@ -255,6 +256,37 @@ MonoBehaviour:
   doorOpen: 0
   lightColour: {fileID: 7576782023582897734}
   lightColour2: {fileID: 4878331757620058607}
+--- !u!114 &2091013996852207408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607998812609814124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1218891945
+      Data2: 1325937095
+      Data3: -743207777
+      Data4: 94917525
+    Path: event:/Joao/DoorSound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2608695970429291803
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,6 +84,8 @@ public class MenuManager : MonoBehaviour
     }
     private void OpenPauseMenu()
     {
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _pauseMenuCanvas.SetActive(true);
         _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(false);
@@ -92,6 +94,8 @@ public class MenuManager : MonoBehaviour
 
     private void OpenDeathMenu()
     {
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(true);
         _optionMenuCanvas.SetActive(false);

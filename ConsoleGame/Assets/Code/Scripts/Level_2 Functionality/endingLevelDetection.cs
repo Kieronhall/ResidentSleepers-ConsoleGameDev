@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class endingLevelDetection : MonoBehaviour
 {
@@ -11,8 +12,6 @@ public class endingLevelDetection : MonoBehaviour
     public float speed = 5.0f;
     bool helicopterMoving = false;
     public string sceneName;
-
-    private FMOD.Studio.EventInstance helicoptersound;
 
     private FMOD.Studio.EventInstance helicoptersound;
 
@@ -41,9 +40,9 @@ public class endingLevelDetection : MonoBehaviour
     IEnumerator DelayedSceneLoad(float delayInSeconds)
     {
         yield return new WaitForSeconds(delayInSeconds);
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         loader.LoadLevelButton(sceneName);
-        Debug.Log("SCENE LOADED");
-
     }  
 
     public void PlayHelicopterSound()

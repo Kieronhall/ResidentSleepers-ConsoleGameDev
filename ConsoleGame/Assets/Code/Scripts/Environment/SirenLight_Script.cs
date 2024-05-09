@@ -17,16 +17,16 @@ public class SirenLight_Script : MonoBehaviour
         sceneName = currentScene.name;
     }
     void Update()
-    { 
-        //if (Input.GetKeyDown(KeyCode.P) && alarm)
-        //{
-        //    AlarmOff();
-        //}
-        //else if(Input.GetKeyDown(KeyCode.P) && !alarm || PlayerPrefs.GetInt("Alarm") == 1 && !alarm)
-        //{
-        //    Debug.Log("Trigger Alarm");
-        //    AlarmOn();
-        //}
+    {
+        if (Input.GetKeyDown(KeyCode.P) && alarm)
+        {
+            AlarmOff();
+        }
+        else if (PlayerPrefs.GetInt("Alarm") == 1 && !alarm)
+        {
+            Debug.Log("Trigger Alarm");
+            AlarmOn();
+        }
         if (alarm)
         {
             // Rotate the GameObject around its vertical axis

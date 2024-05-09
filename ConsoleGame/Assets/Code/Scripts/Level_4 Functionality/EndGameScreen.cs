@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class EndGameScreen : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            var masterBus = RuntimeManager.GetBus("bus:/");
+            masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             menuManager.EndGameScreen();
         }
     }

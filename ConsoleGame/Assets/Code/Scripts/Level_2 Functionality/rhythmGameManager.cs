@@ -6,7 +6,7 @@ public class rhythmGameManager : MonoBehaviour
 {
     private bool gameActive = false;
     public bool gameComplete = false;
-    public GameObject placeholderText;
+    //public GameObject placeholderText;
     public openGate opengate;
     public Door_Script doorfloor;
     public Door_Script door1stfloor;
@@ -20,7 +20,7 @@ public class rhythmGameManager : MonoBehaviour
 
     void Start()
     {
-        placeholderText.SetActive(false);
+        //placeholderText.SetActive(false);
         rhythmGame.SetActive(false);
     }
 
@@ -28,7 +28,7 @@ public class rhythmGameManager : MonoBehaviour
     {
         if (gameActive)
         {
-            placeholderText.SetActive(true);
+            //placeholderText.SetActive(true);
         }
     }
 

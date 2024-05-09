@@ -11,7 +11,7 @@ public class Target : MonoBehaviour
     private float randomValue;
     //EnemyHealthBar enemyHealthBar;
 
-    Agent agent;
+    Agent agent = null;
     
     private void Start()
     {
@@ -21,11 +21,19 @@ public class Target : MonoBehaviour
 
     public void Die()
     {
-        agent.deathMovement();
-        deathAnimation();
-        Invoke("DestroyObject", 4f);
-        chanceSpawn = 0.45f;
-        //enemyHealthBar.gameObject.SetActive(false);
+        if (agent != null)
+        {
+            agent.deathMovement();
+            deathAnimation();
+            Invoke("DestroyObject", 4f);
+            chanceSpawn = 0.45f;
+            //enemyHealthBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     void DestroyObject()

@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class endingLevelDetection : MonoBehaviour
 {
     
     public endingLevelCamera endinglevelcamera;
-
+    public ASyncLoader loader;
     public GameObject helicopter;
     public float speed = 5.0f;
     bool helicopterMoving = false;
+    public string sceneName;
+
+    private FMOD.Studio.EventInstance helicoptersound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +22,7 @@ public class endingLevelDetection : MonoBehaviour
             endinglevelcamera.switchCamera();
             //helicopter.transform.Translate(Vector3.up * speed * Time.deltaTime);
             helicopterMoving = true;
+            PlayHelicopterSound();
             StartCoroutine(DelayedSceneLoad(8));
         }
     }
@@ -35,9 +40,17 @@ public class endingLevelDetection : MonoBehaviour
     IEnumerator DelayedSceneLoad(float delayInSeconds)
     {
         yield return new WaitForSeconds(delayInSeconds);
-        // NEW SCENE LOAD HERE MUSH
-        Debug.Log("SCENE LOADED HERE");
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        loader.LoadLevelButton(sceneName);
+    }  
 
+    public void PlayHelicopterSound()
+    {
+        helicoptersound = FMODUnity.RuntimeManager.CreateInstance("event:/Kieron/helicopterSound");
+        helicoptersound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        helicoptersound.start();
+        helicoptersound.release();
     }
 
 }

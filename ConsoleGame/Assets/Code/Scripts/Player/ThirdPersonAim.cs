@@ -78,8 +78,14 @@ namespace ThirdPerson
                         {
                             playerPistol.bulletsShot = playerPistol.bulletsPerTap;
                             playerPistol.Shoot(raycastHit);
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Dylan/Player/Shooting", gun.transform.position);
                             input.shoot = false;
                         }
+                    }
+                    else
+                    {
+                        // Log a warning if hitTransform is null
+                        Debug.LogWarning("hitTransform is null. Shooting action aborted.");
                     }
                 }
             }
@@ -134,6 +140,5 @@ namespace ThirdPerson
         {
             controller.animator.SetBool("isShooting", false);
         }
-
     }
 }

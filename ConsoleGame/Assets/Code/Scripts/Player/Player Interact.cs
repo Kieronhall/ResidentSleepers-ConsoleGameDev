@@ -56,6 +56,11 @@ public class PlayerInteract : MonoBehaviour
                     {
                         timer = Mathf.Lerp(timer, 10, 0.001f);
                         text.text = ("Extracting Drive:");
+                        playerSlider.SetActive(true);
+                        if (PlayerPrefs.GetInt("Alarm") == 0)
+                        {
+                            PlayerPrefs.SetInt("Alarm", 1);
+                        }
                         if (playerSlider.GetComponent<Slider>().value == 10)
                         {
                             interactable.BaseInteract();
@@ -66,7 +71,8 @@ public class PlayerInteract : MonoBehaviour
                         if (timer > 0)
                         {
                             text.text = ("Repairing Drive:");
-                            timer = Mathf.Lerp(timer, 0, 0.001f);
+                            timer = 0;
+                            playerSlider.SetActive(false);
                         }
                     }
                 }

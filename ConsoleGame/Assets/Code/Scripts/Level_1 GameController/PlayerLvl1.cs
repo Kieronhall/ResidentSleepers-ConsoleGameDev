@@ -52,7 +52,7 @@ public class PlayerLvl1 : MonoBehaviour
         if (other.name == "Zone6")
         {
             Debug.Log("Zone6");
-            uiText.text = "Locate and Disable Lockdown! Also Find the Lift to the Cell Floors!";
+            uiText.text = "Locate and Disable Lockdown! After that Find the Lift to the Cell Floors!";
         }
 
     }

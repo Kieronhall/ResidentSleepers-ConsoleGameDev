@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.CinemachineOrbitalTransposer;
 using Cinemachine;
+using ThirdPerson;
 
 public class Stealth_Asset_Script : MonoBehaviour
 {

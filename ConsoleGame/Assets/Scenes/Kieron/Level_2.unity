@@ -3599,8 +3599,8 @@ MonoBehaviour:
   lootkeytohelicopter: {fileID: 931866533}
   textOne: We've gotta figure out a way to get your friend out of his cell.
   textTwo: The alarm locked the doors! Is there a way to bypass these locks?
-  textThree: We need to make it to the top, the guards seemed to be protected something
-    on the second floor.
+  textThree: We need to make it to the top, the guards seemed to be protecting something
+    on the first floor.
   textFour: Time to get out of here!
 --- !u!1001 &409534058
 PrefabInstance:

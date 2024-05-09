@@ -15,7 +15,7 @@ public class level2TextHelp : MonoBehaviour
     
     public string textOne = "We've gotta figure out a way to get your friend out of his cell!";
     public string textTwo = "The alarm locked the doors! Is there a way to bypass these locks?";
-    public string textThree = "We need to make it to the top, the guards seemed to be protecting something on the second floor.";
+    public string textThree = "We need to make it to the top, the guards seemed to be protecting something on the first floor.";
     public string textFour = "Time to get out of here!";
 
     void Start()

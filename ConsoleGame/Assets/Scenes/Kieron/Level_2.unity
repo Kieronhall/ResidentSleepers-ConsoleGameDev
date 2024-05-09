@@ -7387,7 +7387,7 @@ MonoBehaviour:
   helicopter: {fileID: 1612372617}
   speed: 2
   sceneName: Level 3
-  player: {fileID: 1755206666}
+  player: {fileID: 994025256}
 --- !u!1 &807743100 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1184270155645972, guid: e0fedf4e86585184ab349b990d268f7a, type: 3}
@@ -17176,11 +17176,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: debe807fa5b29714089d99f8db9c2c48, type: 3}
---- !u!1 &1755206666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3419351937246059795, guid: 56e023e949c96894fb3b24fcd83fd966, type: 3}
-  m_PrefabInstance: {fileID: 423507634}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1761320905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4766754197073092, guid: debe807fa5b29714089d99f8db9c2c48, type: 3}

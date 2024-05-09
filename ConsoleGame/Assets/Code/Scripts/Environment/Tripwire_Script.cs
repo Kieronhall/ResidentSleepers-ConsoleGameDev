@@ -148,7 +148,7 @@ public class Tripwire_Script : MonoBehaviour
             //hit.collider.gameObject.SetActive(false);
             if (healthBar.GetComponent<HealthBar>().healthCurrentAmount > 0)
             {
-                healthBar.GetComponent<HealthBar>().TakeDamage(20f);
+                healthBar.GetComponent<HealthBar>().TakeDamage(1f);
                 PlayerPrefs.SetInt("Alarm", 1);
                 PlayerPrefs.Save();
             }

@@ -817,6 +817,7 @@ GameObject:
   - component: {fileID: 238083093}
   - component: {fileID: 238083092}
   - component: {fileID: 238083091}
+  - component: {fileID: 238083094}
   m_Layer: 5
   m_Name: OptionButton
   m_TagString: Untagged
@@ -925,6 +926,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 238083094}
+        m_TargetAssemblyTypeName: PlayButtonSounds, Assembly-CSharp
+        m_MethodName: PlayOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &238083092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,6 +976,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238083089}
   m_CullTransparentMesh: 1
+--- !u!114 &238083094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238083089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72819e3eb0db0d4b8c091062b4c665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect:
+    Guid:
+      Data1: -1493814411
+      Data2: 1315769732
+      Data3: 793675940
+      Data4: 1551956843
+    Path: event:/Mush/OneShotButtonsSelect
+  soundOnClick:
+    Guid:
+      Data1: -1395204718
+      Data2: 1149204408
+      Data3: -1788415570
+      Data4: 1841342907
+    Path: event:/Mush/OneShotButtonClick
 --- !u!114 &280755860 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7827715707115586399, guid: 03aed899f34ef744d84584e06208d0dc, type: 3}
@@ -2091,6 +2130,7 @@ GameObject:
   - component: {fileID: 989608475}
   - component: {fileID: 989608474}
   - component: {fileID: 989608473}
+  - component: {fileID: 989608476}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -2187,6 +2227,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 989608476}
+        m_TargetAssemblyTypeName: PlayButtonSounds, Assembly-CSharp
+        m_MethodName: PlayOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &989608474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2225,6 +2277,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989608471}
   m_CullTransparentMesh: 1
+--- !u!114 &989608476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989608471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72819e3eb0db0d4b8c091062b4c665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect:
+    Guid:
+      Data1: -1493814411
+      Data2: 1315769732
+      Data3: 793675940
+      Data4: 1551956843
+    Path: event:/Mush/OneShotButtonsSelect
+  soundOnClick:
+    Guid:
+      Data1: -1395204718
+      Data2: 1149204408
+      Data3: -1788415570
+      Data4: 1841342907
+    Path: event:/Mush/OneShotButtonClick
 --- !u!1 &1034450877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,6 +2452,7 @@ GameObject:
   - component: {fileID: 1052514575}
   - component: {fileID: 1052514574}
   - component: {fileID: 1052514573}
+  - component: {fileID: 1052514576}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2446,6 +2525,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1052514576}
+        m_TargetAssemblyTypeName: PlayButtonSounds, Assembly-CSharp
+        m_MethodName: PlayOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 222182739}
         m_TargetAssemblyTypeName: ASyncLoader, Assembly-CSharp
         m_MethodName: LoadLevelButton
@@ -2496,6 +2587,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052514571}
   m_CullTransparentMesh: 1
+--- !u!114 &1052514576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052514571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72819e3eb0db0d4b8c091062b4c665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect:
+    Guid:
+      Data1: -1493814411
+      Data2: 1315769732
+      Data3: 793675940
+      Data4: 1551956843
+    Path: event:/Mush/OneShotButtonsSelect
+  soundOnClick:
+    Guid:
+      Data1: -1395204718
+      Data2: 1149204408
+      Data3: -1788415570
+      Data4: 1841342907
+    Path: event:/Mush/OneShotButtonClick
 --- !u!1 &1118218213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,6 +2951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312497306}
   - component: {fileID: 1312497307}
+  - component: {fileID: 1312497308}
   m_Layer: 5
   m_Name: Slider volume
   m_TagString: Untagged
@@ -2927,6 +3045,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1312497308}
+        m_TargetAssemblyTypeName: PlayButtonSounds, Assembly-CSharp
+        m_MethodName: PlayOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1312497308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312497305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72819e3eb0db0d4b8c091062b4c665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect:
+    Guid:
+      Data1: -1493814411
+      Data2: 1315769732
+      Data3: 793675940
+      Data4: 1551956843
+    Path: event:/Mush/OneShotButtonsSelect
+  soundOnClick:
+    Guid:
+      Data1: -1395204718
+      Data2: 1149204408
+      Data3: -1788415570
+      Data4: 1841342907
+    Path: event:/Mush/OneShotButtonClick
 --- !u!1 &1462483401
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,6 +3982,7 @@ GameObject:
   - component: {fileID: 1759202005}
   - component: {fileID: 1759202004}
   - component: {fileID: 1759202003}
+  - component: {fileID: 1759202006}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -3914,7 +4071,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1759202006}
+        m_TargetAssemblyTypeName: PlayButtonSounds, Assembly-CSharp
+        m_MethodName: PlayOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1759202004
 MonoBehaviour:
@@ -3954,6 +4123,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759202001}
   m_CullTransparentMesh: 1
+--- !u!114 &1759202006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759202001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72819e3eb0db0d4b8c091062b4c665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect:
+    Guid:
+      Data1: -1493814411
+      Data2: 1315769732
+      Data3: 793675940
+      Data4: 1551956843
+    Path: event:/Mush/OneShotButtonsSelect
+  soundOnClick:
+    Guid:
+      Data1: -1395204718
+      Data2: 1149204408
+      Data3: -1788415570
+      Data4: 1841342907
+    Path: event:/Mush/OneShotButtonClick
 --- !u!1 &1854859827
 GameObject:
   m_ObjectHideFlags: 0
@@ -4045,7 +4240,7 @@ GameObject:
   - component: {fileID: 1993869126}
   - component: {fileID: 1993869127}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Menus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4484,6 +4679,7 @@ GameObject:
   - component: {fileID: 2096943352}
   - component: {fileID: 2096943351}
   - component: {fileID: 2096943350}
+  - component: {fileID: 2096943353}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -4568,6 +4764,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2096943353}
+        m_TargetAssemblyTypeName: PlayButtonSounds, Assembly-CSharp
+        m_MethodName: PlayOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2096943351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4606,6 +4814,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096943348}
   m_CullTransparentMesh: 1
+--- !u!114 &2096943353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096943348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72819e3eb0db0d4b8c091062b4c665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect:
+    Guid:
+      Data1: -1493814411
+      Data2: 1315769732
+      Data3: 793675940
+      Data4: 1551956843
+    Path: event:/Mush/OneShotButtonsSelect
+  soundOnClick:
+    Guid:
+      Data1: -1395204718
+      Data2: 1149204408
+      Data3: -1788415570
+      Data4: 1841342907
+    Path: event:/Mush/OneShotButtonClick
 --- !u!1 &2109342625
 GameObject:
   m_ObjectHideFlags: 0

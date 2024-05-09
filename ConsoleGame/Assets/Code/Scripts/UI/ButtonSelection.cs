@@ -11,9 +11,4 @@ public class ButtonSelection : MonoBehaviour
     {
         primaryButton.Select();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

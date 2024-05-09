@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace FMODUnity
 {
@@ -178,7 +179,6 @@ namespace FMODUnity
                 }
             }
         }
-
         public void Play()
         {
             if (TriggerOnce && hasTriggered)

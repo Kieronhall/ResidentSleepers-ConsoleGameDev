@@ -1,3 +1,4 @@
+using FMODUnity;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ public class endLevel : MonoBehaviour
         
         if (other.CompareTag("Player") && sceneName == "Level_2")
         {
+            var masterBus = RuntimeManager.GetBus("bus:/");
+            masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             loader.LoadLevelButton(sceneName);
         }
     }

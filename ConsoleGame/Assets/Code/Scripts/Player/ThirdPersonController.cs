@@ -3,7 +3,6 @@ using ThirdPerson;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 namespace ThirdPerson
 {

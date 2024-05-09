@@ -82,6 +82,11 @@ namespace ThirdPerson
                             input.shoot = false;
                         }
                     }
+                    else
+                    {
+                        // Log a warning if hitTransform is null
+                        Debug.LogWarning("hitTransform is null. Shooting action aborted.");
+                    }
                 }
             }
             else

@@ -10,6 +10,7 @@ public class openGate : MonoBehaviour
     private bool hasSwitchedCamera = false;
     public rhythmGameManager rhythmgamemanager;
     private FMOD.Studio.EventInstance gateopening;
+    public Outline outline;
 
     //Gate Opening
     public Transform objectToRotate; 
@@ -32,6 +33,7 @@ public class openGate : MonoBehaviour
             StartCoroutine(DelayedSwitchCamera());
             StartRotation();
             GateOpeningSound();
+            outline.OutlineMode = Outline.Mode.OutlineHidden;
 
             rhythmgamemanager.rhythmGameActive();
             hasTriggered = true;

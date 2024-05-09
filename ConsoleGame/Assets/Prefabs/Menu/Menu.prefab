@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 73702617637722097}
   - component: {fileID: 6624405101550557527}
   m_Layer: 5
-  m_Name: 'Aim down Sensibility '
+  m_Name: 'Aim down Sensitivity '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:29f2b8ccc806ec8439116b6f0c5c422b
     m_TableEntryReference:
-      m_KeyId: 5792468470562816
+      m_KeyId: 17128165232050176
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1850,7 +1850,7 @@ GameObject:
   - component: {fileID: 2825555634487977204}
   - component: {fileID: 5935423838470068628}
   m_Layer: 5
-  m_Name: Sensibility text
+  m_Name: Sensitivity  text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,7 +2025,7 @@ GameObject:
   - component: {fileID: 7165811980586915793}
   - component: {fileID: 726394259747044312}
   m_Layer: 5
-  m_Name: Slider Sensibility
+  m_Name: Slider Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2307,7 +2307,7 @@ GameObject:
   - component: {fileID: 5583470909833288232}
   - component: {fileID: 8012173575321228737}
   m_Layer: 5
-  m_Name: Sensibility
+  m_Name: Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5523,7 +5523,7 @@ GameObject:
   - component: {fileID: 513976164774787889}
   - component: {fileID: 7497607328755249827}
   m_Layer: 5
-  m_Name: Slider Aim Sensibility
+  m_Name: Slider Aim Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

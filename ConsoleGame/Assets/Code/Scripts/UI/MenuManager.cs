@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class MenuManager : MonoBehaviour
 {
@@ -143,6 +144,9 @@ public class MenuManager : MonoBehaviour
         //UnPause();
         SceneManager.LoadScene(leveltoLoad);
         Time.timeScale = 1f;
+
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public void ExitButton()

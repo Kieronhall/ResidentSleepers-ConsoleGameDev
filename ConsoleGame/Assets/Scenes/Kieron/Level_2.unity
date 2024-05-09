@@ -3592,16 +3592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f64fad014b5a6458d509daebf32680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpText: {fileID: 823560228}
-  levelComplete: 0
-  opengate: {fileID: 1316673692}
-  rhythmgamemanager: {fileID: 1006220853}
-  lootkeytohelicopter: {fileID: 931866533}
-  textOne: We've gotta figure out a way to get your friend out of his cell.
-  textTwo: The alarm locked the doors! Is there a way to bypass these locks?
-  textThree: We need to make it to the top, the guards seemed to be protecting something
-    on the first floor.
-  textFour: Time to get out of here!
 --- !u!1001 &409534058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8357,6 +8347,7 @@ GameObject:
   - component: {fileID: 931866531}
   - component: {fileID: 931866530}
   - component: {fileID: 931866533}
+  - component: {fileID: 931866534}
   m_Layer: 0
   m_Name: playerLootKeyToHelicopter
   m_TagString: Untagged
@@ -8467,6 +8458,24 @@ MonoBehaviour:
   rythmGameManager: {fileID: 1006220853}
   doorroof: {fileID: 1669470309}
   rotationSpeed: {x: 0, y: 100, z: 0}
+--- !u!114 &931866534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931866528}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &941214035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9456,6 +9465,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0494385, y: 5.0494375, z: 5.0494385}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1053140292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1686342638753298, guid: dbc8ff25f28f33c4bb982b04e5dbdefb, type: 3}
+  m_PrefabInstance: {fileID: 1870823111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1058963254
 GameObject:
   m_ObjectHideFlags: 0
@@ -9838,6 +9852,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4936082098280938, guid: dbc8ff25f28f33c4bb982b04e5dbdefb, type: 3}
   m_PrefabInstance: {fileID: 1870823111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1122577286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053140292}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1134580640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10584,6 +10616,51 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0494385, y: 5.0494375, z: 5.0494385}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1244905359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244905361}
+  - component: {fileID: 1244905360}
+  m_Layer: 0
+  m_Name: Outline Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1244905360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244905359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078a5a5ffcb14574eb5076f3544e9a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlinedObject: {fileID: 0}
+--- !u!4 &1244905361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244905359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.14583, y: 4.5717177, z: -6.0888686}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1247812938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1184270155645972, guid: e0fedf4e86585184ab349b990d268f7a, type: 3}
@@ -18042,7 +18119,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1686342638753298, guid: dbc8ff25f28f33c4bb982b04e5dbdefb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1122577286}
   m_SourcePrefab: {fileID: 100100000, guid: dbc8ff25f28f33c4bb982b04e5dbdefb, type: 3}
 --- !u!1 &1871126266
 GameObject:
@@ -46517,6 +46597,7 @@ GameObject:
   - component: {fileID: 6404140730823285510}
   - component: {fileID: 6404140730822050334}
   - component: {fileID: 6343665782492323960}
+  - component: {fileID: 6404140730824271745}
   m_Layer: 25
   m_Name: Gate
   m_TagString: Untagged
@@ -46524,6 +46605,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6404140730824271745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404140730824271744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6405845781968787519
 GameObject:
   m_ObjectHideFlags: 0

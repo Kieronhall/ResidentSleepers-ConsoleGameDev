@@ -18,6 +18,7 @@ TagManager:
   - Exterior
   - AIController
   - Siren
+  - ShutterTerminal
   layers:
   - Default
   - TransparentFX

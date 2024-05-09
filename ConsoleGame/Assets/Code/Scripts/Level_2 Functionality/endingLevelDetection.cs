@@ -13,6 +13,8 @@ public class endingLevelDetection : MonoBehaviour
     bool helicopterMoving = false;
     public string sceneName;
 
+    public GameObject player;
+
     private FMOD.Studio.EventInstance helicoptersound;
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +24,7 @@ public class endingLevelDetection : MonoBehaviour
             endinglevelcamera.switchCamera();
             //helicopter.transform.Translate(Vector3.up * speed * Time.deltaTime);
             helicopterMoving = true;
+            player.SetActive(false);
             PlayHelicopterSound();
             StartCoroutine(DelayedSceneLoad(8));
         }

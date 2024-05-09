@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerUI : MonoBehaviour
+namespace ThirdPerson
 {
-    [SerializeField] private TextMeshProUGUI promptText;
-
-    public void UpdateText(string promptMessage)
+    public class PlayerUI : MonoBehaviour
     {
-        promptText.text = promptMessage;
+        // Text element to display prompt messages
+        [SerializeField] private TextMeshProUGUI promptText;
+
+        // Method to update the prompt text
+        public void UpdateText(string promptMessage)
+        {
+            // Set the text to the provided prompt message
+            promptText.text = promptMessage;
+        }
     }
 }

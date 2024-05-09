@@ -12449,6 +12449,7 @@ MonoBehaviour:
   cameraSwitcher: {fileID: 149771877}
   delayBeforeCameraSwitch: 2
   rhythmgamemanager: {fileID: 1006220853}
+  outline: {fileID: 6404140730824271745}
   objectToRotate: {fileID: 3436345980235525072}
   targetAngle: -52.885
   duration: 1

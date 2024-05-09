@@ -9538,6 +9538,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18816b9d41c04ff48ba176f286517dcb, type: 3}
+--- !u!114 &234409152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1300162968280513194, guid: 49acfff913d187f47ba0453f2aa4ab46, type: 3}
+  m_PrefabInstance: {fileID: 494308997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf681e8168c5d224381f92131ad7f5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &235585647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42291,7 +42302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4cc39e726fdf644a8058ac3f06e590b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loader: {fileID: 0}
+  loader: {fileID: 234409152}
   rhythmgamemanager: {fileID: 0}
   sceneName: Level_2
 --- !u!65 &908957175
@@ -55853,6 +55864,10 @@ PrefabInstance:
     - target: {fileID: 2701625205044439665, guid: 5af300ae1f7b4ab49a32002b9bac5528, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094583816970783724, guid: 5af300ae1f7b4ab49a32002b9bac5528, type: 3}
+      propertyPath: doorLocked
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4094583816970783724, guid: 5af300ae1f7b4ab49a32002b9bac5528, type: 3}
       propertyPath: doorNumber
@@ -77530,7 +77545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7699798212775755048, guid: d4026da839adc594bac18f2d208d2177, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.493
+      value: 12.379
       objectReference: {fileID: 0}
     - target: {fileID: 7699798212775755048, guid: d4026da839adc594bac18f2d208d2177, type: 3}
       propertyPath: m_LocalPosition.y
@@ -77546,7 +77561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7699798212775755048, guid: d4026da839adc594bac18f2d208d2177, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7699798212775755048, guid: d4026da839adc594bac18f2d208d2177, type: 3}
       propertyPath: m_LocalRotation.y
@@ -77554,7 +77569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7699798212775755048, guid: d4026da839adc594bac18f2d208d2177, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7699798212775755048, guid: d4026da839adc594bac18f2d208d2177, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

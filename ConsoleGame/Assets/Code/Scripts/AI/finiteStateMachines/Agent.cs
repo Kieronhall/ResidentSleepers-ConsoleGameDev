@@ -44,6 +44,7 @@ public class Agent : MonoBehaviour
 
     //Audio
     private FMOD.Studio.EventInstance fsmAgentShoot;
+    bool deathAnimation = false;
 
     public enum Type
     {
@@ -225,9 +226,11 @@ public class Agent : MonoBehaviour
     public IEnumerator muzzleFlashVisible()
     {
         yield return new WaitForSeconds(1f);
-
-        muzzleFlash.SetActive(true);
-        agentShootingAudio();
+        if (!deathAnimation)
+        {
+            muzzleFlash.SetActive(true);
+            agentShootingAudio();
+        }
 
     }
     public void muzzleFlashInvisible()
@@ -254,6 +257,7 @@ public class Agent : MonoBehaviour
     // DEATH ANIMATION CODE
     public void deathMovement()
     {
+        deathAnimation = true;
         agent.isStopped = true;
         muzzleFlash.SetActive(false);
         agentShootingAudioStop();
@@ -332,6 +336,12 @@ public class Agent : MonoBehaviour
             return;
 
         sm.Update();
+
+        if (deathAnimation)
+        {
+            muzzleFlash.SetActive(false);
+            agentShootingAudioStop();
+        }
 
         switch (agentType)
         {

@@ -50,14 +50,14 @@ public class MenuManager : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        _controlinput.enabled = false;
+        _input.aim = false;
+        _input.shoot = false;
         Time.timeScale = 0f;
         OpenPauseMenu();
     }
     private void UnPause()
     {
         isPaused = false;
-        _controlinput.enabled =true;
         Time.timeScale = 1f;
         CloseAllMenus();
     }
@@ -84,6 +84,10 @@ public class MenuManager : MonoBehaviour
     }
     private void OpenPauseMenu()
     {
+        _input.aim = false;
+        _input.shoot = false;
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _pauseMenuCanvas.SetActive(true);
         _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(false);
@@ -92,6 +96,10 @@ public class MenuManager : MonoBehaviour
 
     private void OpenDeathMenu()
     {
+        _input.aim = false;
+        _input.shoot = false;
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(true);
         _optionMenuCanvas.SetActive(false);
@@ -100,6 +108,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenOptionMenu()
     {
+        _input.aim = false;
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(true);
@@ -108,6 +117,8 @@ public class MenuManager : MonoBehaviour
 
     public void OpenEndGameMenu()
     {
+        _input.aim = false;
+        _input.shoot = false;
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(false);

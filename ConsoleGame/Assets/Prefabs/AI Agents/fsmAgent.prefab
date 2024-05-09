@@ -263,7 +263,7 @@ Transform:
   - {fileID: 922121940148591357}
   - {fileID: 2705405927864375117}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6158614764541460679
 MeshFilter:
@@ -375,7 +375,11 @@ MonoBehaviour:
   agentType: 1
   player: {fileID: 0}
   wanderTimer: 5
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ShootingActiveBool: 0
   rotationSpeed: 3
   lerpDuration: 1

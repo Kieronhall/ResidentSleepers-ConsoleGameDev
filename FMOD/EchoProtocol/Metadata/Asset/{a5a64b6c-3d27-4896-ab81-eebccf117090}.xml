@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{a5a64b6c-3d27-4896-ab81-eebccf117090}">
+		<property name="assetPath">
+			<value>Button oneshot/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2ea1aafb-27e2-42b6-81a4-cda8fd5f7d5d}</destination>
+		</relationship>
+	</object>
+</objects>

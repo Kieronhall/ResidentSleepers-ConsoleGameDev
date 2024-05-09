@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: SensibilityID
     m_Metadata:
       m_Items: []
+  - m_Id: 17128165232050176
+    m_Key: AIM SensitivityID
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

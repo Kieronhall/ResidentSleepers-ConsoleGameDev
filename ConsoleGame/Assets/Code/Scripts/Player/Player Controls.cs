@@ -14,6 +14,7 @@ namespace ThirdPerson
         public bool interact; // Interacting input state
         public bool shoot; // Shooting input state
         public bool pause; // Pausing input state
+        public bool cross;
 
         [Header("Movement Settings")]
         public bool analogMovement; // Enable analog movement
@@ -73,6 +74,12 @@ namespace ThirdPerson
             PauseInput(value.isPressed);
         }
 
+        // Handle Cross button
+        public void OnCross(InputValue value)
+        {
+            CrossInput(value.isPressed);
+        }
+
         // Update movement input
         public void MoveInput(Vector2 newMoveDirection)
         {
@@ -123,6 +130,12 @@ namespace ThirdPerson
         public void PauseInput(bool newPauseState)
         {
             pause = newPauseState;
+        }
+
+        // Update cross input
+        public void CrossInput(bool newCrossState)
+        {
+            pause = newCrossState;
         }
 
         // Handle cursor state on application focus

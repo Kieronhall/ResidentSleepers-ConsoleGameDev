@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
         private GameObject _player;
         private PlayerInput _playerInput;
         private PlayerControls _playerControls;
-    public MenuManager menus; 
+        public MenuManager menus; 
 
         public void Start()
         {

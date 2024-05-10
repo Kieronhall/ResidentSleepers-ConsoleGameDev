@@ -7386,7 +7386,7 @@ MonoBehaviour:
   loader: {fileID: 1110063037}
   helicopter: {fileID: 1612372617}
   speed: 2
-  sceneName: Level 3
+  sceneName: Level_3
   player: {fileID: 994025256}
 --- !u!1 &807743100 stripped
 GameObject:

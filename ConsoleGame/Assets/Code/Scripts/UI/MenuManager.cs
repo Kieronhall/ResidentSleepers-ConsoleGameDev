@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using FMODUnity;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _deathMenuCanvas;
     [SerializeField] private GameObject _optionMenuCanvas;
     [SerializeField] private GameObject _endMenuCanvas;
+    [SerializeField] private GameObject _exitMenuCanvas;
 
     public PlayerControls _input;
     public ThirdPersonAim _controlinput;
@@ -21,100 +23,50 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _optionMenuFB;
     [SerializeField] private GameObject _endMenuFB;
 
-    private bool isPaused;
+    [SerializeField] private bool isPaused;
     private void Start()
     {
         _pauseMenuCanvas.SetActive(false);
         _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(false);
         _endMenuCanvas.SetActive(false);
+        _exitMenuCanvas.SetActive(false);
+
+        isPaused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_input.pause)
+        if (_input.pause && !isPaused)
         {
-            if (!isPaused)
-            {
-                Pause();
-                _input.pause = false;
-            }
-            else
-            {
-                UnPause();
-                _input.pause = false;
-            }
+            isPaused = true;
+            _pauseMenuCanvas.SetActive(true);
+            Time.timeScale = 0f;
+            var masterBus = RuntimeManager.GetBus("bus:/");
+            masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            EventSystem.current.SetSelectedGameObject(_pauseMenuFB);
         }
     }
-    public void Pause()
-    {
-        isPaused = true;
-        _input.aim = false;
-        _input.shoot = false;
-        Time.timeScale = 0f;
-        OpenPauseMenu();
-    }
-    private void UnPause()
-    {
-        isPaused = false;
-        Time.timeScale = 1f;
-        CloseAllMenus();
-    }
-
     public void DeathScreen()
     {
-        OpenDeathMenu();
+        _deathMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
+        var masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        EventSystem.current.SetSelectedGameObject(_deathMenuFB);
     }
-
     public void EndGameScreen()
     {
         OpenEndGameMenu();
         Time.timeScale = 0f;
     }
-
-    private void CloseAllMenus()
-    {
-        _pauseMenuCanvas.SetActive(false);
-        _deathMenuCanvas.SetActive(false);
-        _optionMenuCanvas.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(null);
-
-    }
-    private void OpenPauseMenu()
-    {
-        _input.aim = false;
-        _input.shoot = false;
-        var masterBus = RuntimeManager.GetBus("bus:/");
-        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        _pauseMenuCanvas.SetActive(true);
-        _deathMenuCanvas.SetActive(false);
-        _optionMenuCanvas.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(_pauseMenuFB);
-    }
-
-    private void OpenDeathMenu()
-    {
-        _input.aim = false;
-        _input.shoot = false;
-        var masterBus = RuntimeManager.GetBus("bus:/");
-        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        _pauseMenuCanvas.SetActive(false);
-        _deathMenuCanvas.SetActive(true);
-        _optionMenuCanvas.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(_deathMenuFB);
-    }
-
     public void OpenOptionMenu()
     {
-        _input.aim = false;
         _pauseMenuCanvas.SetActive(false);
-        _deathMenuCanvas.SetActive(false);
         _optionMenuCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_optionMenuFB);
     }
-
     public void OpenEndGameMenu()
     {
         _input.aim = false;
@@ -125,7 +77,6 @@ public class MenuManager : MonoBehaviour
         _endMenuCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_endMenuFB);
     }
-
     public void OnOptionPress()
     {
         OpenOptionMenuHandle();
@@ -142,27 +93,29 @@ public class MenuManager : MonoBehaviour
 
     public void BackButton()
     {
-        Pause();
+        _pauseMenuCanvas.SetActive(true);
         _optionMenuCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_pauseMenuFB);
     }
     public void ResumeButton()
     {
-        UnPause();
+        isPaused = false;
+        _input.pause = false;
+        _pauseMenuCanvas.SetActive(false);
+        Time.timeScale = 1f;
     }
-
     public void RestartButton(string leveltoLoad)
     {
-        //UnPause();
         SceneManager.LoadScene(leveltoLoad);
         Time.timeScale = 1f;
 
         var masterBus = RuntimeManager.GetBus("bus:/");
         masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
-
     public void ExitButton()
     {
-        Application.Quit();
+        _exitMenuCanvas.SetActive(true);
+        _pauseMenuCanvas.SetActive(false);
     }
     #endregion
 }

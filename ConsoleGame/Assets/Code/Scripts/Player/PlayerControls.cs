@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,9 @@ namespace ThirdPerson
         public bool interact; // Interacting input state
         public bool shoot; // Shooting input state
         public bool pause; // Pausing input state
-        public bool cross;
+        public bool cross; // Cross input state
+        public bool cover; // Cover input state
+        public bool triangle; // Triangle input state
 
         [Header("Movement Settings")]
         public bool analogMovement; // Enable analog movement
@@ -79,6 +82,22 @@ namespace ThirdPerson
         {
             CrossInput(value.isPressed);
         }
+        public void OnCover(InputValue value)
+        {
+            CoverInput(value.isPressed);
+        }
+
+        public void OnTriangle(InputValue value)
+        {
+            TriangleInput(value.isPressed);
+        }
+        private void CoverInput(bool newCoverState)
+        {
+            if (newCoverState)
+            {
+                cover = !cover;
+            }
+        }
 
         // Update movement input
         public void MoveInput(Vector2 newMoveDirection)
@@ -129,13 +148,27 @@ namespace ThirdPerson
         // Update pause input
         public void PauseInput(bool newPauseState)
         {
-            pause = newPauseState;
+            if (newPauseState)
+            {
+                pause = !pause;
+            }
         }
 
         // Update cross input
         public void CrossInput(bool newCrossState)
         {
-            pause = newCrossState;
+            if (newCrossState)
+            {
+                cross = !cross;
+            }
+        }
+
+        public void TriangleInput(bool newTriangleState)
+        {
+            if (newTriangleState)
+            {
+                triangle = !triangle;
+            }
         }
 
         // Handle cursor state on application focus

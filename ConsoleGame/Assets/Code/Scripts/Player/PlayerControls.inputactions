@@ -85,6 +85,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cover",
+                    "type": "PassThrough",
+                    "id": "73097f78-244f-4973-8e2e-d7a365f2018e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Triangle",
+                    "type": "PassThrough",
+                    "id": "42314471-933f-4269-a708-403a2b9f5b17",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -343,30 +361,19 @@
                 },
                 {
                     "name": "",
-                    "id": "d2423612-854b-4283-b22f-020340e880f6",
+                    "id": "f3053f78-ae31-4a16-acd0-4d4b1d4dd3cf",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0747d569-b7c6-41d9-bdc8-88e9faa3fc6b",
                     "path": "<DualShockGamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4 Controller",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "507a41ca-3413-4226-a699-6d15ab6c60bf",
-                    "path": "<PS4DualShockGamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4 Controller",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e3186c83-fc91-4cf9-a47a-d7d9e6b3c07e",
-                    "path": "<DualShock4GamepadAndroid>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "PS4 Controller",
@@ -382,6 +389,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Cross",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "740ddb52-c164-484f-80f6-6973b7de4536",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Cover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fedf2cdc-a55b-4641-a625-93d0146f32a1",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Cover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "691420e1-1116-474f-983e-24e526d575a4",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 Controller;Gamepad",
+                    "action": "Triangle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

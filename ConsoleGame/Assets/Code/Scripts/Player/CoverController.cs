@@ -16,6 +16,7 @@ namespace ThirdPerson
         Animator animator;
         ThirdPersonController thirdPersonController;
         ThirdPersonAim thirdPersonAim;
+        PlayerControls input;
 
         // Cover states
         public bool inCover;
@@ -40,6 +41,7 @@ namespace ThirdPerson
             animator = GetComponent<Animator>();
             thirdPersonController = GetComponent<ThirdPersonController>();
             thirdPersonAim = GetComponent<ThirdPersonAim>();
+            input = GetComponent<PlayerControls>();
 
             // Initial cover states
             inCover = false;
@@ -143,7 +145,7 @@ namespace ThirdPerson
         // Take cover based on input
         private void TakeCover()
         {
-            if (Input.GetKeyDown(coverKey) && !inCover || Input.GetKeyDown(KeyCode.C) && !inCover)
+            if (input.cover && !inCover)
             {
                 if (highCover)
                 {
@@ -165,7 +167,7 @@ namespace ThirdPerson
         // Leave cover based on input
         private void LeaveCover()
         {
-            if (Input.GetKeyDown(coverKey) && inCover || Input.GetKeyDown(KeyCode.C) && inCover)
+            if (!input.cover && inCover)
             {
                 if (highCover)
                 {

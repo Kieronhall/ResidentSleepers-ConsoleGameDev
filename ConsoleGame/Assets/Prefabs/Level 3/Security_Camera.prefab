@@ -84,7 +84,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 33570167
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -365,6 +365,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   extraAmmo: {fileID: 0}
+  chanceSpawn: 0.75
 --- !u!114 &6555574159856716328
 MonoBehaviour:
   m_ObjectHideFlags: 0

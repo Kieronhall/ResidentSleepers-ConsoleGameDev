@@ -158,7 +158,14 @@ namespace ThirdPerson
             // Determine target speed based on input
             float targetSpeed = input.sprint ? sprintSpeed : input.crouch ? crouchSpeed : moveSpeed;
 
+            // Determine walk type based on walk speed
             walkType = targetSpeed == sprintSpeed ? 1 : targetSpeed == crouchSpeed ? 2 : 0;
+
+            // Prevents movement if there is no input
+            if (input.move == Vector2.zero)
+            {
+                targetSpeed = 0.0f;
+            }
 
             // Adjust target speed based on analog movement
             float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;

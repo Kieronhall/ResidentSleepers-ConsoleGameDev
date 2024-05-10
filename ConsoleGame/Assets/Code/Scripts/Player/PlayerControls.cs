@@ -129,7 +129,10 @@ namespace ThirdPerson
         // Update pause input
         public void PauseInput(bool newPauseState)
         {
-            pause = newPauseState;
+            if (newPauseState)
+            {
+                pause = !pause;
+            }
         }
 
         // Update cross input

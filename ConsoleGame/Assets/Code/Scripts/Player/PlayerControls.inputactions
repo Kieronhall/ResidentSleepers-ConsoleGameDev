@@ -343,33 +343,11 @@
                 },
                 {
                     "name": "",
-                    "id": "d2423612-854b-4283-b22f-020340e880f6",
-                    "path": "<DualShockGamepad>/start",
+                    "id": "374e6e1d-ade9-433c-8d08-b34859324f42",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "PS4 Controller",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "507a41ca-3413-4226-a699-6d15ab6c60bf",
-                    "path": "<PS4DualShockGamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4 Controller",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e3186c83-fc91-4cf9-a47a-d7d9e6b3c07e",
-                    "path": "<DualShock4GamepadAndroid>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4 Controller",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

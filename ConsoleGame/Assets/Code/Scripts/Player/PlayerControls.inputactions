@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cross",
+                    "type": "Button",
+                    "id": "64950ebb-d390-4387-af68-fedbf4050dba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -362,6 +371,17 @@
                     "processors": "",
                     "groups": "PS4 Controller",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "865232c6-f7a0-4ea7-9e89-6b1e76779435",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Cross",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

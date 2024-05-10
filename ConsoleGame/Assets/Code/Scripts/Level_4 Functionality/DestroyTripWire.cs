@@ -10,16 +10,19 @@ public class DestroyTripWire : MonoBehaviour
     public PlayerControls playerControls;
     public GameObject traps;
     public CameraSwitcher cameraSwitch;
+    private FMOD.Studio.EventInstance ElectricDischarge;
+
     private void OnTriggerStay(Collider other)
     {
-        //cameraSwitch.switchCamera();
-        //doorLock.LockDoor(1);
-        //Destroy(traps);
         if (playerControls.interact)
         {
+            ElectricDischarge = FMODUnity.RuntimeManager.CreateInstance("event:/Joao/ElectricPanel");
+            ElectricDischarge.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            ElectricDischarge.start();
+            ElectricDischarge.release();
             cameraSwitch.switchCamera();
             doorLock.LockDoor(1);
-            Destroy(traps);
+            Destroy(traps, 1);
         }
     }
 }

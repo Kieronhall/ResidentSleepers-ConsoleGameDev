@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13621,6 +13621,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5085268974314328131, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 1263499720}
+    - target: {fileID: 7076638309520741461, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 1263499720}
     - target: {fileID: 7183706178385744314, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
       propertyPath: m_Name
       value: Menu

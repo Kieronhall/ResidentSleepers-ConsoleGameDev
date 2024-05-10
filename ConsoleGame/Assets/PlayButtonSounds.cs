@@ -16,7 +16,7 @@ public class PlayButtonSounds : MonoBehaviour, ISelectHandler, IDeselectHandler
     }
     public void OnSelect(BaseEventData eventData)
     {
-        // Check if the event is triggered by a gamepad
+        // Checking if the event is triggered by a gamepad
         if (eventData is AxisEventData)
         {
             PlayOnSelectSound();
@@ -33,6 +33,5 @@ public class PlayButtonSounds : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnDeselect(BaseEventData eventData)
     {
-        // You can add logic here if you want to handle deselection events
     }
 }

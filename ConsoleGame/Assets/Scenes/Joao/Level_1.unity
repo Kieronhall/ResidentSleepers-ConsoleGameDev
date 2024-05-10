@@ -89356,10 +89356,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5085268974314328131, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 1582631019}
     - target: {fileID: 6746694936276960836, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level_1
       objectReference: {fileID: 0}
+    - target: {fileID: 7076638309520741461, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 1582631019}
     - target: {fileID: 7183706178385744314, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
       propertyPath: m_Name
       value: Menu

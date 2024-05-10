@@ -138,7 +138,7 @@ namespace ThirdPerson
         // Update cross input
         public void CrossInput(bool newCrossState)
         {
-            pause = newCrossState;
+            cross = newCrossState;
         }
 
         // Handle cursor state on application focus

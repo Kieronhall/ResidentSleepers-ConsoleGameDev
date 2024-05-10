@@ -25,7 +25,7 @@ public class ExitInputHandler : MonoBehaviour
         }
         else if (playerControls.cross || Input.GetKeyDown(KeyCode.N))
         {
-            // Make the canvas inactive when 'Space' is pressed
+            Debug.Log("pressing cross");            // Make the canvas inactive when 'Space' is pressed
             sounds.PlayOnClick();
             exitWindow.gameObject.SetActive(false);
             mainMenu.gameObject.SetActive(true);

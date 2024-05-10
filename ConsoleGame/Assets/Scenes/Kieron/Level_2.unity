@@ -16307,7 +16307,7 @@ PrefabInstance:
     - target: {fileID: 8012173575321228737, guid: 87c19ec73fd931941a0b63d779413bb1, type: 3}
       propertyPath: cameraSens
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1499865447}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

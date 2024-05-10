@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
     public float health ;
     public float maxHealth = 100f;
     public GameObject extraAmmo;
-    private float chanceSpawn = 0.45f;
+    public float chanceSpawn = 0.75f;
     private float randomValue;
     //EnemyHealthBar enemyHealthBar;
 
@@ -26,7 +26,7 @@ public class Target : MonoBehaviour
             agent.deathMovement();
             deathAnimation();
             Invoke("DestroyObject", 4f);
-            chanceSpawn = 0.45f;
+            chanceSpawn = 0.75f;
             //enemyHealthBar.gameObject.SetActive(false);
         }
         else

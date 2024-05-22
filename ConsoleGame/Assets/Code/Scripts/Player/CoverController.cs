@@ -16,7 +16,7 @@ namespace ThirdPerson
         Animator animator;
         ThirdPersonController thirdPersonController;
         ThirdPersonAim thirdPersonAim;
-
+        
         // Cover states
         public bool inCover;
         internal bool coverLeft;

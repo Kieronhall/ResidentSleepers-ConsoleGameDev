@@ -109,7 +109,7 @@ namespace ThirdPerson
             groundedCheck();
             Move();
             Crouch();
-
+            
             // Adjust movement speed and character controller properties based on cover status
             moveSpeed = coverController.inCover ? 1.5f : 3f;
             characterController.center = input.crouch ? new Vector3(0f, 0.678f, 0.38f) : coverController.inHighCover ? new Vector3(0f, 0.87f, 0f)
